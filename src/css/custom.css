@@ -40,8 +40,11 @@
 
 /* Direct body text styling that will override Docusaurus */
 body {
-  color: #d7d7d7 !important; 
+  color: var(--ifm-text-secondary-color) !important;
+  font-size: 14px !important; /* Set body text size */
 }
+
+
 
 /* Light mode body text */
 [data-theme='light'] body {
@@ -103,10 +106,20 @@ html[data-theme='dark'] {
 }
 
 h1 {
-  font-size: 2.5rem !important; /* Adjust this value as needed */
+  font-size: 2.2rem !important; /* Adjust this value as needed */
   font-weight: 700;
   line-height: 1.2;
 }
+
+h2 {
+  font-size: 1.8rem !important; /* Adjust this value as needed */
+}
+
+h3 {
+  font-size: 1.4rem !important; /* Adjust this value as needed */
+}
+
+
 
 [data-theme='dark'] {
   --primary-text: var(--white);
