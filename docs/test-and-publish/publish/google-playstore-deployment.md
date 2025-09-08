@@ -3,7 +3,7 @@ slug: /deployment/google-playstore-deployment
 title: Google Play Store Deployment
 description: Learn how to deploy your apps to the Google Play Store using Dreamflow.
 tags: [Google Play Store, Deployment, Dreamflow, Android]
-sidebar_position: 3
+sidebar_position: 2
 toc_max_heading_level: 4
 keywords: [Google Play Store, Deployment, Dreamflow, Android]
 ---
