@@ -1,10 +1,10 @@
 ---
 slug: /test/test-on-mobile-device
 title: Testing App on Mobile Devices
-description: Learn how to test your DreamFlow app on mobile devices.
+description: Learn how to test your Dreamflow app on mobile devices.
 tags: [Test, Mobile Device, Android, iOS]
 sidebar_position: 2
-keywords: [DreamFlow, Test, Mobile Device, Android, iOS]
+keywords: [Dreamflow, Test, Mobile Device, Android, iOS]
 ---
 
 # Testing App on Mobile Devices

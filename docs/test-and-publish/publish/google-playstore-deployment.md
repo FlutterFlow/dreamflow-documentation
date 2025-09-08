@@ -1,21 +1,21 @@
 ---
 slug: /deployment/google-playstore-deployment
 title: Google Play Store Deployment
-description: Learn how to deploy your apps to the Google Play Store using DreamFlow.
-tags: [Google Play Store, Deployment, DreamFlow, Android]
+description: Learn how to deploy your apps to the Google Play Store using Dreamflow.
+tags: [Google Play Store, Deployment, Dreamflow, Android]
 sidebar_position: 3
 toc_max_heading_level: 4
-keywords: [Google Play Store, Deployment, DreamFlow, Android]
+keywords: [Google Play Store, Deployment, Dreamflow, Android]
 ---
 
 # Google Play Store Deployment
 
-DreamFlow allows you to deploy your apps directly to the Google Play Store from within the platform. This guide covers all the necessary prerequisites, a step-by-step deployment process, and common troubleshooting tips.
+Dreamflow allows you to deploy your apps directly to the Google Play Store from within the platform. This guide covers all the necessary prerequisites, a step-by-step deployment process, and common troubleshooting tips.
 
 :::info[Prerequisites]
 
 - Register for a [**Google Play Developer account**](https://play.google.com/console/signup).
-- Ensure you have set an app launcher icon. If not, add an app icon to the DreamFlow assets, then use the [**flutter_launcher_icons**](https://pub.dev/packages/flutter_launcher_icons) package or ask the AI agent to set it up for you.
+- Ensure you have set an app launcher icon. If not, add an app icon to the Dreamflow assets, then use the [**flutter_launcher_icons**](https://pub.dev/packages/flutter_launcher_icons) package or ask the AI agent to set it up for you.
 - Ensure your app package name is correct, as it cannot be changed after deployment. To verify it, open `android/app/build.gradle` and check the `applicationId`. To update the package name, you can use the [**change_app_package_name**](https://pub.dev/packages/change_app_package_name) package or simply ask the AI agent.
 - It's recommended to [**test your app on a real device**](../test/test-on-mobile-device.md) before deployment.
 
@@ -59,7 +59,7 @@ To provide the app details required by the Google Play Store, go to the **Set up
 
 ## 3. Adding service account credentials
 
-To enable DreamFlow to deploy your app to the Google Play Store, you need to add service account credentials.
+To enable Dreamflow to deploy your app to the Google Play Store, you need to add service account credentials.
 
 ### 3.1 Creating a Service Account
 
@@ -159,25 +159,26 @@ To create the Service Account, you can follow the instructions from [here](http
     </div>
     <p></p>
 
-### 3.2 Uploading service account credentials to DreamFlow
+### 3.2 Uploading service account credentials to Dreamflow
 
-To upload your service account credentials in DreamFlow, go to **Publish > Android**. Under **Google Play Credentials**, click **Upload .json** and select the `.json` file you downloaded in step 4.
+To upload your service account credentials in Dreamflow, go to **Publish > Android**. Under **Google Play Credentials**, click **Upload .json** and select the `.json` file you downloaded in step 4.
 
 ![upload-json-file.avif](imgs/upload-json-file.avif)
 
 ## 4. Deploy to Google Play Store
 
-For first-time deployment, you need to create an initial release manually in Google Play Console. After that, DreamFlow can handle all subsequent deployments.
+For first-time deployment, you need to create an initial release manually in Google Play Console. After that, Dreamflow can handle all subsequent deployments.
 
 ### 4.1 First-time setup
 
-1. In DreamFlow, set the **Google Play Track** to **Internal** and click **Submit Build to Google Play**.
-2. Once the build is complete, download the [**.aab**](https://chatgpt.com/share/6f5714c1-eb13-428b-b9ee-9772f2810284) file.
-3. In Google Play Console, create an **Internal Testing** track and upload the **.aab** file.
+1. In Dreamflow, set the **Google Play Track** to **Internal**.
+2. Specify the **Bundle ID** and **Version Code** and then click **Submit Build to Google Play**.
+3. Once the build is complete, download the [**.aab**](https://chatgpt.com/share/6f5714c1-eb13-428b-b9ee-9772f2810284) file.
+4. In Google Play Console, create an **Internal Testing** track and upload the **.aab** file.
 
 :::info
 
-- After the internal testing track is set up, DreamFlow can handle all future deployments directly.
+- After the internal testing track is set up, Dreamflow can handle all future deployments directly.
 - Even if the build status appears as FAILURE, you can still download the AAB file.
 
 :::
@@ -209,9 +210,9 @@ For first-time deployment, you need to create an initial release manually in Goo
 </div>
 <p></p>
 
-### 4.2 Deploy from DreamFlow
+### 4.2 Deploy from Dreamflow
 
-To deploy your app from DreamFlow, navigate to **Publish > Android**, set the **Track** to Internal, and update the **version code.** If your app is still in draft mode (not yet available on the Play Store), set **Submit as Draft** (under **Deployment Flags)** to **True**, and then click **Deploy to Play Store**.
+To deploy your app from Dreamflow, navigate to **Publish > Android**, set the **Track** to Internal, and update the **version code.** If your app is still in draft mode (not yet available on the Play Store), set **Submit as Draft** (under **Deployment Flags)** to **True**, and then click **Deploy to Play Store**.
 
 <div style={{
     position: 'relative',
@@ -286,7 +287,7 @@ To promote your app to production, open your **Internal testing** track in Googl
 </div>
 <p></p>
 
-For all future deployments, set the **Google Play Track** to **Prod** in DreamFlow and deploy directly from there.
+For all future deployments, set the **Google Play Track** to **Prod** in Dreamflow and deploy directly from there.
 
 ![deploy-to-prod-from-dreamflow.avif](imgs/deploy-to-prod-from-dreamflow.avif)
 
@@ -337,7 +338,7 @@ Why does my first upload fail with a message like "You need to use a different p
 
 </summary>
 <p>
-For the initial deployment, you must manually upload the **.aab** file to Google Play Console to create the first release track. Once the initial track is set up, DreamFlow will handle all subsequent deployments automatically.
+For the initial deployment, you must manually upload the **.aab** file to Google Play Console to create the first release track. Once the initial track is set up, Dreamflow will handle all subsequent deployments automatically.
 </p>
 </details>
 

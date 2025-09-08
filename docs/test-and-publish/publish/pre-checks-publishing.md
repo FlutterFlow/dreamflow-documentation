@@ -4,7 +4,7 @@ title: Pre-checks Before Publishing
 description: Ensure your app is ready for launch with this detailed guide on essential pre-publishing checks.
 tags: [Pre-checks, Publishing, Deployment]
 sidebar_position: 1
-keywords: [Pre-checks, Publishing, Deployment, DreamFlow]
+keywords: [Pre-checks, Publishing, Deployment, Dreamflow]
 ---
 
 # Pre-checks Before Publishing
