@@ -21,7 +21,7 @@ DreamFlow offers two flexible options:
 
 With **One-Click Deployment**, you can instantly publish your app to the web without any additional setup. DreamFlow automatically builds and hosts your project under a shareable DreamFlow URL.
 
-To deploy your app, navigate to **Publish > Web** and click **One-Click Deployment**. DreamFlow will automatically build and host your app at a unique subdomain (e.g., `https://<your-app>.share.dreamflow.app`).
+To deploy your app, navigate to **Publish > Web** and click **One-Click Deployment**. DreamFlow will automatically build and host your app at a unique subdomain (e.g., `https://<unique-id>.share.dreamflow.app`).
 
 ![one-click-deployment.avif](imgs/one-click-deployment.avif)
 
