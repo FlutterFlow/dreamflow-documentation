@@ -133,6 +133,8 @@ To create the Service Account, you can follow the instructions from [here](http
     - "Release apps to testing tracks"
     - "Manage testing tracks and edit tester lists"
 
+    <p></p>
+
     <div style={{
         position: 'relative',
         paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
@@ -171,7 +173,7 @@ For first-time deployment, you need to create an initial release manually in Goo
 
 ### 4.1 Downloading AAB file
 
-In DreamFlow, set the **Google Play Track** to **Internal**, enter the **Bundle ID** and **Version Code**, then click **Submit Build to Google Play**. Wait a few minutes and click **Check Deployment Status**.
+In Dreamflow, set the **Google Play Track** to **Internal**, enter the **Bundle ID** and **Version Code**, then click **Submit Build to Google Play**. Wait a few minutes and click **Check Deployment Status**.
 
 Once the build is complete, click **Download AAB File** button (in the **App Bundle** section). If the button is still disabled, wait a bit longer and try again.
 
@@ -238,7 +240,7 @@ In Google Play Console, create an **Internal Testing** track and upload the **.a
 <p></p>
 
 :::info
-After the internal testing track is set up, DreamFlow can handle all future deployments directly.
+After the internal testing track is set up, Dreamflow can handle all future deployments directly.
 :::
 
 ### 4.3 Deploy from Dreamflow
