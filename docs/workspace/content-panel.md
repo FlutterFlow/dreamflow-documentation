@@ -11,7 +11,8 @@ sidebar_position: 3
 
 The Content Panel is the central workspace area where you can view and edit your application code, preview your app, and access debugging information. It provides a comprehensive development environment with multiple views and tools to help you build and test your applications.
 
-## Overview
+![Content Panel](imgs/content-panel.png)
+
 
 The Content Panel consists of three main sections that work together to provide a complete development experience:
 

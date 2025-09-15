@@ -75,6 +75,7 @@ Insert new widgets into your tree by selecting a parent widget and choosing from
 </div>
 <p></p>
 
+
 Here's a quick demo to show you can add a widget to a Column:
 
 <div style={{

@@ -9,7 +9,64 @@ sidebar_position: 4
 
 # Properties Panel 
 
-Properties Panel is..
+The Properties Panel is a sophisticated interface for editing widget properties in real-time, providing both visual and code-based editing capabilities with intelligent property type detection and specialized editors.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/6AJA10eoZEfsJPrjKyrp?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+
+
+**Real-Time Property Editing**: The panel displays all properties of the currently selected widget and allows you to edit them with immediate visual feedback. Changes are applied instantly to your running app.
+
+**Intelligent Property Editors:** The system automatically detects property types and provides specialized editors:
+- **Color Properties:** Color picker with hex input and visual color swatches
+- **TextStyle Properties:** Rich text styling editor with font family, size, weight, and color options
+- **Padding/Margin:** Visual padding editor with individual side controls
+- **Border Radius:** Corner-specific radius controls with visual preview
+- **Gradients:** Linear, radial, and sweep gradient editors with color stops
+- **Borders:** Border style, width, and color controls
+- **Images:** Asset and network image selectors
+- **Icons:** Icon picker with search functionality
+- **Alignment:** Visual alignment controls
+- **Boolean Properties:** Toggle switches for true/false values
+- **Enum Properties:** Dropdown menus for predefined options
+- **Widget Properties:** Specialized editors for nested widget properties
+
+
+
+This makes the Properties Panel a comprehensive tool for visual Flutter development, allowing you to modify any aspect of your UI without writing code manually.
+
+
+### Advanced Functionalities
+
+- **Property Search:** Search functionality to quickly find specific properties within complex widgets.
+- **Add Property Button:** Add new properties to widgets that don't have them configured yet.
+- **Grouped Properties:** For supported widgets (Container, Text, TextField), properties are organized into logical groups like "Layout", "Styling", "Behavior" for easier navigation.
+- **Syntax Highlighting:** For complex expressions and function properties, the panel provides syntax-highlighted code editors.
+- **CopyWith Support:** Automatically handles Flutter's copyWith pattern for updating nested properties like TextStyle sub-properties.
 
 
 
@@ -23,32 +80,57 @@ Modifiers refer to wrapper widgets that can be added around existing Flutter wid
 - **Animation properties** (transitions, transformations)
 
 
-### Common Modifier Types
 
-**Layout Modifiers**
-- **Spacing**: Add padding, margins, or gaps
-- **Positioning**: Control alignment, expansion, or positioning
-- **Constraints**: Modify size constraints and boundaries
-- **Flexibility**: Control how widgets grow and shrink
-
-**Visual Modifiers**
-- **Styling**: Apply colors, borders, and backgrounds
-- **Effects**: Add shadows, opacity, or transformations
-- **Clipping**: Control how content is displayed
-- **Decoration**: Apply complex visual treatments
-
-**Behavioral Modifiers**
-- **Interaction**: Add gesture detection and touch handling
-- **Focus**: Manage keyboard navigation and focus states
-- **Accessibility**: Improve screen reader support
-- **Semantics**: Add meaning for assistive technologies
-
-**Animation Modifiers**
-- **Transitions**: Smooth changes between states
-- **Transformations**: Rotate, scale, or translate widgets
-- **Timing**: Control animation duration and curves
-- **State Changes**: Animate opacity, size, or position
 
 ### Adding a Modifier
 
+1. Select any widget in the Widget Tree Panel that you want to wrap with a **Modifier** widget.
+
+2. In the Properties Panel, scroll down to the **Modifiers** section at the bottom.
+
+3. Click the **+** button next to "Modifiers" to open the modifier selection menu.
+
+4. Choose from available wrapper widgets such as:
+    - **Container** - For padding, margin, decoration, and constraints
+    - **Padding** - For adding space around content
+    - **Center** - For centering content
+    - **Align** - For positioning content
+    - **SizedBox** - For setting specific dimensions
+    - **Transform** - For rotations, scaling, and translations & other such modifier widgets. 
+
+
+5. The modifier will be added to your widget hierarchy and its properties will appear in the Modifiers section, where you can edit them immediately.
+
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/JPPGJVEhgwSBhviyKmUs?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+
+Once added, each modifier appears as an expandable section in the Modifiers area. You can:
+- Expand/collapse modifier sections to focus on specific ones
+- Edit properties like padding values, colors, or alignment settings
+- See real-time changes in your app preview
 
