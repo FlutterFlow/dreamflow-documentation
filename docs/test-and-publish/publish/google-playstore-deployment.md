@@ -133,6 +133,8 @@ To create the Service Account, you can follow the instructions from [here](http
     - "Release apps to testing tracks"
     - "Manage testing tracks and edit tester lists"
 
+    <p></p>
+
     <div style={{
         position: 'relative',
         paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
@@ -169,20 +171,17 @@ To upload your service account credentials in Dreamflow, go to **Publish > Andro
 
 For first-time deployment, you need to create an initial release manually in Google Play Console. After that, Dreamflow can handle all subsequent deployments.
 
-### 4.1 First-time setup
+### 4.1 Downloading AAB file
 
-1. In Dreamflow, set the **Google Play Track** to **Internal**.
-2. Specify the **Bundle ID** and **Version Code** and then click **Submit Build to Google Play**.
-3. Once the build is complete, download the [**.aab**](https://chatgpt.com/share/6f5714c1-eb13-428b-b9ee-9772f2810284) file.
-4. In Google Play Console, create an **Internal Testing** track and upload the **.aab** file.
+In DreamFlow, set the **Google Play Track** to **Internal**, enter the **Bundle ID** and **Version Code**, then click **Submit Build to Google Play**. Wait a few minutes and click **Check Deployment Status**.
+
+Once the build is complete, click **Download AAB File** button (in the **App Bundle** section). If the button is still disabled, wait a bit longer and try again.
 
 :::info
 
-- After the internal testing track is set up, Dreamflow can handle all future deployments directly.
-- Even if the build status appears as FAILURE, you can still download the AAB file.
+Even if the build status appears as FAILURE, you can still download the AAB file.
 
 :::
-
 
 <div style={{
     position: 'relative',
@@ -210,7 +209,41 @@ For first-time deployment, you need to create an initial release manually in Goo
 </div>
 <p></p>
 
-### 4.2 Deploy from Dreamflow
+### 4.2 Upload AAB file to Internal testing track
+
+In Google Play Console, create an **Internal Testing** track and upload the **.aab** file.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/PJt1oXAVn7Wpvjb6zYCb?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+:::info
+After the internal testing track is set up, DreamFlow can handle all future deployments directly.
+:::
+
+### 4.3 Deploy from Dreamflow
 
 To deploy your app from Dreamflow, navigate to **Publish > Android**, set the **Track** to Internal, and update the **version code.** If your app is still in draft mode (not yet available on the Play Store), set **Submit as Draft** (under **Deployment Flags)** to **True**, and then click **Deploy to Play Store**.
 
@@ -247,7 +280,7 @@ To deploy your app from Dreamflow, navigate to **Publish > Android**, set the **
 
 :::
 
-### 4.3 Verify deployment
+### 4.4 Verify deployment
 
 To verify that the app is deployed to Play Console:
 
@@ -257,7 +290,7 @@ To verify that the app is deployed to Play Console:
 
 ![verify-deployment.avif](imgs/verify-deployment.avif)
 
-### 4.4 Deploy to production
+### 4.5 Deploy to production
 
 To promote your app to production, open your **Internal testing** track in Google Play Console and complete the release. Once the internal release is finalized, click **Promote Release > Production**.
 
@@ -338,7 +371,7 @@ Why does my first upload fail with a message like "You need to use a different p
 
 </summary>
 <p>
-For the initial deployment, you must manually upload the **.aab** file to Google Play Console to create the first release track. Once the initial track is set up, Dreamflow will handle all subsequent deployments automatically.
+For the initial deployment, you must manually [**download the .aab file**](#41-downloading-aab-file) and [**upload it to internal testing track**](#42-upload-aab-file-to-internal-testing-track) in Google Play Console. Once the initial track is set up, Dreamflow will handle all subsequent deployments automatically.
 </p>
 </details>
 
