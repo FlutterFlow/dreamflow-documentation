@@ -1,15 +1,18 @@
 ---
 slug: /workspace/agent-panel
-title: Agent Panel 
-# description: 
-# tags: 
+title: Agent Panel
+description: Learn about Dreamflow's AI-powered Agent Panel that helps you build and modify Flutter apps through natural language conversations
+tags: [agent, ai, development, flutter]
 sidebar_position: 5
-# keywords: 
+keywords: [agent panel, ai assistant, flutter development, natural language, code generation, dreamflow interface, development environment]
 ---
 
 # Agent Panel
 
 The Agent Panel is an AI-powered development assistant that helps you build and modify your Flutter app through natural language conversations. Simply describe what you want to create or change, and the AI will help you implement it.
+
+![Agent Panel](imgs/agent-panel.png)
+
 
 To access the agent chat, click on the Agent Panel button in the right sidebar to open the chat interface. Type your request in the message box at the bottom. For example:
 
@@ -69,7 +72,7 @@ Use the Attach Image button in the message box to add screenshots or images to y
 
 Instead of trying to describe your current app's appearance in words, you can instantly capture what the AI needs to see. This is much faster and more accurate than explaining complex layouts, colors, or visual relationships through text alone.
 
-You can capture screenshots via the [Preview tab](#) from the Content Panel. Click the camera button (📷) in the bottom-right corner of the preview area.
+You can capture screenshots via the [Preview tab](../workspace/content-panel.md#app-preview) from the Content Panel. Click the camera button (📷) in the bottom-right corner of the preview area.
 
 
 <div style={{

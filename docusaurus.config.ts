@@ -73,7 +73,7 @@ const config: Config = {
       },
       items: [
         {
-          href: 'https://github.com/FlutterFlow/flutterflow-documentation',
+          href: 'https://github.com/FlutterFlow/dreamflow-documentation',
           label: 'GitHub',
           position: 'right',
         },
@@ -110,12 +110,8 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: 'https://blog.flutterflow.io',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/FlutterFlow/flutterflow-documentation',
+              href: 'https://github.com/FlutterFlow/dreamflow-documentation',
             },
           ],
         },

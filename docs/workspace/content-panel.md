@@ -1,17 +1,17 @@
 ---
 slug: /workspace/content-panel
-title: Content Panel 
-# description: 
-# tags: 
+title: Content Panel
+description: Learn about Dreamflow's Content Panel that provides an integrated environment for code editing, app preview, and debugging with real-time updates
+tags: [code-editor, preview, debug, development, flutter]
 sidebar_position: 3
-# keywords: 
+keywords: [content panel, code editor, app preview, debug console, flutter development, dreamflow interface, development environment, monaco editor, hot reload]
 ---
 
 # Content Panel
 
 The Content Panel is the central workspace area where you can view and edit your application code, preview your app, and access debugging information. It provides a comprehensive development environment with multiple views and tools to help you build and test your applications.
 
-![Content Panel](imgs/content-panel.png)
+![Content Panel](imgs/content-panel.webp)
 
 
 The Content Panel consists of three main sections that work together to provide a complete development experience:
@@ -49,10 +49,13 @@ The App Preview panel is the central component of Dreamflow's environment, provi
 
 The panel displays a real-time preview of your Flutter app running in **debug mode**, with instant updates as you make code changes. The preview runs in a WebView container and supports hot reload for immediate feedback during development.
 
+![Preview Panel](imgs/preview-panel.png)
+
+
 ### Inspect Mode
 Inspect mode provides an interactive way to explore and modify your Flutter widgets visually. When enabled, hovering over widgets in the preview reveals their boundaries with colored overlays, making it easy to understand widget layout and hierarchy. This visual feedback helps developers quickly identify and understand the structure of their UI components.
 
-Selecting a widget with a click automatically synchronizes the [Widget Tree](#) and [Property Panel](#) to display detailed information about that widget, maintaining the highlight until another selection is made. This seamless integration between the preview and development panels streamlines the workflow for analyzing and modifying widgets. The context menu, accessed through right-click, offers powerful widget-specific actions including property editing, adding context to agent, code navigation, and other operations, enabling rapid iterations on your Flutter application's user interface.
+Selecting a widget with a click automatically synchronizes the [Widget Tree](modules-panel/widget-panel.md#widget-tree) and [Property Panel](properties-panel.md) to display detailed information about that widget, maintaining the highlight until another selection is made. This seamless integration between the preview and development panels streamlines the workflow for analyzing and modifying widgets. The context menu, accessed through right-click, offers powerful widget-specific actions including property editing, adding context to agent, code navigation, and other operations, enabling rapid iterations on your Flutter application's user interface.
 
 ### Hot Reload and Hot Restart
 Dreamflow provides integrated hot reload and hot restart capabilities that allow you to quickly test code changes without losing your development context. These essential Flutter development tools are accessible through dedicated buttons in the content panel toolbar.
@@ -63,23 +66,18 @@ Dreamflow provides integrated hot reload and hot restart capabilities that allow
 
 
 ### Additional Features
-Additionally it has other features: 
 
-#### Multi-Device Preview
+- **Multi-Device Preview**
 
-Choose from four preview modes to test your app across different form factors:
-- Phone (iPhone 16 Pro Max - 390x844)
-- Tablet (iPad Pro 13" - 834x1194)
-- Desktop (1920x1080 landscape)
-- Expanded (full-width preview without device frame)
+    Choose from four preview modes to test your app across different form factors:
+    - Phone (iPhone 16 Pro Max - 390x844)
+    - Tablet (iPad Pro 13" - 834x1194)
+    - Desktop (1920x1080 landscape)
+    - Expanded (full-width preview without device frame)
 
-#### Interactive Zoom & Pan
+- **Interactive Zoom & Pan**: The preview supports zoom levels from 30% to 300% with smooth panning capabilities. Zoom preferences are automatically saved and restored between sessions.
 
-The preview supports zoom levels from 30% to 300% with smooth panning capabilities. Zoom preferences are automatically saved and restored between sessions.
-
-#### Theme Support
-
-Preview both light and dark themes for your Flutter app. 
+- **Theme Support**: Preview both light and dark themes for your Flutter app. 
 
 
 
@@ -92,4 +90,35 @@ The Debug Console is a dedicated output panel in Dreamflow that displays real-ti
 - Hot reload notifications
 - Build process output
 - Error messages and stack traces
+
+
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/2wlNaYsMEfK9Ko4y9Bkt?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+
+
 

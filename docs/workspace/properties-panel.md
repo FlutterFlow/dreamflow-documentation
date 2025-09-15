@@ -1,10 +1,10 @@
 ---
 slug: /workspace/properties-panel
-title: Properties Panel 
-# description: 
-# tags: 
+title: Properties Panel
+description: Learn about Dreamflow's Properties Panel that provides comprehensive property editing for Flutter widgets with specialized editors and real-time visual feedback
+tags: [properties, widgets, ui, development, flutter]
 sidebar_position: 4
-# keywords: 
+keywords: [properties panel, widget properties, property editing, flutter development, dreamflow interface, development environment, visual editing, property editors]
 ---
 
 # Properties Panel 
@@ -53,11 +53,14 @@ The Properties Panel is a sophisticated interface for editing widget properties 
 - **Alignment:** Visual alignment controls
 - **Boolean Properties:** Toggle switches for true/false values
 - **Enum Properties:** Dropdown menus for predefined options
-- **Widget Properties:** Specialized editors for nested widget properties
-
 
 
 This makes the Properties Panel a comprehensive tool for visual Flutter development, allowing you to modify any aspect of your UI without writing code manually.
+
+:::tip[Quick Access from Widget Tree]
+The Properties Panel can be quickly accessed by clicking any widget in the Widget Tree. The panel will automatically update to show the properties of the selected widget.
+:::
+
 
 
 ### Advanced Functionalities
@@ -88,7 +91,7 @@ Modifiers refer to wrapper widgets that can be added around existing Flutter wid
 
 2. In the Properties Panel, scroll down to the **Modifiers** section at the bottom.
 
-3. Click the **+** button next to "Modifiers" to open the modifier selection menu.
+3. Click the **+** button next to "Modifiers" tab to open the Modifier selection menu.
 
 4. Choose from available wrapper widgets such as:
     - **Container** - For padding, margin, decoration, and constraints
@@ -99,7 +102,7 @@ Modifiers refer to wrapper widgets that can be added around existing Flutter wid
     - **Transform** - For rotations, scaling, and translations & other such modifier widgets. 
 
 
-5. The modifier will be added to your widget hierarchy and its properties will appear in the Modifiers section, where you can edit them immediately.
+5. The Modifier widget will be added to your widget hierarchy and its properties will appear in the Modifiers tab section of the Properties panel, where you can edit them immediately.
 
 
 <div style={{
@@ -129,8 +132,4 @@ Modifiers refer to wrapper widgets that can be added around existing Flutter wid
 <p></p>
 
 
-Once added, each modifier appears as an expandable section in the Modifiers area. You can:
-- Expand/collapse modifier sections to focus on specific ones
-- Edit properties like padding values, colors, or alignment settings
-- See real-time changes in your app preview
 

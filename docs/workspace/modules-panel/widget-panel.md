@@ -18,6 +18,22 @@ The Widget Tree panel is a powerful hierarchical view that displays the complete
 
 **Widget Selection**: Click on any widget in the tree to select it, which automatically highlights the corresponding widget in the preview panel and updates the property panel with its details.
 
+## Nodes
+
+**Nodes** are individual widgets in your Flutter app's hierarchy, displayed as tree items in the Widget Tree panel. Each node represents a widget instance with its properties and relationships.
+
+**Root Nodes** - Top-level widgets that represent entire screens or components
+- **Page Nodes**: Main app screens
+- **Component Nodes**: Reusable custom widgets used in your main screen.
+
+**Child Nodes** - Widgets that contain other widgets
+- **Single Child**: Widgets with exactly one child (Container, Padding, Center)
+- **Multiple Children**: Widgets with multiple children (Column, Row, Scaffold)
+
+**Leaf Nodes** - Terminal widgets with no children such as Text, Image, Icon, Button. 
+
+The tree structure helps you understand your app's widget hierarchy and navigate between different UI components.
+
 ![Widget Tree Panel](../imgs/widget-tree.png)
 
 *The Widget Tree panel displays a hierarchical view of the selected page/screen, showing the complete widget tree including the Scaffold structure and any custom widgets used within it.*
