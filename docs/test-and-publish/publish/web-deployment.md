@@ -10,18 +10,18 @@ keywords: [Deployment, Dreamflow, Web]
 
 # Web Deployment
 
-DreamFlow makes it easy to take your app live on the web with minimal setup. You can quickly publish apps for testing, demos, or full production use, directly from your browser.
+Dreamflow makes it easy to take your app live on the web with minimal setup. You can quickly publish apps for testing, demos, or full production use, directly from your browser.
 
-DreamFlow offers two flexible options:
+Dreamflow offers two flexible options:
 
 - **One-Click Deployment:** Instantly publish your app to the web in just seconds, perfect for previews and prototypes.
 - **Custom Web Deployment:** Gain more control over the deployment process, with configuration options tailored for production-ready apps.
 
 ## One-Click Deployment
 
-With **One-Click Deployment**, you can instantly publish your app to the web without any additional setup. DreamFlow automatically builds and hosts your project under a shareable DreamFlow URL.
+With **One-Click Deployment**, you can instantly publish your app to the web without any additional setup. Dreamflow automatically builds and hosts your project under a shareable Dreamflow URL.
 
-To deploy your app, navigate to **Publish > Web** and click **One-Click Deployment**. DreamFlow will automatically build and host your app at a unique subdomain (e.g., `https://<unique-id>.share.dreamflow.app`).
+To deploy your app, navigate to **Publish > Web** and click **One-Click Deployment**. Dreamflow will automatically build and host your app at a unique subdomain (e.g., `https://<unique-id>.share.dreamflow.app`).
 
 ![one-click-deployment.avif](imgs/one-click-deployment.avif)
 
@@ -31,7 +31,7 @@ If you make changes to your project, click **Update Deployment** to publish the 
 
 :::info[Key Benefits]
 
-- **Fastest way to go live:** No configuration or hosting setup needed. Everything happens directly in DreamFlow.
+- **Fastest way to go live:** No configuration or hosting setup needed. Everything happens directly in Dreamflow.
 - **Shareable link:** Easily share your app with teammates, testers, or clients.
 - **Quick iteration:** Update deployments as you make changes, ensuring your live app always reflects the latest build.
 - **Full control:** Unpublish when you’re ready to stop sharing or move to a custom deployment.
