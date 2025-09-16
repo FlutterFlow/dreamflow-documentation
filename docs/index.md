@@ -151,7 +151,7 @@ Discover additional tools and references to enhance your Dreamflow development e
 
 <!-- If you're still experiencing issues or need additional help, here are some resources to get you back on track:
 
-- **[Submit Bug Report](/misc/submit-bug-report)** - Report bugs or issues you've encountered
+- **[Submit Bug Report](#)** - Report bugs or issues you've encountered
 - **[Community Forum](https://community.flutterflow.io)** - Ask questions and get help from the community
 - **[Reddit Community](https://www.reddit.com/r/FlutterFlow/)** - Join discussions on Reddit
 - **[Documentation Bug](https://github.com/FlutterFlow/flutterflow-documentation/issues)** - Report documentation issues
