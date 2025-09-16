@@ -23,5 +23,11 @@ The workspace is organized into several specialized panels that work together to
 
 - **[Agent Panel](../workspace/agent-panel.md)**: AI-powered development assistant that helps you build and modify your Flutter app through natural language conversations. Features streaming conversations, context management, screenshot integration, and support for multiple AI models.
 
+- **Bottom Bar**: Provides essential project status and debugging tools:
+  - **Refresh Dependencies**: Runs `flutter pub get` to update project packages
+  - **Debug Console**: Toggle to view real-time app logs and debugging output
+  - **App Status**: Live indicator showing if your app is running, loading, has errors, or is stopped
+  - **Analysis Issues**: Quick overview of errors, warnings, and info messages in your code
+
 
 This integrated workspace approach eliminates the need to switch between different tools and provides a cohesive environment for building, testing, and deploying Flutter applications.
