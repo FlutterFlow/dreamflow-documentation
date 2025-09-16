@@ -22,7 +22,7 @@ The Agent will create all the necessary screens, components, and functionality b
     width: '100%'
 }}>
     <iframe 
-        src="https://demo.arcade.software/5Lbea4PqYYhwyNItSuND?embed&show_copy_link=true"
+        src="https://demo.arcade.software/pkh6dsSwozFhyAZUW9IU?embed&show_copy_link=true"
         title="Projects - FlutterFlow"
         style={{
             position: 'absolute',
@@ -40,6 +40,10 @@ The Agent will create all the necessary screens, components, and functionality b
         allow="clipboard-write">
     </iframe>
 </div>
+
+***Prompt used:** Build a sleek music streaming app like Spotify, with a dark theme, album art grids, a bottom navigation bar (Home, Search, Library) and a clean now-playing screen with controls and progress bar.*
+
+### Sample Prompts
 
 Here are some prompts that we've used recently while chatting with the agent.
 
