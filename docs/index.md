@@ -74,7 +74,7 @@ Dreamflow is a visual development environment that lets you build mobile, web, a
 
 <p></p>
 
-<div class="video-container"><iframe src="https://www.youtube.com/embed/GpXjU-ieAKU?si=moIEUUGry24CdSJN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/GpXjU-ieAKU?si=moIEUUGry24CdSJN" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 
 
 
@@ -149,11 +149,11 @@ Discover additional tools and references to enhance your Dreamflow development e
 
 ## Still Have Problems?
 
-If you're still experiencing issues or need additional help, here are some resources to get you back on track:
+<!-- If you're still experiencing issues or need additional help, here are some resources to get you back on track:
 
 - **[Submit Bug Report](#)** - Report bugs or issues you've encountered
 - **[Community Forum](https://community.flutterflow.io)** - Ask questions and get help from the community
 - **[Reddit Community](https://www.reddit.com/r/FlutterFlow/)** - Join discussions on Reddit
 - **[Documentation Bug](https://github.com/FlutterFlow/flutterflow-documentation/issues)** - Report documentation issues
 - **[Contribute to Documentation](https://github.com/FlutterFlow/flutterflow-documentation?tab=readme-ov-file#how-to-contribute)** - Contribution guidelines for contributing to the FlutterFlow documentation site. 
-- **[FlutterFlow Support](mailto:support@flutterflow.io)** - Get direct support from the FlutterFlow support team.
+- **[FlutterFlow Support](mailto:support@flutterflow.io)** - Get direct support from the FlutterFlow support team. -->

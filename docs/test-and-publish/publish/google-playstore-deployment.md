@@ -41,7 +41,7 @@ To create a new app in the Google Play Store, start by opening the [Google Play 
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -88,7 +88,7 @@ To create the Service Account, you can follow the instructions from [here](http
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -117,7 +117,7 @@ To create the Service Account, you can follow the instructions from [here](http
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -151,7 +151,7 @@ To create the Service Account, you can follow the instructions from [here](http
                 height: '100%',
                 colorScheme: 'light'
             }}
-            frameborder="0"
+            frameBorder="0"
             loading="lazy"
             webkitAllowFullScreen
             mozAllowFullScreen
@@ -199,7 +199,7 @@ Even if the build status appears as FAILURE, you can still download the AAB file
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -229,7 +229,7 @@ In Google Play Console, create an **Internal Testing** track and upload the **.a
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -263,7 +263,7 @@ To deploy your app from Dreamflow, navigate to **Publish > Android**, set the **
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -310,7 +310,7 @@ To promote your app to production, open your **Internal testing** track in Googl
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
