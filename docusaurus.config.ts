@@ -64,11 +64,17 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card-docs.png',
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: 'Dreamflow Docs',
       logo: {
         alt: 'Dreamflow Docs',
-        src: '/logos/logoMark_outlinePrimary_transparent.svg',
+        src: '/logos/dreamflow-icon-black.png',
+        srcDark: '/logos/dreamflow-icon-white.png',
       },
       items: [
         {
