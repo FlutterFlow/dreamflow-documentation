@@ -37,7 +37,7 @@ To access the agent chat, click on the Agent Panel button in the right sidebar t
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -174,10 +174,10 @@ To use the Prompt Edit feature, right-click on any widget in the Widget Tree Pan
 
 You can also edit widgets directly from the Preview app using Prompt Edit:
 
-1. Enable Inspect Mode in the Preview panel
-2. Right-click on any widget you want to modify 
-3. Select "Prompt Edit" from the context menu
-4. Enter your editing instructions in the prompt dialog
+1. Enable Inspect Mode in the Preview panel.
+2. Right-click on any widget you want to modify.
+3. Select "Prompt Edit" from the context menu.
+4. Enter your editing instructions in the prompt dialog.
 
 This provides a quick way to make targeted widget changes without leaving the Preview view.
 

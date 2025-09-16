@@ -22,15 +22,15 @@ The Widget Tree panel is a powerful hierarchical view that displays the complete
 
 **Nodes** are individual widgets in your Flutter app's hierarchy, displayed as tree items in the Widget Tree panel. Each node represents a widget instance with its properties and relationships.
 
-**Root Nodes** - Top-level widgets that represent entire screens or components
+**Root Nodes**: Top-level widgets that represent entire screens or components.
 - **Page Nodes**: Main app screens
 - **Component Nodes**: Reusable custom widgets used in your main screen.
 
-**Child Nodes** - Widgets that contain other widgets
+**Child Nodes**: Widgets that contain other widgets
 - **Single Child**: Widgets with exactly one child (Container, Padding, Center)
 - **Multiple Children**: Widgets with multiple children (Column, Row, Scaffold)
 
-**Leaf Nodes** - Terminal widgets with no children such as Text, Image, Icon, Button. 
+**Leaf Nodes**: Terminal widgets with no children such as Text, Image, Icon, Button. 
 
 The tree structure helps you understand your app's widget hierarchy and navigate between different UI components.
 
@@ -92,7 +92,7 @@ Insert new widgets into your tree by selecting a parent widget and choosing from
 <p></p>
 
 
-Here's a quick demo to show you can add a widget to a Column:
+Here’s a quick demo showing how you can add a widget to a Column:
 
 <div style={{
     position: 'relative',
@@ -165,8 +165,8 @@ These operations enable efficient widget reuse and layout restructuring without 
 ### Go to Code
 The "Go to Code" and "Go to Component" features provide quick navigation from the widget tree to the underlying [code implementation](../content-panel.md#code-editor). You can access these features by hovering over a widget in the tree and right-clicking on the widget to use the context menu options.
 
-- **Go to Code**: Jumps to the Code Editor and highlights the code for the selected widget
-- **Go to Component**: For custom project widgets, opens the component file with the relevant widget code highlighted
+- **Go to Code**: Jumps to the Code Editor and highlights the code for the selected widget.
+- **Go to Component**: For custom project widgets, opens the component file with the relevant widget code highlighted.
 
 This makes it easy to inspect and modify widget code directly from the visual layout editor.
  

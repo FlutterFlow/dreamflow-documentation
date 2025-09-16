@@ -67,9 +67,7 @@ Dreamflow provides integrated hot reload and hot restart capabilities that allow
 
 ### Additional Features
 
-- **Multi-Device Preview**
-
-    Choose from four preview modes to test your app across different form factors:
+- **Multi-Device Preview**: Choose from four preview modes to test your app across different form factors:
     - Phone (iPhone 16 Pro Max - 390x844)
     - Tablet (iPad Pro 13" - 834x1194)
     - Desktop (1920x1080 landscape)

@@ -3,13 +3,13 @@
 
 ## Start With a Prompt (4 mins)
 
-Dreamflow's AI-powered app generation allows you to create complete, functional applications from simple text or image descriptions. Simply describe what you want to build, and Dreamflow Agent will generate the entire app structure, UI components, and functionality for you.
+Dreamflow's AI-powered app generation allows you to create fully functional, production-ready applications from simple text or image descriptions. Simply describe what you want to build, and Dreamflow Agent will generate the entire app structure, UI components, and functionality for you.
 
 Ready to create your app? Simply:
 
 1. Open Dreamflow and click the textbox that says "Start with a prompt..."
 2. Enter your app description and wait for the Agent to generate your complete app.
-3. Review and customize the generated project in the [workspace](#)
+3. Review and customize the generated project in the [workspace](#).
 
 
 The Agent will create all the necessary screens, components, and functionality based on your description, giving you a fully functional app that you can further customize and deploy.
