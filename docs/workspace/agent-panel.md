@@ -91,7 +91,7 @@ You can capture screenshots via the [Preview tab](../workspace/content-panel.md#
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -130,7 +130,7 @@ This gives the AI agent comprehensive understanding of the components you're wor
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -162,7 +162,7 @@ To use the Prompt Edit feature, right-click on any widget in the Widget Tree Pan
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -212,7 +212,7 @@ The agent can access the following:
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen

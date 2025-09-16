@@ -27,7 +27,7 @@ The Properties Panel is a sophisticated interface for editing widget properties 
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -121,7 +121,7 @@ Modifiers refer to wrapper widgets that can be added around existing Flutter wid
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen

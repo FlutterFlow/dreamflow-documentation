@@ -107,7 +107,7 @@ The Debug Console is a dedicated output panel in Dreamflow that displays real-ti
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen

@@ -81,7 +81,7 @@ Insert new widgets into your tree by selecting a parent widget and choosing from
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -110,7 +110,7 @@ Here’s a quick demo showing how you can add a widget to a Column:
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -143,7 +143,7 @@ Wrap existing widgets with containers, padding, or other layout widgets to modif
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
