@@ -41,7 +41,7 @@
 /* Direct body text styling that will override Docusaurus */
 body {
   color: var(--ifm-text-secondary-color) !important;
-  font-size: 14px !important; /* Set body text size */
+  font-size: 15px !important; /* Set body text size */
 }
 
 
