@@ -1,159 +1,100 @@
 ---
-title: Getting Started
-custom_edit_url: null
-showLastUpdateTime: false
-hide_title: true
 slug: /
-hide_table_of_contents: false
+title: Welcome to Dreamflow
+description: Discover Dreamflow, the AI-first platform for building mobile apps with Flutter. Learn about key features, how it works, and get started with your first app.
+tags: [welcome, introduction, overview, dreamflow, flutter, mobile app development, ai]
+sidebar_position: 0
+keywords: [dreamflow welcome, flutter development platform, ai mobile app development, visual development environment, flutter builder, mobile app creation]
 ---
 
-import InfoCard from '@site/src/components/InfoCard';
-import InfoCards from '@site/src/components/InfoCards';
-import FlutterFlowDocsLogo from '@site/src/components/FlutterFlowDocsLogo';
-import FlutterFlowLogo from '@site/src/components/FlutterFlowLogo';
-import GearIcon from '@site/static/icons/_icon_Setting.png';
-import DocsIcon from '@site/static/icons/document.png';
-import DeviceIcon from '@site/static/icons/deviceMobile.png';
-import CheckIcon from '@site/static/icons/check_errors.png';
-import UsersIcon from '@site/static/icons/users.png';
-import BranchIcon from '@site/static/icons/branch_New.png';
+
+# Welcome to Dreamflow
+
+**The Fastest Way to Build Mobile Apps**
+
+Dreamflow is an AI-first platform that combines code, visual, and agentic development for Flutter—no install, no lock-in, production-ready workflows. Transform your ideas into production-ready mobile apps in minutes using natural language prompts and our integrated development environment.
+
+## Key Features
+
+- **[AI Agent](workspace/agent-panel.md)**: Prompt small edits or large refactors with natural language commands. The AI agent can scaffold entire screens, implement complex flows, and generate comprehensive tests, making development faster and more intuitive than traditional coding approaches.
+
+- **[Realtime Preview](workspace/content-panel.md#app-preview)**: See your changes instantly with a live run session that compiles and previews your app in real-time. Inspect logs, monitor state changes, and debug issues as they happen, providing immediate feedback for faster iteration and development.
+
+- **Integrations**: Built-in Firebase and Supabase integrations provide seamless backend services out of the box. Connect to databases, implement authentication, handle file storage, and manage real-time data without complex setup or configuration.
+
+- **[Visual Widget Tree](workspace/modules-panel/widget-panel.md)**: Add, remove, move, wrap, collapse, and expand UI components with intuitive visual controls. Restructure your entire widget hierarchy instantly through drag-and-drop interactions, making UI development more visual and accessible.
+
+- **[Properties Editor](workspace/properties-panel.md)**: Type-safe controls for every widget property with intelligent suggestions and validation. Use expressions, formulas, or simply ask the AI for assistance when configuring complex widget behaviors and styling.
+
+- **Deploy**: Push your applications to the web or app stores with streamlined one-click deployment. Support for multiple platforms including Web, iOS, Android, macOS, Windows, and Linux ensures your app reaches users everywhere.
+
+- **Full File System Access**: Browse, edit, and organize real project files with complete transparency. No abstractions or hidden layers—you have direct access to your Flutter code, allowing for full customization and integration with existing development workflows.
+
+- **Hot Reload**: See changes instantly as you develop with Flutter's hot reload technology, enabling rapid iteration and real-time feedback during the development process.
+
+- **Debug Console**: Monitor app logs and performance in real-time with integrated debugging tools that help you identify and resolve issues quickly.
+
+- **Asset Management**: Upload and organize images, fonts, and files through an intuitive interface that keeps your project resources organized and accessible.
+
+- **Multi-Platform Support**: Build applications that run seamlessly across mobile (iOS and Android), web (responsive), and desktop (macOS, Windows, Linux) platforms from a single codebase.
+
+## How It Works
+
+Dreamflow follows a simple 3-step workflow: **Start → Build → Run & Ship**
+
+### 1. Start
+Kick off from a natural-language prompt, a blank Flutter project, or import an existing repo (coming soon).
+
+### 2. Build
+Jump between multiple development modes to build your app efficiently:
+
+- Use the **Code** editor for direct Flutter development
+- Navigate the **Visual widget tree** for drag-and-drop UI building
+- Configure components in the **Properties editor** with type-safe controls
+- Leverage the **AI agent** to scaffold features and refactor code through natural language
+
+Built-in Firebase and Supabase integrations provide authentication, database, and storage capabilities without complex setup. The integrated **Language Server Protocol (LSP)** delivers intelligent code completions, quick fixes, and real-time diagnostics as you type.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(56.67989417989418% + 41px)', // Ensures the aspect ratio plus additional padding
+    height: 0,
+    width: '100%'
+}}>
+    <iframe 
+        src="https://demo.arcade.software/pkh6dsSwozFhyAZUW9IU?embed&show_copy_link=true"
+        title="Dreamflow App Creation Demo"
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameBorder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+
+### 3. Run & Ship
+A managed run session compiles and previews your app in real time. Connect Firebase/Supabase, test flows, and deploy to web or the app stores when ready.
 
 
 
+## Ready to Start Building?
 
-# Getting Started with Dreamflow
-Dreamflow is a visual development environment that lets you build mobile, web, and desktop apps incredibly fast, without sacrificing on app quality or features. 
+Whether you're a seasoned developer looking to accelerate your workflow or a newcomer wanting to bring your app ideas to life, Dreamflow provides the tools and AI assistance you need to succeed.
 
+**Next Steps:**
+1. **[Quickstart Guide](get-started/quickstart.md)** - Build your first app in 4 minutes
+2. **[Workspace Tour](workspace/workspace.md)** - Learn about the development environment
+3. **[Deployment Guide](test-and-publish/publish/web-deployment.md)** - Publish your app to the world
 
+---
 
-<InfoCards>
-    <InfoCard 
-      icon="🚀" 
-      title="Build Your First App" 
-      description="Get started with Dreamflow by building your first Dreamflow app step-by-step." 
-      pagePath="/quickstart"
-      isLarge={true}
-    />
-     <InfoCard 
-       icon="🗺️" 
-       title="App Development Roadmap" 
-       description="Learn the three essential layers of app development: UI Layer, Logic Layer, and Data Layer for building Dreamflow applications." 
-       pagePath="/roadmap"
-       isLarge={true}
-     />
-
-</InfoCards>
-
-<p></p>
-
-
-<p></p>
-
-### Dreamflow Tour
-
-<InfoCards>
-
- <InfoCard 
-      icon="🏗️" 
-      title="Dreamflow Builder" 
-      description="Explore the Dreamflow Builder interface, learn about the dashboard, widgets panel, and how to navigate the visual development environment." 
-      pagePath="/flutterflow-ui/dashboard"
-      isLarge={true}
-    />
-
- <InfoCard 
-      icon="🔍" 
-      title="Building Blocks" 
-      description="Dive into the building blocks of the platform: projects, widgets, functions and more." 
-      pagePath="/resources"
-      isLarge = {true}
-    />
-
-
-</InfoCards>
-
-<p></p>
-
-<div class="video-container"><iframe src="https://www.youtube.com/embed/GpXjU-ieAKU?si=moIEUUGry24CdSJN" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-
-
-
-
-
-
-### Best Practices
-
-Essential guidelines and recommendations for building robust Dreamflow applications. Discover security best practices and performance optimization techniques to ensure your apps are production-ready, scalable, and maintainable.
-
-<InfoCards>
-  <InfoCard 
-    icon="🔐" 
-    title="Secure your API Key" 
-    description="Learn best practices for keeping your API keys created in Google Cloud Console safe and secure in production applications." 
-    pagePath="/best-practices/secure-api-keys"
-    isLarge={true}
-  />
-  <InfoCard 
-    icon="🧪" 
-    title="Test Your Apps Locally" 
-    description="Set up Local Run to debug and validate your app in physical devices." 
-    pagePath="/testing/local-run"
-  />
-  <InfoCard
-  icon="📝"
-  title="Naming Variables"
-  description="Learn Dreamflow naming conventions and best practices for variables, functions, and components to maintain clean, readable code."
-  pagePath="/resources/style-guide"
-  />
-</InfoCards>
-
-### Scaling Dreamflow Apps
-
-Learn advanced techniques and strategies to scale your Dreamflow applications from simple prototypes to enterprise-grade solutions with native integrations and modular architecture.
-
-<InfoCards>
-  <InfoCard 
-    icon="🔌" 
-    title="Integrating Native Plugins in Dreamflow" 
-    description="Extend Dreamflow's capabilities by integrating native platform plugins and custom functionality using method channels for advanced app development." 
-    pagePath="/concepts/advanced/method-channels"
-    isLarge={true}
-  />
-  <InfoCard 
-    icon="🏗️" 
-    title="Building Super Apps using Libraries" 
-    description="Discover how to create scalable, modular applications using Dreamflow libraries to build complex, maintainable super apps with independent feature libraries." 
-    pagePath="https://blog.flutterflow.io/scaling-super-apps-modular-architecture-with-flutterflow-libraries/"
-  />
-  
-</InfoCards>
-
-### Additional Tools
-
-Discover additional tools and references to enhance your Dreamflow development experience: 
-<InfoCards>
-    <InfoCard 
-      icon="⚙️" 
-      title="System Requirements" 
-      description="Ensure you meet system requirements required to smoothly run Dreamflow application on the web & desktop." 
-      pagePath="/before-you-begin/setup-flutterflow" 
-    />
-    <InfoCard 
-      icon="🆕" 
-      title="What's New in Dreamflow" 
-      description="Follow latest updates, features, and the latest enhancements in Dreamflow." 
-      pagePath="https://community.flutterflow.io/c/whats-new-in-flutterflow"
-    />
-
-</InfoCards>
-
-## Still Have Problems?
-
-<!-- If you're still experiencing issues or need additional help, here are some resources to get you back on track:
-
-- **[Submit Bug Report](#)** - Report bugs or issues you've encountered
-- **[Community Forum](https://community.flutterflow.io)** - Ask questions and get help from the community
-- **[Reddit Community](https://www.reddit.com/r/FlutterFlow/)** - Join discussions on Reddit
-- **[Documentation Bug](https://github.com/FlutterFlow/flutterflow-documentation/issues)** - Report documentation issues
-- **[Contribute to Documentation](https://github.com/FlutterFlow/flutterflow-documentation?tab=readme-ov-file#how-to-contribute)** - Contribution guidelines for contributing to the FlutterFlow documentation site. 
-- **[FlutterFlow Support](mailto:support@flutterflow.io)** - Get direct support from the FlutterFlow support team. -->
+*Join thousands of developers who are already building amazing apps with Dreamflow. Start your journey today!*
