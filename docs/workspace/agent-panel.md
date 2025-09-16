@@ -11,7 +11,7 @@ keywords: [agent panel, ai assistant, flutter development, natural language, cod
 
 The Agent Panel is an AI-powered development assistant that helps you build and modify your Flutter app through natural language conversations. Simply describe what you want to create or change, and the AI will help you implement it.
 
-![Agent Panel](imgs/agent-panel.png)
+![Agent Panel](imgs/agent-panel.avif)
 
 
 To access the agent chat, click on the Agent Panel button in the right sidebar to open the chat interface. Type your request in the message box at the bottom. For example:
