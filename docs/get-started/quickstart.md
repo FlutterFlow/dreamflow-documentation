@@ -1,4 +1,6 @@
 
+
+
 # Quickstart
 
 ## Start With a Prompt (4 mins)
@@ -47,7 +49,7 @@ The Agent will create all the necessary screens, components, and functionality b
 
 Here are some prompts that we've used recently while chatting with the agent.
 
-**A habit tracker**
+#### A habit tracker
 
 **Prompt**
     
@@ -62,7 +64,7 @@ Here are some prompts that we've used recently while chatting with the agent.
     - Allow the user to share their habit progress with others (through the share sheet of the mobile OS)
 
 
-**Asteroids game**
+#### Asteroids game
 
 **Prompt**
 
@@ -77,7 +79,7 @@ Replace the main screen with an implementation of the classic game of Asteroids.
 
 
 
-**Chat app**
+#### Chat app
 
 **Prompt**
 
