@@ -35,8 +35,9 @@ The Code Editor is located on the left side of the Content Panel and provides a 
 
 
 :::tip
-You can swap the positions of the preview and code editor by clicking on this icon at the top right of your Content Panel.
-// todo image
+You can swap the positions of the preview and code editor by clicking on the icon at the top right of your Content Panel.
+<p></p>
+![Switch Positions](imgs/swap-positions.png)
 :::
 
 The Code editor is built on **Monaco Editor** (the same editor that powers VS Code) and provides a full-featured coding experience. It includes syntax highlighting, auto-completion, and IntelliSense for Dart/Flutter development. The editor supports multi-file editing with tabs, real-time collaboration features, and integrates seamlessly with the platform's live preview system. It also includes advanced features like go-to-definition, find references, and code formatting that you'd expect from a professional IDE.
