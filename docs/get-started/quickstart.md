@@ -1,3 +1,11 @@
+---
+slug: /quickstart
+title: Quickstart
+description: Get started with Dreamflow by building your first app in just 4 minutes using AI-powered prompts and natural language descriptions.
+tags: [quickstart, getting started, tutorial, ai, flutter, mobile app development]
+sidebar_position: 1
+keywords: [quickstart, getting started, dreamflow tutorial, ai app generation, flutter development, mobile app creation, natural language prompts]
+---
 
 
 
