@@ -3,7 +3,8 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - main  # Automatic build on push to main
+      - main    # Deploy to live channel
+      - preview # Deploy to preview channel
 
 jobs:
   build-and-deploy:
@@ -27,7 +28,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
-          projectId: flutterflow-docs-82026
+          projectId: dreamflow-docs-2c50c
           channelId: live
           repoToken: "${{secrets.GITHUB_TOKEN}}"
 
