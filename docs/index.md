@@ -14,6 +14,33 @@ keywords: [dreamflow welcome, flutter development platform, ai mobile app develo
 
 Dreamflow is an AI-first platform that combines code, visual, and agentic development for Flutter—no install, no lock-in, production-ready workflows. Transform your ideas into production-ready mobile apps in minutes using natural language prompts and our integrated development environment.
 
+### Product Tour
+
+<div style={{
+    position: 'relative',
+    paddingBottom: '56.25%', // 16:9 aspect ratio
+    height: 0,
+    width: '100%',
+    marginBottom: '2rem'
+}}>
+    <iframe 
+        src="https://www.youtube.com/embed/aT8Ta0-h_Ak"
+        title="Dreamflow Platform Demo"
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
+        }}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen>
+    </iframe>
+</div>
+
+
+
 ## Key Features
 
 - **[AI Agent](workspace/agent-panel.md)**: Prompt small edits or large refactors with natural language commands. The AI agent can scaffold entire screens, implement complex flows, and generate comprehensive tests, making development faster and more intuitive than traditional coding approaches.
@@ -91,10 +118,8 @@ A managed run session compiles and previews your app in real time. Connect Fireb
 Whether you're a seasoned developer looking to accelerate your workflow or a newcomer wanting to bring your app ideas to life, Dreamflow provides the tools and AI assistance you need to succeed.
 
 **Next Steps:**
-1. **[Quickstart Guide](get-started/quickstart.md)** - Build your first app in 4 minutes
+1. **[Quickstart Guide](get-started/quickstart.md)** - Build your first app from scratch, from a template or describe your app idea and let AI generate an app for you. 
 2. **[Workspace Tour](workspace/workspace.md)** - Learn about the development environment
 3. **[Deployment Guide](test-and-publish/publish/web-deployment.md)** - Publish your app to the world
 
----
 
-*Join thousands of developers who are already building amazing apps with Dreamflow. Start your journey today!*
