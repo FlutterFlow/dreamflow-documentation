@@ -14,6 +14,7 @@ const config: Config = {
 
   clientModules: [
     require.resolve('./src/js/table-helpers.js'),
+    require.resolve('./src/js/firebase-analytics.js'),
   ],
   i18n: {
     defaultLocale: 'en',
