@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Dreamflow Documentation',
   tagline: 'Learn how to build mobile, web and desktop apps incredibly fast - without sacrificing on app quality or features',
-  url: 'https://docs.flutterflow.io',
+  url: 'https://docs.dreamflow.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
@@ -14,7 +14,6 @@ const config: Config = {
 
   clientModules: [
     require.resolve('./src/js/table-helpers.js'),
-    require.resolve('./src/js/chatbot.js'),
   ],
   i18n: {
     defaultLocale: 'en',
@@ -65,15 +64,21 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card-docs.png',
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: 'Dreamflow Docs',
       logo: {
         alt: 'Dreamflow Docs',
-        src: '/logos/logoMark_outlinePrimary_transparent.svg',
+        src: '/logos/dreamflow-icon-black.png',
+        srcDark: '/logos/dreamflow-icon-white.png',
       },
       items: [
         {
-          href: 'https://github.com/FlutterFlow/flutterflow-documentation',
+          href: 'https://github.com/FlutterFlow/dreamflow-documentation',
           label: 'GitHub',
           position: 'right',
         },
@@ -97,12 +102,12 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Community Forum',
-              href: 'https://community.flutterflow.io',
+              label: 'Reddit',
+              href: 'https://www.reddit.com/r/DreamFlow/',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/flutterflow',
+              href: 'https://twitter.com/DreamflowApp',
             },
           ],
         },
@@ -110,17 +115,13 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: 'https://blog.flutterflow.io',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/FlutterFlow/flutterflow-documentation',
+              href: 'https://github.com/FlutterFlow/dreamflow-documentation',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Dreamflow. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} FlutterFlow. Built with Docusaurus.`,
     },
 
     algolia: {
