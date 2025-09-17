@@ -10,7 +10,9 @@ keywords: [Firebase, Integration, Dreamflow, Backend]
 
 # Firebase
 
-Dreamflow makes it easy to integrate Firebase into your app with a guided, step-by-step setup. This process connects your project to Firebase, generates all necessary configuration, and even creates ready-to-use client code and database rules with AI.
+Dreamflow makes it easy to integrate [Firebase](https://firebase.google.com/) into your app with a guided, step-by-step setup. This process connects your project to Firebase, generates all necessary configuration, and even creates ready-to-use client code and database rules with AI.
+
+By integrating Firebase, you gain access to services such as Authentication, Firestore Database, Cloud Storage, Hosting and more, giving your app a secure backend for managing users, data, and serverless logic.
 
 ## 1. Connection
 
@@ -52,7 +54,11 @@ Once complete, Dreamflow will confirm the connection with a **Connected** status
 After connecting your Google account, the next step is to set up a Firebase project, which will serve as the backend for your app. You can do this in two ways:
 
 - **Select an existing Firebase project:** Choose from the list of your existing Firebase projects.
+
+    ![select-from-existing-project](imgs/select-from-existing-project.avif)
 - **Create a new Firebase project:** Let Dreamflow automatically create and configure a new Firebase project for you.
+
+    ![create-new-project](imgs/create-new-project.avif)
 
 Once the project is linked, you need to specify the following:
 
@@ -113,7 +119,7 @@ Once your Firebase project is linked and configured, click **Generate with Agent
 
 ![generate-client-code.avif](imgs/generate-client-code.avif)
 
-### What happens during code generation
+### What happens during code generation?
 
 When you click **Generate with Agent**, Dreamflow performs several background steps, including (but not limited to):
 
