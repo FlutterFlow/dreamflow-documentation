@@ -41,7 +41,7 @@ To create a new app in the Google Play Store, start by opening the [Google Play 
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -88,7 +88,7 @@ To create the Service Account, you can follow the instructions from [here](http
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -117,7 +117,7 @@ To create the Service Account, you can follow the instructions from [here](http
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -151,7 +151,7 @@ To create the Service Account, you can follow the instructions from [here](http
                 height: '100%',
                 colorScheme: 'light'
             }}
-            frameborder="0"
+            frameBorder="0"
             loading="lazy"
             webkitAllowFullScreen
             mozAllowFullScreen
@@ -173,7 +173,7 @@ For first-time deployment, you need to create an initial release manually in Goo
 
 ### 4.1 Downloading AAB file
 
-In DreamFlow, set the **Google Play Track** to **Internal**, enter the **Bundle ID** and **Version Code**, then click **Submit Build to Google Play**. Wait a few minutes and click **Check Deployment Status**.
+In Dreamflow, set the **Google Play Track** to **Internal**, enter the **Bundle ID** and **Version Code**, then click **Submit Build to Google Play**. Wait a few minutes and click **Check Deployment Status**.
 
 Once the build is complete, click **Download AAB File** button (in the **App Bundle** section). If the button is still disabled, wait a bit longer and try again.
 
@@ -199,7 +199,7 @@ Even if the build status appears as FAILURE, you can still download the AAB file
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -229,7 +229,7 @@ In Google Play Console, create an **Internal Testing** track and upload the **.a
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -240,7 +240,7 @@ In Google Play Console, create an **Internal Testing** track and upload the **.a
 <p></p>
 
 :::info
-After the internal testing track is set up, DreamFlow can handle all future deployments directly.
+After the internal testing track is set up, Dreamflow can handle all future deployments directly.
 :::
 
 ### 4.3 Deploy from Dreamflow
@@ -263,7 +263,7 @@ To deploy your app from Dreamflow, navigate to **Publish > Android**, set the **
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen
@@ -310,7 +310,7 @@ To promote your app to production, open your **Internal testing** track in Googl
             height: '100%',
             colorScheme: 'light'
         }}
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         webkitAllowFullScreen
         mozAllowFullScreen

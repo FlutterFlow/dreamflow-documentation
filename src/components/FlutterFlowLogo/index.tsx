@@ -4,8 +4,8 @@ import styles from './index.module.css';
 
 
 const FlutterFlowLogo = () => {
-    const logoSrcDark = "/logos/logo_primary_color@2x.png"; // Light mode logo
-    const logoSrcLight = "/logos/logo_primary_color_onLight@2x.png"; // Dark mode logo
+    const logoSrcDark = "/logos/DreamFlow-Logo-Black.png"; // Light mode logo
+    const logoSrcLight = "/logos/DreamFlow-Logo.png"; // Dark mode logo
     const { colorMode } = useColorMode();
 
     return (
