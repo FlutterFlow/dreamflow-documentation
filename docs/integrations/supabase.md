@@ -10,21 +10,21 @@ keywords: [Supabase, Integration, Dreamflow, Backend]
 
 # Supabase
 
-DreamFlow makes it easy to integrate [Supabase](https://supabase.com/) into your app with a guided, step-by-step setup. This process connects your project to Supabase, sets up a database, generates client code, and deploys schemas, all without manual setup.
+Dreamflow makes it easy to integrate [Supabase](https://supabase.com/) into your app with a guided, step-by-step setup. This process connects your project to Supabase, sets up a database, generates client code, and deploys schemas, all without manual setup.
 
 ## 1. Connection and Project Setup
 
-The first step is to connect DreamFlow with your Supabase account and set up a project.
+The first step is to connect Dreamflow with your Supabase account and set up a project.
 
-To begin, open the **Supabase** tab in DreamFlow and click **Connect to Supabase**. A Supabase authentication window will appear where you can sign in and review the requested permissions. Next, select an organization and click **Authorize DreamFlow**. These permissions allow DreamFlow to create and manage projects, configure database schemas, and generate API keys on your behalf. 
+To begin, open the **Supabase** tab in Dreamflow and click **Connect to Supabase**. A Supabase authentication window will appear where you can sign in and review the requested permissions. Next, select an organization and click **Authorize Dreamflow**. These permissions allow Dreamflow to create and manage projects, configure database schemas, and generate API keys on your behalf. 
 
-After connecting, DreamFlow automatically creates a new Supabase project and links it to your app. This sets up the backend infrastructure and database for your project. Specifically:
+After connecting, Dreamflow automatically creates a new Supabase project and links it to your app. This sets up the backend infrastructure and database for your project. Specifically:
 
 - A new project is provisioned in Supabase with a **Project Name**, **Project ID**, **API URL**, and **Anon Key**.
-- DreamFlow initializes the database, ensuring you have a ready-to-use backend.
-- These details are securely linked back to your DreamFlow project so you can start building right away.
+- Dreamflow initializes the database, ensuring you have a ready-to-use backend.
+- These details are securely linked back to your Dreamflow project so you can start building right away.
 
-This setup may take a few minutes while DreamFlow provisions the resources and configures your database.
+This setup may take a few minutes while Dreamflow provisions the resources and configures your database.
 
 :::info
 
@@ -62,11 +62,11 @@ You can quickly jump into your Supabase dashboard using the **Open in Supabase**
 
 ## 2. Generate Client Code
 
-Once the project setup is complete, click **Generate Client Code** to let DreamFlow automatically create ready-to-use Supabase integration code tailored to your app. This step eliminates most of the manual setup by wiring your app directly to Supabase with authentication, data models, and database operations.
+Once the project setup is complete, click **Generate Client Code** to let Dreamflow automatically create ready-to-use Supabase integration code tailored to your app. This step eliminates most of the manual setup by wiring your app directly to Supabase with authentication, data models, and database operations.
 
 ![generate-client-code-supabase.avif](imgs/generate-client-code-supabase.avif)
 
-### What happens during code generation?
+### Code Generation Breakdown
 
 When you trigger code generation, Dreamflow performs several background steps, including (but not limited to):
 
@@ -96,14 +96,14 @@ By the end of this step, your app will be fully integrated with Supabase, ready 
 
 The final step is to deploy your database schema changes to Supabase. To do so, just click **Deploy Schema Changes**. During this process:
 
-- DreamFlow applies your generated schema, including tables, relationships, constraints, and security policies, directly to your Supabase project.
-- As part of deployment, DreamFlow can run migrations and update your live database structure. You can review `pending_migrations.sql` beforehand to see exactly what changes will be applied.
+- Dreamflow applies your generated schema, including tables, relationships, constraints, and security policies, directly to your Supabase project.
+- As part of deployment, Dreamflow can run migrations and update your live database structure. You can review `pending_migrations.sql` beforehand to see exactly what changes will be applied.
 
 Once deployed, your Supabase backend is live. Users can sign up, authenticate, and their data will automatically sync to the cloud with Row Level Security (RLS) and policies enforced to protect privacy.
 
 :::warning
 
-Schema deployment is an ongoing process. Any time you modify tables, relationships, or security rules in DreamFlow, you’ll need to redeploy to keep your Supabase project up to date.
+Schema deployment is an ongoing process. Any time you modify tables, relationships, or security rules in Dreamflow, you’ll need to redeploy to keep your Supabase project up to date.
 
 :::
 
