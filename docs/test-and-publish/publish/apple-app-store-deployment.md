@@ -185,7 +185,7 @@ Copy the **Issuer ID** from [**App Store Connect**](https://appstoreconnect.a
 
 ## 6. Add Key ID to Dreamflow
 
-Open the [App Store Connect](https://appstoreconnect.apple.com/) > **Users and Access** > **Integrations > [Team Keys](https://appstoreconnect.apple.com/access/integrations/api).** Find the row for the API Key you generated [here](#4-generate-api-key-and-add-to-dreamflow), select **Copy Key ID,** and then paste it into **Dreamflow** **> Publish > iOS > ASC Key ID**.
+Open the [App Store Connect](https://appstoreconnect.apple.com/) > **Users and Access** > **Integrations > [Team Keys](https://appstoreconnect.apple.com/access/integrations/api)**. Find the row for the API Key you generated [here](#4-generate-api-key-and-add-to-dreamflow), select **Copy Key ID,** and then paste it into **Dreamflow** **> Publish > iOS > ASC Key ID**.
 
 
 <div style={{
@@ -247,25 +247,5 @@ Invalid App Store Icon. The App Store Icon in the asset catalog in 'Runner.app' 
 </summary>
 <p>
 You need to update your App Launcher Icon (under Settings & Integrations --> General) with an image that isn't transparent and/or doesn't contain an alpha channel.
-</p>
-</details>
-
-<details>
-<summary>
-After submitting my iOS app to the App Store, I am getting an 'ITMS-91053: Missing API declaration' issue. What should I do?
-</summary>
-<p>
-Apple requires that apps using certain APIs have a Privacy Manifest file that declares the [**reason for using the API**](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api). Apple will begin requiring this file for App Store approval on May 1, 2024.
-
-Most packages that FlutterFlow uses already have a Privacy Manifest created by the package author or FlutterFlow team. However, there may be some cases where packages don't have the necessary privacy manifest needed.
-
-Similarly, if you have written custom code that calls these APIs directly or uses a package that calls the APIs, you must ensure that your app has the required manifest file.
-
-Here are the steps you can take to resolve this issue:
-
-1. See if the custom package you use is listed [**here**](https://developer.apple.com/support/third-party-SDK-requirements/); ensure to use the latest version if you are using any of these.
-2. If unsure which package is using protected APIs, you may be able to use a tool like [this](https://github.com/crasowas/app_store_required_privacy_manifest_analyser) to identify them. Once identified, update to the latest versions, as the package author may have addressed compliance issues.
-    1. To verify, look into the package's changelog or source code for a `PrivacyInfo.privacy` file, which indicates compliance (examples [**here**](https://github.com/fluttercommunity/plus_plugins/blob/main/packages/share_plus/share_plus/ios/PrivacyInfo.xcprivacy) and [**here**](https://github.com/flutter/packages/blob/main/packages/url_launcher/url_launcher_ios/ios/Resources/PrivacyInfo.xcprivacy)).
-    2. If the current package hasn’t resolved the issue, consider using an alternative package that complies, or contact the package's maintainer for a fix.
 </p>
 </details>
