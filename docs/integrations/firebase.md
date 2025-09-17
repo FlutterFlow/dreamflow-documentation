@@ -62,7 +62,7 @@ After connecting your Google account, the next step is to set up a Firebase proj
 
 Once the project is linked, you need to specify the following:
 
-- **Target Platforms:** Choose every platform you want to support (Web, iOS, Android, macOS, Linux, Windows). Web is always enabled by default, so your app can be previewed inside Dreamflow. Selecting the right platforms ensures Firebase generates configs for each build target.
+- **Target Platforms:** Choose the platforms you want to support (Web, iOS, Android, macOS, Linux, Windows). Web is always enabled by default, so your app can be previewed inside Dreamflow. Selecting the right platforms ensures Firebase generates configs for each build target.
 - **Bundle ID:** Enter a unique **Bundle ID** (e.g., `com.yourcompany.appname`). This must match the app identifier in your platform-specific builds (iOS bundle ID, Android package name). If you skip this, Firebase cannot configure services for mobile apps.
 
 When these details are set, click **Configure Firebase** to complete the setup.
