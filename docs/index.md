@@ -47,7 +47,6 @@ Dreamflow is an AI-first platform that combines code, visual, and agentic develo
 
 - **[Realtime Preview](workspace/content-panel.md#app-preview)**: See your changes instantly with a live run session that compiles and previews your app in real-time. Inspect logs, monitor state changes, and debug issues as they happen, providing immediate feedback for faster iteration and development.
 
-- **Integrations**: Built-in Firebase and Supabase integrations provide seamless backend services out of the box. Connect to databases, implement authentication, handle file storage, and manage real-time data without complex setup or configuration.
 
 - **[Visual Widget Tree](workspace/modules-panel/widget-panel.md)**: Add, remove, move, wrap, collapse, and expand UI components with intuitive visual controls. Restructure your entire widget hierarchy instantly through drag-and-drop interactions, making UI development more visual and accessible.
 
@@ -55,13 +54,10 @@ Dreamflow is an AI-first platform that combines code, visual, and agentic develo
 
 - **Deploy**: Push your applications to the web or app stores with streamlined one-click deployment. Support for multiple platforms including Web, iOS, Android, macOS, Windows, and Linux ensures your app reaches users everywhere.
 
-- **Full File System Access**: Browse, edit, and organize real project files with complete transparency. No abstractions or hidden layers—you have direct access to your Flutter code, allowing for full customization and integration with existing development workflows.
-
 - **Hot Reload**: See changes instantly as you develop with Flutter's hot reload technology, enabling rapid iteration and real-time feedback during the development process.
 
 - **Debug Console**: Monitor app logs and performance in real-time with integrated debugging tools that help you identify and resolve issues quickly.
 
-- **Asset Management**: Upload and organize images, fonts, and files through an intuitive interface that keeps your project resources organized and accessible.
 
 - **Multi-Platform Support**: Build applications that run seamlessly across mobile (iOS and Android), web (responsive), and desktop (macOS, Windows, Linux) platforms from a single codebase.
 
