@@ -11,14 +11,6 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ],
-    "redirects": [
-      {
-        "source": "/blog/**",
-        "destination": "/",
-        "type": 301
-      }
-      
     ]
   }
 }
