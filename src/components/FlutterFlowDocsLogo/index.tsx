@@ -3,7 +3,7 @@ import styles from './index.module.css';
 
 const FlutterFlowDocsLogo = () => {
   const title = "Dreamflow Docs";
-  const logoSrc = "/logos/logoMark_outlinePrimary_transparent.svg"; // Path relative to the static directory
+  const logoSrc = "/logos/favicon.png"; // Path relative to the static directory
 
   return (
     <div className={styles.container}>
