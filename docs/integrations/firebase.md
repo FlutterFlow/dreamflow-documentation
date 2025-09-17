@@ -119,7 +119,7 @@ Once your Firebase project is linked and configured, click **Generate with Agent
 
 ![generate-client-code.avif](imgs/generate-client-code.avif)
 
-### What happens during code generation?
+### Code Generation Breakdown
 
 When you click **Generate with Agent**, Dreamflow performs several background steps, including (but not limited to):
 
