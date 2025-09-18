@@ -16,9 +16,9 @@ The Modules Panel enabled from the left side of the builder interface, provides 
 
 - **[Theme Module](../modules-panel/theme.md)**: Manages app theming and styling by providing tools to customize colors, fonts, typography, and design tokens across your application.
 
-- **Assets Module**: Handles project asset management by allowing you to upload images, organize files, and manage all project resources in one centralized location.
+- **[Assets Module](../modules-panel/assets.md)**: Handles project asset management by allowing you to upload images, organize files, and manage all project resources in one centralized location.
 
-- **Firebase Module**: Configures Firebase integration for backend services including authentication, database, storage, and other Firebase-powered features.
+- **[Firebase Module](../../integrations/firebase.md)**: Configures Firebase integration for backend services including authentication, database, storage, and other Firebase-powered features.
 
-- **Supabase Module**: Sets up Supabase backend integration for database management, authentication, and real-time subscriptions to power your app's backend functionality.
+- **[Supabase Module](../../integrations/supabase.md)**: Sets up Supabase backend integration for database management, authentication, and real-time subscriptions to power your app's backend functionality.
 
