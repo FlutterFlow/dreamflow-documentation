@@ -45,7 +45,7 @@ const config: Config = {
         //   blogSidebarCount: 'ALL'
         // },
         gtag: {
-          trackingID: 'G-LC4SC6JY70',
+          trackingID: 'G-XJVXWZ37RP',
           anonymizeIP: true,
         },
         theme: {
@@ -127,12 +127,12 @@ const config: Config = {
 
     algolia: {
       // The application ID provided by Algolia
-      appId: 'L5VTR6TWVD',
+      appId: '7VUSGGI85A',
 
       // Public API key: it is safe to commit it
-      apiKey: 'bab16fbb5188c4b49fad968ebc643dd3',
+      apiKey: '20ebc4ca5a7eb5120bb6d30a296fc52e',
 
-      indexName: 'flutterflow--82026',
+      indexName: 'dreamflow-docs',
 
       // Optional: see doc section below
       contextualSearch: true,
