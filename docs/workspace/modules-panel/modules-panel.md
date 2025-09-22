@@ -16,7 +16,7 @@ The Modules Panel enabled from the left side of the builder interface, provides 
 
 - **Theme Module**: Manages app theming and styling by providing tools to customize colors, fonts, typography, and design tokens across your application.
 
-- **Assets Module**: Handles project asset management by allowing you to upload images, organize files, and manage all project resources in one centralized location.
+- **[Assets Module](../modules-panel/assets.md)**: Handles project asset management by allowing you to upload images, organize files, and manage all project resources in one centralized location.
 
 - **[Firebase Module](../../integrations/firebase.md)**: Configures Firebase integration for backend services including authentication, database, storage, and other Firebase-powered features.
 
