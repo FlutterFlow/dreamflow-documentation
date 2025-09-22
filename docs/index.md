@@ -52,12 +52,11 @@ Dreamflow is an AI-first platform that combines code, visual, and agentic app de
 
 - **[Properties Editor](workspace/properties-panel.md)**: Type-safe controls for every widget property with intelligent suggestions and validation. Use expressions, formulas, or simply ask the AI for assistance when configuring complex widget behaviors and styling.
 
-- **Deploy**: Push your applications to the web or app stores with streamlined one-click deployment. Support for multiple platforms including Web, iOS, Android, macOS, Windows, and Linux ensures your app reaches users everywhere.
+- **[Deploy](test-and-publish/publish/web-deployment.md)**: Push your applications to the web or app stores with streamlined one-click deployment. Support for multiple platforms including Web, iOS, Android ensures your app reaches users everywhere.
 
 - **Hot Reload**: See changes instantly as you develop with Flutter's hot reload technology, enabling rapid iteration and real-time feedback during the development process.
 
-- **Debug Console**: Monitor app logs and performance in real-time with integrated debugging tools that help you identify and resolve issues quickly.
-
+- **[Debug Console](workspace/content-panel.md#debug-console)**: Monitor app logs and performance in real-time with integrated debugging tools that help you identify and resolve issues quickly.
 
 - **Multi-Platform Support**: Build applications that run seamlessly across mobile (iOS and Android), web (responsive), and desktop (macOS, Windows, Linux) platforms from a single codebase.
 
