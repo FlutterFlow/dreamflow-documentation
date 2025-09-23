@@ -9,7 +9,7 @@ keywords: [properties panel, widget properties, property editing, flutter develo
 
 # Properties Panel 
 
-The Properties Panel is a sophisticated interface for editing widget properties in real-time, providing both visual and code-based editing capabilities with intelligent property type detection and specialized editors.
+The Properties Panel allows you to edit widget properties in real-time, providing both easy-to-use visual editors and flexible code-based editing capabilities.
 
 <div style={{
     position: 'relative',
@@ -38,51 +38,31 @@ The Properties Panel is a sophisticated interface for editing widget properties 
 <p></p>
 
 
-
-**Real-Time Property Editing**: The panel displays all properties of the currently selected widget and allows you to edit them with immediate visual feedback. Changes are applied instantly to your running app.
-
-**Intelligent Property Editors:** The system automatically detects property types and provides specialized editors:
-- **Color Properties:** Color picker with hex input and visual color swatches
-- **TextStyle Properties:** Rich text styling editor with font family, size, weight, and color options
-- **Padding/Margin:** Visual padding editor with individual side controls
-- **Border Radius:** Corner-specific radius controls with visual preview
-- **Gradients:** Linear, radial, and sweep gradient editors with color stops
-- **Borders:** Border style, width, and color controls
-- **Images:** Asset and network image selectors
-- **Icons:** Icon picker with search functionality
-- **Alignment:** Visual alignment controls
-- **Boolean Properties:** Toggle switches for true/false values
-- **Enum Properties:** Dropdown menus for predefined options
-
-
-This makes the Properties Panel a comprehensive tool for visual Flutter development, allowing you to modify any aspect of your UI without writing code manually.
-
 :::tip[Quick Access from Widget Tree]
-The Properties Panel can be quickly accessed by clicking any widget in the Widget Tree. The panel will automatically update to show the properties of the selected widget.
+The Properties Panel can be quickly accessed by double  clicking any widget in the Widget Tree. The panel will automatically update to show the properties of the selected widget.
+:::
+
+:::note[Switching to Code]
+To switch from the visual property editor to a code-based property editor, hover near the property and click the "Switch to Code View" button. You can also cmd+click this button to jump to the specific line in the code editor where the property is defined.
 :::
 
 
-
-### Advanced Functionalities
-
-- **Property Search:** Search functionality to quickly find specific properties within complex widgets.
-- **Add Property Button:** Add new properties to widgets that don't have them configured yet.
-- **Grouped Properties:** For supported widgets (Container, Text, TextField), properties are organized into logical groups like "Layout", "Styling", "Behavior" for easier navigation.
-- **Syntax Highlighting:** For complex expressions and function properties, the panel provides syntax-highlighted code editors.
-- **CopyWith Support:** Automatically handles Flutter's copyWith pattern for updating nested properties like TextStyle sub-properties.
-
+## Ading Hidden Propertis
+Some properties for widgets are hidden by default. However, any property that's accessible in the underlying widget can be set from the property panel. 
+If you are looking for a hidden property, you can search for it or add it using the "+ Add Property" button at the top of the Property panel. 
 
 
 ## Modifiers
 
-
-Modifiers refer to wrapper widgets that can be added around existing Flutter widgets to modify their behavior, appearance, or layout. Think of them as "decorators" or "containers" that wrap around your base widgets. They are Flutter widgets that wrap around other widgets to modify their:
+Modifiers refer to wrapper widgets that can be added around existing Flutter widgets to modify their behavior, appearance, or layout. Think of them as "decorators" that wrap around your base widgets. They are Flutter widgets that wrap around other widgets to modify their:
 - **Layout behavior** (positioning, sizing, constraints)
 - **Visual appearance** (colors, borders, shadows, opacity)
 - **Interactive behavior** (gestures, focus, accessibility)
 - **Animation properties** (transitions, transformations)
 
-
+:::note[Modifiers in the Widget Tree]
+Modifier widgets are hidden from the "Simplified View" in the [widget tree](/workspace/widget-tree).
+:::
 
 
 ### Adding a Modifier
