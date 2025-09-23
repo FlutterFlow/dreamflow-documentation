@@ -64,3 +64,60 @@ Once downloaded, open the project in your preferred IDE and run your app on eith
 :::info
 If you encounter a version compatibility issue with Flutter, you can resolve it by upgrading to the latest version. Simply execute the `flutter upgrade` command in your terminal. To verify your current Flutter version, use the `flutter --version` command.
 :::
+
+## Building APK Files
+
+You can build APK files locally to test your app on Android devices or prepare it for release on the Google Play Store.
+
+:::info[Prerequisites]
+
+Before building an APK, make sure your [**Android setup**](#android-setup) is complete and the [**app runs**](#download-code-and-run) successfully.
+
+:::
+
+#### Building a Debug APK (for Local Testing)
+
+Debug APKs are useful for quickly installing your app on a device without signing or optimization. To build a debug APK:
+
+1. Open a terminal in your project root.
+2. Run the following command.
+    ```jsx
+    flutter build apk --debug
+    ```
+    
+3. The APK will be generated at:
+    
+    ```jsx
+    build/app/outputs/flutter-apk/app-debug.apk
+    ```
+    
+4. Now, you can either directly install it on your device:
+    
+    ```jsx
+    flutter install
+    ```
+    or manually copy the APK to any device and install it.
+    
+
+:::warning
+
+Debug APKs are not optimized and should not be uploaded to the Play Store.
+
+:::
+
+#### Build App for Release
+
+Dreamflow lets you [deploy apps directly to the Google Play Store](../publish/google-playstore-deployment.md) from within the platform. If you prefer to publish manually, you’ll first need to **sign your app** with a keystore and then **build a release APK or App Bundle**. Release builds are fully optimized, securely signed, and ready for distribution on the Play Store.
+
+You can follow the official Flutter documentation for detailed steps:
+
+- [Sign the app](https://docs.flutter.dev/deployment/android#sign-the-app)
+- [Build the app for release](https://docs.flutter.dev/deployment/android#build-the-app-for-release)
+
+## Building an IPA File
+
+You can’t generate a debug `.ipa` file. Debug builds are only for local development and testing, and once your [iOS setup](#ios-setup) is complete, you can [run](#download-code-and-run) them directly on your device.
+
+#### Build App for Release
+
+Dreamflow lets you [deploy apps directly to the App Store](../publish/apple-app-store-deployment.md) from within the platform. If you prefer to create an IPA file for manual distribution (e.g., via TestFlight or the App Store), you’ll need to build a release IPA. This requires proper **code signing** with your Apple Developer account. Follow the official guide for detailed steps on [build and release for iOS](https://docs.flutter.dev/deployment/ios).
