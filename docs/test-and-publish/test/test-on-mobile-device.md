@@ -114,7 +114,7 @@ You can follow the official Flutter documentation for detailed steps:
 - [Sign the app](https://docs.flutter.dev/deployment/android#sign-the-app)
 - [Build the app for release](https://docs.flutter.dev/deployment/android#build-the-app-for-release)
 
-## Building an IPA File
+## Building IPA File
 
 You can’t generate a debug `.ipa` file. Debug builds are only for local development and testing, and once your [iOS setup](#ios-setup) is complete, you can [run](#download-code-and-run) them directly on your device.
 
