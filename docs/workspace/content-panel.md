@@ -50,11 +50,7 @@ Dreamflow provides integrated hot reload and hot restart capabilities that allow
 
 **Hot Restart** completely restarts your Flutter app with all code changes applied, resetting the application state. Use this for structural changes, when hot reload fails, or after fixing compilation errors. To Hot Restart the preview, click the **refresh** button at the top right of the Content Panel. 
 
-**Stop Preview** ends the preview session completely. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. If problems aren’t resolved by Hot Reload or Hot Restart, it’s best to click the **Stop** button at the top of the Content Panel to stop the preview completely and restart it. Once stopped, you can restart the preview using the **Restart** button that appears on the preview device. 
-
-:::info[If you're still experiencing issues in the preview...]
-You can try to reload the project entirely by selecting the project name in the top left corner and selecting "Reload Project"
-:::
+**Stop Preview** ends the preview session completely. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. Stopping the preview clears the current session, allowing you to restart it fresh and restore normal behavior.
 
 ### Additional Features
 
@@ -132,7 +128,8 @@ This usually happens when the preview session is stuck or the project dependenci
 - **Hot Restart (🔄):** Restarts the app and resets its state. Use this if hot reload doesn't reflect changes or the preview is still stuck.
 - **Stop and Restart Preview (⏹️/▶️):** Manually stop the preview and start it again to relaunch the app.
 - **Refresh Dependencies:** At the bottom toolbar, click **Refresh Dependencies**. This will re-sync all your pub.dev packages in case the issue is caused by outdated or missing dependencies.
-- **Reload Project in Browser:** Sometimes, you need a full browser refresh to reload the project. If refreshing doesn't help, completely close the browser tab and reopen your project.
+- **Reload Project:** You can try to restart the project session entirely by selecting the project name in the top left corner and then selecting **Reload Project**.
+![reload-project](imgs/reload-project.avif)
 - **Check for Errors in Debug Console:** Open the Debug Console from the bottom panel to look for errors or warnings that may be preventing the app from launching. If you spot an error, you can ask the Agent directly to help resolve it.
 
 Most preview issues can be fixed by reloading the project or restarting the preview. If the problem continues, use the **Submit Feedback** button in the top bar to file a bug report.
