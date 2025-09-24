@@ -118,6 +118,26 @@ The Debug Console is a dedicated output panel in Dreamflow that displays real-ti
 </div>
 <p></p>
 
+## FAQs
 
+<details> 
 
+<summary> What should I do if the Preview is not loading and always shows "Preview starting…" message? </summary> 
+
+<p> 
+
+This usually happens when the preview session is stuck or the project dependencies need to be refreshed. Here are several steps you can try to resolve the issue:
+
+- **Hot Reload (⚡):** Quickly applies code changes while keeping the current state. Use this first for small UI or logic updates.
+- **Hot Restart (🔄):** Restarts the app and resets its state. Use this if hot reload doesn't reflect changes or the preview is still stuck.
+- **Stop and Restart Preview (⏹️/▶️):** Manually stop the preview and start it again to relaunch the app.
+- **Refresh Dependencies:** At the bottom toolbar, click **Refresh Dependencies**. This will re-sync all your pub.dev packages in case the issue is caused by outdated or missing dependencies.
+- **Reload Project in Browser:** Sometimes, you need a full browser refresh to reload the project. If refreshing doesn't help, completely close the browser tab and reopen your project.
+- **Check for Errors in Debug Console:** Open the Debug Console from the bottom panel to look for errors or warnings that may be preventing the app from launching. If you spot an error, you can ask the Agent directly to help resolve it.
+
+Most preview issues can be fixed by reloading the project or restarting the preview. If the problem continues, use the **Submit Feedback** button in the top bar to file a bug report.
+
+</p> 
+
+</details>
 
