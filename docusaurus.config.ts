@@ -132,7 +132,7 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: '20ebc4ca5a7eb5120bb6d30a296fc52e',
 
-      indexName: 'dreamflow-docs',
+      indexName: 'dreamflow-docs-2c50c',
 
       // Optional: see doc section below
       contextualSearch: true,
