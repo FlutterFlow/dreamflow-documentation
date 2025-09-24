@@ -33,3 +33,58 @@ The workspace is organized into panels that work together to provide a complete 
 
 
 This integrated workspace approach eliminates the need to switch between different tools and provides a cohesive environment for building, testing, and deploying Flutter applications.
+
+## Keyboard Shortcuts
+
+Keyboard shortcuts help you work faster by reducing reliance on the mouse. You can quickly toggle panels, navigate the canvas, edit widgets, and perform common actions with simple key combinations.
+
+To see a list of all keyboard shortcuts, click on your project name and select the **Keyboard Shortcuts** option.
+
+![keyboard-shortcuts.avif](imgs/keyboard-shortcuts.avif)
+
+Dreamflow currently supports the following keyboard shortcuts:
+
+:::info
+
+- `⌘` represents the **Command** key on macOS. On Windows/Linux, use **Ctrl** instead.
+- `⌥` represents the **Option** key on macOS (equivalent to **Alt** on Windows/Linux).
+
+:::
+
+#### Panel Layout
+
+- **Reset all Panel widths to default**: `⌥ 0`
+- **Toggle Builder Panel visibility**: `⌥ 2`
+- **Toggle Details Panel visibility**: `⌥ 3`
+- **Toggle Right Agent Panel visibility**: `⌥ 4`
+- **Tab forward between Preview, Inspect, and Code**: `⌥ Tab`
+- **Tab backwards**: `⌥ Shift Tab`
+- **Toggle Split View**: `⌥ S`
+- **Toggle Inspect Mode**: `⌥ Shift I`
+
+#### Editing
+
+- **Undo**: `⌘ Z`
+- **Redo**: `⌘ Shift Z`
+- **Save File**: `⌘ S`
+- **Quick Prompt**: `⌘ K`
+- **Copy Widget**: `⌘ C`
+- **Cut Widget**: `⌘ X`
+- **Paste Widget**: `⌘ V`
+- **Delete Widget**: *(Shortcut not assigned)*
+
+#### Navigation
+
+- **Show Command Palette**: `⌘ P`
+- **Expand/Select Node or Children**: `→`
+- **Collapse/Select Node or Children**: `←`
+- **Select Next Visible Node**: `↓`
+- **Select Previous Visible Node**: `↑`
+- **Select Next Sibling**: `⌘ ↓`
+- **Select Previous Sibling**: `⌘ ↑`
+
+#### Settings
+
+- **View all Keyboard Shortcuts**: `⌥ /`
+- **Toggle Platform Brightness (Light/Dark Mode)**: `⌥ Shift B`
+- **Open Feedback Form**: `⌥ F`
