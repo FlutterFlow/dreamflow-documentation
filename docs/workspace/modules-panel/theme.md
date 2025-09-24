@@ -84,7 +84,7 @@ Typography in Dreamflow ensures that text styles remain consistent throughout yo
 - **Body**: Paragraphs, descriptions, and content-heavy areas.
 - **Label**: Smaller text for buttons, captions, or UI labels.
 
-You can modify your text styles in the Theme panel and then use them anywhere a `TextSyle` class is expected - for example, in the style property of the `Text` widget.Use the "Apply Theme" button next to the `Style` property in the property panel to select your text style. 
+You can modify your text styles in the Theme panel and then use them anywhere a `TextSyle` class is expected - for example, in the style property of the `Text` widget. Use the "Apply Theme" button next to the `Style` property in the property panel to select your text style. 
 
 
 ## Style Constants

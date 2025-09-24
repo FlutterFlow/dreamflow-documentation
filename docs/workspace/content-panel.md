@@ -39,7 +39,7 @@ The panel displays a real-time preview of your Flutter app running in **debug mo
 ### Inspect Mode
 Inspect mode provides an interactive way to explore and modify your Flutter widgets visually. When enabled, hovering over widgets in the preview reveals their boundaries with colored overlays, making it easy to understand widget layout and hierarchy. This visual feedback helps developers quickly identify and understand the structure of their UI components. 
 
-To turn on inspect mode, select the **"Inspect Mode"** toggle in the Content Panel canvas. 
+To turn on inspect mode, select the **Inspect Mode** toggle in the Content Panel canvas. 
 
 Selecting a widget with a click automatically synchronizes the [Widget Tree](modules-panel/widget-panel.md) and [Property Panel](properties-panel.md) to display detailed information about that widget, maintaining the highlight until another selection is made. This seamless integration between the preview and development panels streamlines the workflow for analyzing and modifying widgets. The context menu, accessed through right-click, offers powerful widget-specific actions including property editing, adding context to agent, code navigation, and other operations, enabling rapid iterations on your Flutter application's user interface.
 
@@ -48,9 +48,9 @@ Dreamflow provides integrated hot reload and hot restart capabilities that allow
 
 **Hot Reload** applies your code changes instantly while preserving the current application state. This is ideal for UI modifications, styling updates, and minor code changes. To Hot Reload the preview, click the **lightning button** at the top of the Content Panel.
 
-**Hot Restart** completely restarts your Flutter app with all code changes applied, resetting the application state. Use this for structural changes, when hot reload fails, or after fixing compilation errors. To Hot Restart the preview, click the **refresh** button at the top of the Content Panel. 
+**Hot Restart** completely restarts your Flutter app with all code changes applied, resetting the application state. Use this for structural changes, when hot reload fails, or after fixing compilation errors. To Hot Restart the preview, click the **refresh** button at the top right of the Content Panel. 
 
-**Stop Preview** fully ends the preview session. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. If problems aren’t resolved by Hot Reload or Hot Restart, it’s best to click the **stop button** at the top of the Content Panel to stop the preview completely and restart it. Once stopped, you can restart the preview using the **Restart** button that appears in the preview device. 
+**Stop Preview** ends the preview session completely. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. If problems aren’t resolved by Hot Reload or Hot Restart, it’s best to click the **Stop** button at the top of the Content Panel to stop the preview completely and restart it. Once stopped, you can restart the preview using the **Restart** button that appears on the preview device. 
 
 :::info[If you're still experiencing issues in the preview...]
 You can try to reload the project entirely by selecting the project name in the top left corner and selecting "Reload Project"

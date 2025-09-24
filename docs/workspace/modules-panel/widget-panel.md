@@ -65,7 +65,7 @@ You can change the *view* of the Widget Tree to be either Consolidated or Detail
 ## Widget Management
 
 Right-click on any widget to access a comprehensive context menu with options for:
-- **[Adding new widgets](/workspace/widget-tree#add-widget) (to widgets that take other widgets as children or have properties that take a widget)
+- [Adding new widgets](/workspace/widget-tree#add-widget)(to widgets that take other widgets as children or have properties that take a widget)
 - Wrapping existing widgets
 - Copying, cutting, and pasting widgets
 - Navigating to component definitions
@@ -185,7 +185,7 @@ To wrap a widget, right click and select "Wrap Widget." Then select a widget to 
 <p></p>
 
 ### Jumping to Component Definitions and References
-When building your application, you may want to see where Custom Components are defined or referenced. For example, you can right click instances of components (denoted using the component icon) and click "See Definition" to jump to the definition of that component in the Widget Tree. 
+When building your application, you may want to see where custom components are defined or referenced. For example, you can right click instances of components (denoted using the component icon) and click "See Definition" to jump to the definition of that component in the Widget Tree. 
 
 To see references, or usages, of a component, right click on the component and select "See References." This allows you to step through each of the references within the Widget Tree.
 

@@ -69,7 +69,7 @@ Kick off from a natural-language prompt, a blank Flutter project, or import an e
 Jump between multiple development modes to build your app efficiently:
 
 - Leverage the **AI agent** to get a jump start on new features or for help debugging.
-- Add, remove or rearrange UI elements (Widgets) in the **Visual widget tree**.
+- Add, remove or rearrange UI elements (Widgets) in the **visual Widget Tree**.
 - Configure arguments for widgets visually in the **Properties editor** with type-safe controls.
 - Use the **Code** editor to peak under-the-hood and see what's going on.
 
