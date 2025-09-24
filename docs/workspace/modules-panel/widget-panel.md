@@ -17,7 +17,7 @@ In Flutter, a widget is the basic building block of the UI - it describes what p
 Widgets are composable, meaning you can building complex UIs by combining, or nesting widgets. 
 A parent widget holds one or more child widgets to form the UI hierarchy. 
 
-![Widget Tree Overview](../imgs/widget-tree-overview.png)
+![Widget Tree Overview](../imgs/widget-tree-overview.avif)
 
 
 The widget tree in Dreamflow allows you to view the widgets that are currently rendered in the preview. 

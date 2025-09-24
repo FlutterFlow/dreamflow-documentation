@@ -11,7 +11,7 @@ keywords: [workspace, panels, modules panel, content panel, properties panel, ag
 
 The workspace is organized into panels that work together to provide a complete development experience. 
 
-![workspace-overview](./imgs/workspace.png)
+![workspace-overview](./imgs/workspace.avif)
 
 ## Core Panels
 

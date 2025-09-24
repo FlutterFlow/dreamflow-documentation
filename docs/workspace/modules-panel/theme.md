@@ -13,7 +13,7 @@ The **Theme** panel in Dreamflow provides a centralized way to manage the visual
 
 You can navigate to the Theme panel by clicking the theme button in the left side rail. Values defined in your Theme panel are accessible within the property editor. For example, theme colors are accessible in the color picker when setting a color property.
 
-![theme-panel](../imgs/theme-panel.png)
+![theme-panel](../imgs/theme-panel.avif)
 
 ## Colors
 

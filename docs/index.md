@@ -44,7 +44,7 @@ Dreamflow is an AI-first platform that combines agentic, visual and code develop
 
 In Dreamflow, the code is always the single source of truth. Whether you build with the agent, use visual controls, or edit the source directly - the code is updated in realtime as you build.
 
-![overview](./imgs/Overview.png)
+![overview](./imgs/overview.avif)
 
 
 - **[AI Agent](workspace/agent-panel.md)**: Start a new app, get a jump start on new features for your existing project, or get help fixing issues using natural language commands. The AI agent can scaffold entire screens, implement complex flows, and help add debug outputs - making development faster and easier to understand.
