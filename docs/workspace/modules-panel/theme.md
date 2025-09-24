@@ -11,17 +11,22 @@ keywords: [dreamflow theme, app theme, dark mode, light mode, colors, typography
 # Theme
 The **Theme** panel in Dreamflow provides a centralized way to manage the visual identity of your app. Instead of hardcoding styles in multiple places, you can define colors, typography, and style values once and reuse them consistently across your project. This ensures your app maintains a polished, cohesive look while making design updates faster and easier.
 
+You can navigate to the Theme panel by clicking the theme button in the left side rail. Values defined in your Theme panel are accessible within the property editor. For example, theme colors are accessible in the color picker when setting a color property.
+
+![theme-panel](../imgs/theme-panel.avif)
+
 ## Colors
 
-Colors define the overall mood and branding of your app. In Dreamflow, colors are grouped into three categories:
+In Dreamflow, colors are grouped into three categories:
 
 - **Brand Colors**: Represent your brand’s primary palette (e.g., primary, secondary, accent). Use these to give your app its unique identity.
 - **Utility Colors**: These are functional colors that support layout and contrast.
 - **Semantic Colors**: Contextual colors that represent meaning within the app for states like errors or warnings.
 
+
 :::info
 
-Each brand color includes a **hex value** (e.g., `#7C4DFF`) and an **opacity setting** so you can fine-tune how they appear in your design.
+Each brand color includes a **hex value** (e.g., `#7C4DFF`) and an **opacity setting** so you can fine-tune how they appear in your design. You can edit the values for each of these in the Theme Panel and see the values updated in realtime in the preview.
 
 :::
 
@@ -79,7 +84,8 @@ Typography in Dreamflow ensures that text styles remain consistent throughout yo
 - **Body**: Paragraphs, descriptions, and content-heavy areas.
 - **Label**: Smaller text for buttons, captions, or UI labels.
 
-Each category can be customized to align with your design system.
+You can modify your text styles in the Theme panel and then use them anywhere a `TextSyle` class is expected - for example, in the style property of the `Text` widget. Use the "Apply Theme" button next to the `Style` property in the property panel to select your text style. 
+
 
 ## Style Constants
 

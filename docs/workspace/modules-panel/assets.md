@@ -11,9 +11,16 @@ sidebar_position: 3
 
 The **Assets** panel in Dreamflow is where you manage all the files your app needs, such as images, audio, videos, fonts, and documents. These assets are stored directly in your project, making them easy to reference and reuse across your app.
 
+:::info
+
+Right now you can only upload assets through the Asset Module. You cannot upload a file directly into the file tree in the [code editor](/workspace/content-panel#code-editor)
+
+:::
+
+
 ## Uploading Assets
 
-To upload an asset, click **Upload Assets** and choose a file from your computer, or simply drag and drop it into the panel. Dreamflow will automatically organize the file into the right category (for example, a `.png` will appear under **Images**).
+To upload an asset, click **Upload Assets** and choose a file from your computer, or simply drag and drop it into the panel. Dreamflow will automatically organize the file into the right category (for example, a `.png` will appear under **Images**). Additionally, Dreamflow will automatically add the asset to the `pubspec.yaml` file within your project, so it's accessible throughout your application.
 
 :::info
 
