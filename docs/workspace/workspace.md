@@ -17,7 +17,7 @@ The workspace is organized into panels that work together to provide a complete 
 
 - **Top Bar**: Central command center for project navigation, panel management, and deployment. Provides access to project settings, undo/redo functionality, panel visibility controls, and deployment actions.
 
-- **[Modules Panel](modules-panel/widget-panel.md)**: Helps users access different functional areas of the platform. Includes Widget Tree (default navigation), Theme (styling), Assets (file management), Firebase (backend services), and Supabase (database integration). The module panel is on the left hand side and the panel content itself is controlled by the left side rail. 
+- **[Modules Panel](modules-panel/widget-panel.md)**: Helps users access different functional areas of the platform. Includes Widget Tree (default navigation), Theme (styling), Assets (file management), Firebase (backend services), and Supabase (database integration). The module panel appears on the left side of the screen, and its content is managed through the left-side rail.
 
 - **[Content Panel](../workspace/content-panel.md)**: Main workspace area that displays either the app preview and/or code editor depending on the selected mode (preview, code or split). Features real-time app preview with device frame options, hot reload/restart controls, and integrated code editor with syntax highlighting and auto-complete. The content panel is in the center of the workspace. 
 

@@ -69,7 +69,7 @@ Right-click on any widget to access a comprehensive context menu with options fo
 - Wrapping existing widgets
 - Copying, cutting, and pasting widgets
 - Navigating to component definitions
-= Navigating to component references
+- Navigating to component references
 - Removing widgets
 - Navigating to the definition of the widget in code
 - Adding the widget (and correspinding screenshot) as context to the agent chat (Add to Agent)
