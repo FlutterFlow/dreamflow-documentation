@@ -105,7 +105,7 @@ Debug APKs are not optimized and should not be uploaded to the Play Store.
 
 :::
 
-#### Build App for Release
+**Build App for Release**
 
 Dreamflow lets you [deploy apps directly to the Google Play Store](../publish/google-playstore-deployment.md) from within the platform. If you prefer to publish manually, you’ll first need to **sign your app** with a keystore and then **build a release APK or App Bundle**. Release builds are fully optimized, securely signed, and ready for distribution on the Play Store.
 
