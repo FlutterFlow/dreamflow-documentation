@@ -118,6 +118,6 @@ You can follow the official Flutter documentation for detailed steps:
 
 You can’t generate a debug `.ipa` file. Debug builds are only for local development and testing, and once your [iOS setup](#ios-setup) is complete, you can [run](#download-code-and-run) them directly on your device.
 
-#### Build App for Release
+**Build App for Release**
 
 Dreamflow lets you [deploy apps directly to the App Store](../publish/apple-app-store-deployment.md) from within the platform. If you prefer to create an IPA file for manual distribution (e.g., via TestFlight or the App Store), you’ll need to build a release IPA. This requires proper **code signing** with your Apple Developer account. Follow the official guide for detailed steps on [build and release for iOS](https://docs.flutter.dev/deployment/ios).
