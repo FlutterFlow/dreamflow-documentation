@@ -62,6 +62,16 @@ const config: Config = {
     },
   ],
 
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '3729CD2994E8DDE1',
+      },
+    },
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card-docs.png',
