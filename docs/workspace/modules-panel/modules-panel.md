@@ -14,7 +14,7 @@ The Modules Panel enabled from the left side of the builder interface, provides 
 
 - **[Widget Tree Module](../modules-panel/widget-panel.md)**: The default module that provides navigation and management of your app's widget hierarchy, allowing you to browse, select, and organize UI components.
 
-- **Theme Module**: Manages app theming and styling by providing tools to customize colors, fonts, typography, and design tokens across your application.
+- **[Theme Module](../modules-panel/theme.md)**: Manages app theming and styling by providing tools to customize colors, fonts, typography, and design tokens that are accessible across your application.
 
 - **[Assets Module](../modules-panel/assets.md)**: Handles project asset management by allowing you to upload images, organize files, and manage all project resources in one centralized location.
 

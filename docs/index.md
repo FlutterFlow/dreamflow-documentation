@@ -12,7 +12,7 @@ keywords: [dreamflow welcome, flutter development platform, ai mobile app develo
 
 **The Fastest Way to Build Mobile Apps**
 
-Dreamflow is an AI-first platform that combines code, visual, and agentic app development for Flutter—no install, no lock-in, production-ready workflows. Transform your ideas into production-ready mobile apps in minutes using natural language prompts and our integrated development environment.
+Dreamflow is an AI-first platform that combines agentic, visual and code development for Flutter — no install, no lock-in, production-ready workflows. Transform your ideas into production-ready mobile apps in minutes using natural language prompts and our integrated development environment.
 
 ### Product Tour
 
@@ -40,42 +40,41 @@ Dreamflow is an AI-first platform that combines code, visual, and agentic app de
 </div>
 
 
-
 ## Key Features
 
-- **[AI Agent](workspace/agent-panel.md)**: Prompt small edits or large refactors with natural language commands. The AI agent can scaffold entire screens, implement complex flows, and generate comprehensive tests, making development faster and more intuitive than traditional coding approaches.
+In Dreamflow, the code is always the single source of truth. Whether you build with the agent, use visual controls, or edit the source directly - the code is updated in realtime as you build.
+
+![overview](./imgs/overview.avif)
+
+
+- **[AI Agent](workspace/agent-panel.md)**: Start a new app, get a jump start on new features for your existing project, or get help fixing issues using natural language commands. The AI agent can scaffold entire screens, implement complex flows, and help add debug outputs - making development faster and easier to understand.
 
 - **[Realtime Preview](workspace/content-panel.md#app-preview)**: See your changes instantly with a live run session that compiles and previews your app in real-time. Inspect logs, monitor state changes, and debug issues as they happen, providing immediate feedback for faster iteration and development.
 
-
 - **[Visual Widget Tree](workspace/modules-panel/widget-panel.md)**: Add, remove, move, wrap, collapse, and expand UI components with intuitive visual controls. Restructure your entire widget hierarchy instantly through drag-and-drop interactions, making UI development more visual and accessible.
 
-- **[Properties Editor](workspace/properties-panel.md)**: Type-safe controls for every widget property with intelligent suggestions and validation. Use expressions, formulas, or simply ask the AI for assistance when configuring complex widget behaviors and styling.
+- **[Visual Property Editors](workspace/properties-panel.md)**: Type-safe controls for every widget property with intelligent suggestions and validation. Visually select different styles, use code expressions, or simply ask the AI for assistance when configuring complex widget behaviors and styling.
 
-- **[Deploy](test-and-publish/publish/web-deployment.md)**: Push your applications to the web or app stores with streamlined one-click deployment. Support for multiple platforms including Web, iOS, Android ensures your app reaches users everywhere.
+- **Deploy**: Push your applications to the web or app stores with streamlined one-click deployment. Support for multiple platforms including Web, iOS, and Android ensures your app reaches users everywhere.
 
-- **Hot Reload**: See changes instantly as you develop with Flutter's hot reload technology, enabling rapid iteration and real-time feedback during the development process.
-
-- **[Debug Console](workspace/content-panel.md#debug-console)**: Monitor app logs and performance in real-time with integrated debugging tools that help you identify and resolve issues quickly.
-
-- **Multi-Platform Support**: Build applications that run seamlessly across mobile (iOS and Android), web (responsive), and desktop (macOS, Windows, Linux) platforms from a single codebase.
 
 ## How It Works
 
-Dreamflow follows a simple 3-step workflow: **Start → Build → Run & Ship**
+Dreamflow follows a simple 3-step workflow: **Start → Iterate → Ship**
 
 ### 1. Start
-Kick off from a natural-language prompt, a blank Flutter project, or import an existing repo (coming soon).
+Kick off from a natural-language prompt, a blank Flutter project, or import an existing Flutter repo using git (coming soon).
 
-### 2. Build
+### 2. Iterate
 Jump between multiple development modes to build your app efficiently:
 
-- Use the **Code** editor for direct Flutter development.
-- Navigate the **Visual widget tree** for drag-and-drop UI building.
-- Configure components in the **Properties editor** with type-safe controls.
-- Leverage the **AI agent** to scaffold features and refactor code through natural language.
+- Leverage the **AI agent** to get a jump start on new features or for help debugging.
+- Add, remove or rearrange UI elements (Widgets) in the **visual Widget Tree**.
+- Configure arguments for widgets visually in the **Properties editor** with type-safe controls.
+- Use the **Code** editor to peak under-the-hood and see what's going on.
 
-Built-in Firebase and Supabase integrations provide authentication, database, and storage capabilities without complex setup. The integrated **Language Server Protocol (LSP)** delivers intelligent code completions, quick fixes, and real-time diagnostics as you type.
+
+Built-in Firebase and Supabase integrations provide authentication and database capabilities without complex setup. The integrated **Language Server Protocol (LSP)** delivers intelligent code completions, quick fixes, and real-time diagnostics as you type.
 
 <div style={{
     position: 'relative',
@@ -103,10 +102,8 @@ Built-in Firebase and Supabase integrations provide authentication, database, an
     </iframe>
 </div>
 
-### 3. Run & Ship
+### 3. Ship
 A managed run session compiles and previews your app in real time. Connect Firebase/Supabase, test flows, and deploy to web or the app stores when ready.
-
-
 
 ## Ready to Start Building?
 

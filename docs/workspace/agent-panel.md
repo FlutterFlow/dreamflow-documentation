@@ -58,7 +58,6 @@ The AI automatically has access to:
 - Your project's dependencies and configuration
 
 
-
 ### Image Attachments
 
 Use the Attach Image button in the message box to add screenshots or images to your conversation. This can help the AI understand:
@@ -111,7 +110,6 @@ The "Add to Agent" feature enhances AI conversations by providing detailed conte
 - Adds all this information to the AI's context
 
 This gives the AI agent comprehensive understanding of the components you're working with, enabling more accurate assistance.
-
 
 
 <div style={{
@@ -187,7 +185,7 @@ This provides a quick way to make targeted widget changes without leaving the Pr
 
 The Agent Panel can automatically access your app's debug logs and console output to help diagnose issues and understand your app's behavior. This is particularly useful when debugging problems or explaining errors to the AI.
 
-When you ask the AI about errors, debugging, or app behavior, it can automatically retrieve recent log entries from your running Flutter app. It typically fetches the most recent 50-100 lines of logs (configurable) to get relevant context without overwhelming the conversation with too much information.
+When you ask the AI about errors, debugging, or app behavior, it can automatically retrieve recent log entries from your running Flutter app. It typically fetches the most recent 200 lines of logs to get relevant context without overwhelming the conversation with too much information.
 
 The agent can access the following: 
 - Print statements from your Dart code

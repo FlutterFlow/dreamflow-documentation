@@ -7,85 +7,18 @@ sidebar_position: 1
 keywords: [quickstart, getting started, dreamflow tutorial, ai app generation, flutter development, mobile app creation, natural language prompts]
 ---
 
-
-
 # Quickstart
 
+When starting a new Dreamflow project you have three options:
 
-## Start from Scratch 
-
-Starting a new Flutter project in Dreamflow is simple and flexible. When you create a project from scratch, you'll begin with Flutter's classic counter app template. From there, you have multiple ways to build out your application:
-
-- Use the **[AI Agent](../workspace/agent-panel.md)** to add features through natural language conversations.
-- Visually construct your UI with the **[Properties Editor](../workspace/properties-panel.md)** and drag-and-drop tools.
-- Write and edit code directly in the integrated **[Code Editor](../workspace/content-panel.md#code-editor)**.
-- Combine these approaches seamlessly as your project grows.
-
-This flexibility allows you to work in whatever way best suits your development style and project needs.
-
-<div style={{
-    position: 'relative',
-    paddingBottom: 'calc(56.67989417989418% + 41px)', // Ensures the aspect ratio plus additional padding
-    height: 0,
-    width: '100%'
-}}>
-    <iframe 
-        src="https://demo.arcade.software/81iL80OjQC1gthaDKvPG?embed&show_copy_link=true"
-        title="Projects - FlutterFlow"
-        style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            colorScheme: 'light'
-        }}
-        frameBorder="0"
-        loading="lazy"
-        webkitAllowFullScreen
-        mozAllowFullScreen
-        allowFullScreen
-        allow="clipboard-write">
-    </iframe>
-</div>
-
-## Start from a Template 
-
-Dreamflow also provides a collection of professionally designed, production-ready templates to jumpstart your app development. Our templates are fully customizable to match your brand and requirements while being designed to work seamlessly across mobile, tablet, and web platforms.
-
-Simply choose a template that matches your needs and customize it to create your unique application.
-
-<div style={{
-    position: 'relative',
-    paddingBottom: 'calc(56.67989417989418% + 41px)', // Ensures the aspect ratio plus additional padding
-    height: 0,
-    width: '100%'
-}}>
-    <iframe 
-        src="https://demo.arcade.software/VUOZqYhw1r4Ea4jBQyJq?embed&show_copy_link=true"
-        title="Projects - FlutterFlow"
-        style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            colorScheme: 'light'
-        }}
-        frameBorder="0"
-        loading="lazy"
-        webkitAllowFullScreen
-        mozAllowFullScreen
-        allowFullScreen
-        allow="clipboard-write">
-    </iframe>
-</div>
-
+- **[Start from a prompt](/quickstart#start-with-a-prompt)**: when you want to get a jumpstart on a brand new app idea.
+- **[Start from scratch](/quickstart#start-from-scratch)**: when you want to incrementally build from a blank project.
+- **[Start from a template](/quickstart#start-from-a-template)**: when you want to start from an existing beautiful, tailored app.
 
 
 ## Start With a Prompt
 
-Dreamflow's AI-powered app generation allows you to create fully functional, production-ready applications from simple text or image descriptions. Simply describe what you want to build, and Dreamflow Agent will generate the entire app structure, UI components, and functionality for you.
+Dreamflow's AI-powered app generation allows you to create fully functional, production-ready applications from simple text and image descriptions. Simply describe what you want to build, additionally add screenshots for design inspiration, and Dreamflow Agent will generate the entire app structure, UI components, and functionality for you.
 
 Ready to create your app? Simply:
 
@@ -171,3 +104,76 @@ Build a small chat app (store the data locally for now) where users can chat wit
     - Make the chats clustered when folks are close to each other
     - Store the chat data in a cloud database
     - Show a notification when a message arrives when the app is not active
+
+
+## Start from Scratch 
+
+When you create a project from scratch, you'll begin with Flutter's classic counter app template. From there, you have multiple ways to build out your application:
+
+- Use the **[AI Agent](../workspace/agent-panel.md)** to add features through natural language conversations.
+- Add new UI elements to your page through the **[Widget Tree]**
+- Visually construct your UI with the **[Properties Editor](../workspace/properties-panel.md)** and drag-and-drop tools.
+- Write and edit code directly in the integrated **[Code Editor](../workspace/content-panel.md#code-editor)**.
+- Combine these approaches seamlessly as your project grows.
+
+This flexibility allows you to work in whatever way best suits your development style and project needs.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(56.67989417989418% + 41px)', // Ensures the aspect ratio plus additional padding
+    height: 0,
+    width: '100%'
+}}>
+    <iframe 
+        src="https://demo.arcade.software/81iL80OjQC1gthaDKvPG?embed&show_copy_link=true"
+        title="Projects - FlutterFlow"
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameBorder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+
+## Start from a Template 
+
+Dreamflow also provides a collection of professionally designed, production-ready templates to jumpstart your app development. Our templates are fully customizable to match your brand and requirements while being designed to work seamlessly across mobile, tablet, and web platforms.
+
+Simply choose a template that matches your needs and customize it to create your unique application.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(56.67989417989418% + 41px)', // Ensures the aspect ratio plus additional padding
+    height: 0,
+    width: '100%'
+}}>
+    <iframe 
+        src="https://demo.arcade.software/VUOZqYhw1r4Ea4jBQyJq?embed&show_copy_link=true"
+        title="Projects - FlutterFlow"
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameBorder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+
+
