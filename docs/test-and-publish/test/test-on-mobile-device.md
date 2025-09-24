@@ -65,7 +65,7 @@ Once downloaded, open the project in your preferred IDE and run your app on eith
 If you encounter a version compatibility issue with Flutter, you can resolve it by upgrading to the latest version. Simply execute the `flutter upgrade` command in your terminal. To verify your current Flutter version, use the `flutter --version` command.
 :::
 
-## Building APK Files
+## Building APK File
 
 You can build APK files locally to test your app on Android devices or prepare it for release on the Google Play Store.
 
