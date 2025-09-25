@@ -17,8 +17,8 @@
   --inline-code-text-color: #aa54bf; /* Light mode text color */
   
   /* Custom background colors for main site and cards */
-  --custom-background-light: rgba(255, 255, 255, 0.95);
-  --custom-background-dark: rgba(10, 9, 9, 1);
+  --custom-background-light: #F9F9F9;
+  --custom-background-dark: #202329;
 
   --ifm-card-text-color: #333333;
   --ifm-card-background-color: #000171717;
