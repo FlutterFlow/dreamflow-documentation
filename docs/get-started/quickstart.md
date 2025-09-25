@@ -111,7 +111,7 @@ Build a small chat app (store the data locally for now) where users can chat wit
 When you create a project from scratch, you'll begin with Flutter's classic counter app template. From there, you have multiple ways to build out your application:
 
 - Use the **[AI Agent](../workspace/agent-panel.md)** to add features through natural language conversations.
-- Add new UI elements to your page through the **[Widget Tree]**
+- Add new UI elements to your page through the **[Widget Tree](../workspace/widget-tree.md)**
 - Visually construct your UI with the **[Properties Editor](../workspace/properties-panel.md)** and drag-and-drop tools.
 - Write and edit code directly in the integrated **[Code Editor](../workspace/content-panel.md#code-editor)**.
 - Combine these approaches seamlessly as your project grows.
