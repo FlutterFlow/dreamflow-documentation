@@ -13,7 +13,7 @@ The **Assets** panel in Dreamflow is where you manage all the files your app nee
 
 :::info
 
-Right now you can only upload assets through the Asset Module. You cannot upload a file directly into the file tree in the [code editor](/workspace/content-panel#code-editor)
+Right now you can only upload assets through the Asset Module. You cannot upload a file directly into the file tree in the [code editor](../content-panel.md#code-editor)
 
 :::
 

@@ -61,7 +61,7 @@ Modifiers refer to wrapper widgets that can be added around existing Flutter wid
 - **Animation properties** (transitions, transformations)
 
 :::note[Modifiers in the Widget Tree]
-Modifier widgets are hidden from the "Simplified View" in the [widget tree](/workspace/widget-tree).
+Modifier widgets are hidden from the "Simplified View" in the [**widget tree**](modules-panel/widget-panel.md#nodes-widgets).
 :::
 
 

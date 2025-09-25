@@ -11,9 +11,9 @@ keywords: [quickstart, getting started, dreamflow tutorial, ai app generation, f
 
 When starting a new Dreamflow project you have three options:
 
-- **[Start from a prompt](/quickstart#start-with-a-prompt)**: when you want to get a jumpstart on a brand new app idea.
-- **[Start from scratch](/quickstart#start-from-scratch)**: when you want to incrementally build from a blank project.
-- **[Start from a template](/quickstart#start-from-a-template)**: when you want to start from an existing beautiful, tailored app.
+- **[Start from a prompt](#start-with-a-prompt)**: when you want to get a jumpstart on a brand new app idea.
+- **[Start from scratch](#start-from-scratch)**: when you want to incrementally build from a blank project.
+- **[Start from a template](#start-from-a-template)**: when you want to start from an existing beautiful, tailored app.
 
 
 ## Start With a Prompt

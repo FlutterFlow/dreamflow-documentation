@@ -25,14 +25,14 @@ The widget tree in Dreamflow allows you to view the widgets that are currently r
 
 **Hierarchical Tree View**: Displays your app's widget structure as an expandable tree, showing the parent-child relationships between widgets. Each node represents a widget with its type, properties, and children clearly visible.
 
-**Widget Selection**: Click on any widget in the tree to select it. When you have **[Inspect Mode](/workspace/content-panel#inspect-mode)** turned on, you'll visually see the widget highlighted in the preview. Double clicking the widget in the widget tree also pulls up the **[Properties Panel](/workspace/properties-panel)** for the widget - allowing you to easily specify input parameters for the widget.
+**Widget Selection**: Click on any widget in the tree to select it. When you have **[Inspect Mode](../content-panel.md#inspect-mode)** turned on, you'll visually see the widget highlighted in the preview. Double clicking the widget in the widget tree also pulls up the **[Properties Panel](../properties-panel.md)** for the widget - allowing you to easily specify input parameters for the widget.
 
 **Real-Time Synchronization**: The tree automatically updates in real-time as you make changes to your code, reflecting the current state of your running Flutter app.
 
 
 ## Nodes (Widgets)
 
-![Widget Tree Panel](../imgs/widget-tree.png)
+![Widget Tree Panel](../imgs/widget-tree.avif)
 
 **Nodes** are individual widgets in your Flutter app's hierarchy, displayed as tree items in the Widget Tree panel. Each node represents a widget instance configired with properties and relationships.
 
@@ -65,7 +65,7 @@ You can change the *view* of the Widget Tree to be either Consolidated or Detail
 ## Widget Management
 
 Right-click on any widget to access a comprehensive context menu with options for:
-- [Adding new widgets](/workspace/widget-tree#add-widget)(to widgets that take other widgets as children or have properties that take a widget)
+- [Adding new widgets] (to widgets that take other widgets as children or have properties that take a widget)
 - Wrapping existing widgets
 - Copying, cutting, and pasting widgets
 - Navigating to component definitions
