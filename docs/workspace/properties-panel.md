@@ -47,7 +47,7 @@ To switch from the visual property editor to a code-based property editor, hover
 :::
 
 
-## Ading Hidden Propertis
+## Adding Hidden Properties
 Some properties for widgets are hidden by default. However, any property that's accessible in the underlying widget can be set from the property panel. 
 If you are looking for a hidden property, you can search for it or add it using the "+ Add Property" button at the top of the Property panel. 
 
