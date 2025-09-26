@@ -32,7 +32,7 @@ Here’s a comprehensive list of these prechecks:
 
 ## Add App Launcher Icon
 
-An **app launcher icon** is the small image that represents your app on a device’s home screen. It’s the first visual element users see, so having a clear and properly designed icon is important for branding and user experience.
+An **app launcher icon** is the small image that represents your app on a device’s home screen. 
 
 When you create a new app in Dreamflow, it sets a default Dreamflow logo as the launcher icon. To give your app a unique identity, you should replace this with your own custom icon. Follow the steps below to update the launcher icon:
 
