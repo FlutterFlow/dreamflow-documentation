@@ -38,18 +38,19 @@ When you create a new app in Dreamflow, it sets a default Dreamflow logo as the 
 
 1. Go to the [**Assets**](../../workspace/modules-panel/assets.md) module in Dreamflow and upload your icon image. For best results, use a square, high-resolution source image (i.e., **1024×1024 px**) to ensure your app icon looks sharp across all devices and sizes.
 2. Update the code to use the new app icon. Dreamflow uses the [`flutter_launcher_icons`](https://pub.dev/packages/flutter_launcher_icons) package to set launcher icons for both platforms. You can either:
-    - Ask the Agent to do it automatically, or
-    - Do it manually by updating the `image_path` in your `pubspec.yaml` file to point to the newly uploaded app icon.
 
-Here is the example configuration in `pubspec.yaml` file:
+    - Ask the Agent to do it automatically. For example, you can say:
+      ```text
+      I uploaded app_icon.png to the Assets module. Please set it as the app launcher icon using flutter_launcher_icons.
+    - Or do it manually by updating the `image_path` in your `pubspec.yaml` file to point to the newly uploaded app icon. Here is the example configuration in `pubspec.yaml` file:
 
-```jsx
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: assets/images/app_icon.png
-  remove_alpha_ios: true
-```
+      ```jsx
+      flutter_launcher_icons:
+        android: true
+        ios: true
+        image_path: assets/images/app_icon.png
+        remove_alpha_ios: true
+      ```
 
 <div style={{
     position: 'relative',
@@ -80,56 +81,75 @@ flutter_launcher_icons:
 :::info
 
 - The Agent can’t generate a launcher icon image for you; you need to upload your own image file in the **Assets** module.
-- The app icon is generated during native builds (Android/iOS) before deployment. However, if you want to verify that it’s configured correctly, [**download**](../test/test-on-mobile-device.md#download-code-and-run) the project, run the following command in the terminal, then run the app on a device and check device’s home screen to confirm the new icon appears.
-
-```jsx
-flutter pub run flutter_launcher_icons
-```
+- The app icon is generated during native builds (Android/iOS) before deployment. However, if you want to verify that it’s configured correctly, you can download and run the app locally on your machine. To do so:
+    - Ensure your Flutter environment is properly set up by following the instructions for [**Android**](../test/test-on-mobile-device.md#android-setup) or [**iOS**](../test/test-on-mobile-device.md#ios-setup), depending on the platform you want to test.
+    - [**Download the project**](../test/test-on-mobile-device.md#download-code-and-run), open it in your preferred IDE, and run:
+        
+        ```jsx
+        dart run flutter_launcher_icons
+        ```
+        
+    - Build and run the app on a device, then check the device’s home screen to confirm the new icon appears.
 :::
 
 ### Platform-Specific Icon Configuration
 
 If you want to use different icons for Android and iOS, you can set platform-specific paths. This is useful if your design team provides unique assets for each platform.
 
-To do so, upload separate icons for each platform to assets module, then update your `pubspec.yaml` as shown below:
+To do so, upload separate icons for each platform to [Assets](../../workspace/modules-panel/assets.md) module, then you can either:
 
-```yaml
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path_android: assets/images/app_icon_android.png
-  image_path_ios: assets/images/app_icon_ios.png
-  remove_alpha_ios: true
+- Ask the Agent to do it automatically. For example, you can say:
 
-```
+  ```text
+  I uploaded separate icons for Android (app_icon_android.png) and iOS (app_icon_ios.png) to the Assets module. Please configure flutter_launcher_icons to use separate icons for both the platform.
+  ```
 
-- **`image_path_android`**: Path to the Android app icon.
-- **`image_path_ios`**: Path to the iOS app icon.
+- Or manually update your `pubspec.yaml` as shown below:
+
+  ```yaml
+  flutter_launcher_icons:
+    android: true
+    ios: true
+    image_path_android: assets/images/app_icon_android.png # Path to the Android app icon.
+    image_path_ios: assets/images/app_icon_ios.png # Path to the iOS app icon.
+    remove_alpha_ios: true
+
+  ```
 
 ### Adaptive Icons for Android
 
 Android supports [**adaptive icons**](https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons), which allow your app icon to adapt to different shapes (circle, square, squircle, etc.). 
 
-To setup adaptive icons, you can either use this [online tool](https://icon.kitchen/) or use these [resources](#adaptive-icon-resources) to create one. and then provide both a **background** and **foreground** layer in `pubspec.yaml` file.
+To setup adaptive icons, you can either use this [online tool](https://icon.kitchen/) or use these [resources](https://docs.flutterflow.io/resources/projects/settings/general-settings#create-adaptive-icon) to create one. Upload them to [Assets](../../workspace/modules-panel/assets.md) module, then you can either:
 
-Here is the example configuration:
+- Ask the Agent to do it automatically. For example, you can say:
 
-```jsx
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "assets/icons/app_icon.png"
+    **With image background:**
+    ```
+    I uploaded icon_bg.png and icon_fg.png to the Assets module.
+    Please configure flutter_launcher_icons to use icon_bg.png as the adaptive icon background and icon_fg.png as the foreground, with a 16% inset.
+    ```
 
-  # For adaptive icon support:
-  adaptive_icon_background: "assets/icons/icon_bg.png"   # image or solid color ("#FFFFFF")
-  adaptive_icon_foreground: "assets/icons/icon_fg.png"   # your logo / symbol image
-  adaptive_icon_foreground_inset: 16   # optional padding percentage (default is 16)
+    **With solid color background:**
+    ```
+    I uploaded icon_fg.png to the Assets module.
+    Please configure flutter_launcher_icons to use a solid white background ("#FFFFFF") and icon_fg.png as the adaptive icon foreground, with a 16% inset.
+    ```
 
-```
+- Or manually update your `pubspec.yaml` as shown below:
 
-- `adaptive_icon_background`: A solid color or image asset to use as the background layer.
-- `adaptive_icon_foreground`: An image asset to use as the foreground (your logo or symbol).
-- `adaptive_icon_foreground_inset` (optional): A padding percentage for the foreground layer.
+  ```jsx
+  flutter_launcher_icons:
+    android: true
+    ios: true
+    image_path: "assets/images/app_icon.png"
+
+    # For adaptive icon support:
+    adaptive_icon_background: "assets/images/icon_bg.png"   # image or solid color ("#FFFFFF")
+    adaptive_icon_foreground: "assets/images/icon_fg.png"   # your logo / symbol image
+    adaptive_icon_foreground_inset: 16   # optional padding percentage (default is 16)
+
+  ```
 
 :::info
 
