@@ -176,3 +176,27 @@ See the following resources for more information on Android adaptive icons.
 - [Designing Adaptive Icons](https://medium.com/google-design/designing-adaptive-icons-515af294c783)
 - [Implementing Adaptive Icons](https://medium.com/google-developers/implementing-adaptive-icons-1e4d1795470e)
 
+## FAQs
+
+<details>
+<summary> I am getting `✗ ERROR: NoConfigFoundException – No configuration found in flutter_launcher_icons.yaml or in pubspec.yaml`. How do I fix it? </summary>
+
+<p> 
+This error means the `flutter_launcher_icons` package hasn’t been properly added to your project. To fix this, you can:
+
+- **Add it manually**: Open your `pubspec.yaml`, add the [**`flutter_launcher_icons`**](https://pub.dev/packages/flutter_launcher_icons) dependency with required configuration, then refresh dependencies by clicking **Refresh Dependencies** button at bottom left side. See the detailed guide on [**adding app launcher icon**](#add-app-launcher-icon).
+
+- **Use the Agent**: Click <kbd>Fix with AI</kbd> button when the error appears, and the Agent will add the required configuration for you.
+</p> 
+
+</details>
+
+
+<details>
+<summary> Why am I seeing this error `PathNotFoundException: Cannot open file, path = 'assets/images/icon.png' (OS Error: No such file or directory, errno = 2)` ? </summary>
+
+ <p>
+ This error occurs because the app icon file could not be found at the specified path. To fix this, make sure you’ve added a launcher icon [**Assets**](../../workspace/modules-panel/assets.md) module. Refer to [**adding app launcher icon**](#add-app-launcher-icon) section for step-by-step instructions.
+ </p> 
+
+</details>
