@@ -50,7 +50,8 @@ Dreamflow provides integrated hot reload and hot restart capabilities that allow
 
 **Hot Restart** completely restarts your Flutter app with all code changes applied, resetting the application state. Use this for structural changes, when hot reload fails, or after fixing compilation errors. To Hot Restart the preview, click the **refresh** button at the top right of the Content Panel. 
 
-**Stop Preview** ends the preview session completely. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. Stopping the preview clears the current session, allowing you to restart it fresh and restore normal behavior.
+**Stop Preview** ends the preview session completely. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. If problems aren’t resolved by Hot Reload or Hot Restart, it’s best to click the **Stop** button at the top of the Content Panel to stop the preview completely and restart it. Once stopped, you can restart the preview using the **Restart** button that appears on the preview device. 
+
 
 ### Additional Features
 
