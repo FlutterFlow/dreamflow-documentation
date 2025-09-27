@@ -187,6 +187,8 @@ This error means the `flutter_launcher_icons` package hasn’t been properly add
 - **Add it manually**: Open your `pubspec.yaml`, add the [**`flutter_launcher_icons`**](https://pub.dev/packages/flutter_launcher_icons) dependency with required configuration, then refresh dependencies by clicking **Refresh Dependencies** button at bottom left side. See the detailed guide on [**adding app launcher icon**](#add-app-launcher-icon).
 
 - **Use the Agent**: Click <kbd>Fix with AI</kbd> button when the error appears, and the Agent will add the required configuration for you.
+
+  ![fix-with-ai](imgs/fix-with-ai.avif)
 </p> 
 
 </details>
