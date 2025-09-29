@@ -13,10 +13,9 @@ keywords: [Apple App Store, Deployment, Dreamflow, iOS]
 Dreamflow allows you to deploy your apps directly to the Apple App Store from within the platform. This guide covers all the necessary prerequisites, a step-by-step deployment process, and common troubleshooting tips.
 
 :::info[Prerequisites]
-
+- Ensure you have [**set an app launcher icon**](pre-checks-publishing.md#add-app-launcher-icon).
 - Create an [**Apple account**](https://appleid.apple.com/account?appId=632&returnUrl=https%3A//developer.apple.com/account/).
 - [**Purchase an Apple Developer membership**](https://developer.apple.com/programs/enroll/). Learn more about the program and enrollment process [**here**](https://developer.apple.com/programs/).
-- Ensure you have set an app launcher icon. If not, add an app icon to the Dreamflow assets, then use the [**flutter_launcher_icons**](https://pub.dev/packages/flutter_launcher_icons) package or ask the AI agent to set it up for you.
 - Ensure your app bundle identifier is correct, as it cannot be changed after publishing. To update the bundle identifier, you can use the [**change_app_package_name**](https://pub.dev/packages/change_app_package_name) package or simply ask the AI agent.
 - It's recommended to [**test your app on a real device**](../test/test-on-mobile-device.md) before deployment.
 
