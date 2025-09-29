@@ -52,9 +52,6 @@ Dreamflow provides integrated hot reload and hot restart capabilities that allow
 
 **Stop Preview** ends the preview session completely. While Dreamflow works to prevent issues, sometimes the preview can enter an unusual or broken state. If problems aren’t resolved by Hot Reload or Hot Restart, it’s best to click the **Stop** button at the top of the Content Panel to stop the preview completely and restart it. Once stopped, you can restart the preview using the **Restart** button that appears on the preview device. 
 
-:::info[If you're still experiencing issues in the preview...]
-You can try to reload the project entirely by selecting the project name in the top left corner and selecting "Reload Project"
-:::
 
 ### Additional Features
 
@@ -118,6 +115,27 @@ The Debug Console is a dedicated output panel in Dreamflow that displays real-ti
 </div>
 <p></p>
 
+## FAQs
 
+<details> 
 
+<summary> What should I do if the Preview is not loading and always shows "Preview starting…" message? </summary> 
+
+<p> 
+
+This usually happens when the preview session is stuck or the project dependencies need to be refreshed. Here are several steps you can try to resolve the issue:
+
+- **Hot Reload (⚡):** Quickly applies code changes while keeping the current state. Use this first for small UI or logic updates.
+- **Hot Restart (🔄):** Restarts the app and resets its state. Use this if hot reload doesn't reflect changes or the preview is still stuck.
+- **Stop and Restart Preview (⏹️/▶️):** Manually stop the preview and start it again to relaunch the app.
+- **Refresh Dependencies:** At the bottom toolbar, click **Refresh Dependencies**. This will re-sync all your pub.dev packages in case the issue is caused by outdated or missing dependencies.
+- **Reload Project:** You can try to restart the project session entirely by selecting the project name in the top left corner and then selecting **Reload Project**.
+![reload-project](imgs/reload-project.avif)
+- **Check for Errors in Debug Console:** Open the Debug Console from the bottom panel to look for errors or warnings that may be preventing the app from launching. If you spot an error, you can ask the Agent directly to help resolve it.
+
+Most preview issues can be fixed by reloading the project or restarting the preview. If the problem continues, use the **Submit Feedback** button in the top bar to file a bug report.
+
+</p> 
+
+</details>
 
