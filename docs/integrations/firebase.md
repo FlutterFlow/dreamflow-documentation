@@ -48,6 +48,42 @@ Once complete, Dreamflow will confirm the connection with a **Connected** status
 </div>
 <p></p>
 
+### First-Time Firebase Project Setup
+
+If this is your first time connecting to Firebase, you must create a new project in the Firebase Console and accept the Terms of Service before continuing.
+
+Open the Firebase Console and ensure you are signed in with the correct account. Click **Get started** tile, enter a project name, accept the terms, and complete the setup. During this process, you can disable Gemini AI and Analytics features if they are not required.
+
+When the console displays the message *“Your Firebase project is ready”*, close the tab and return to Dreamflow. Click **Proceed** to continue. It may take a few minutes for the new project to appear in Dreamflow.
+
+Here’s how to do it step by step:
+
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/5cXsTxpPsUIFxMP1JrDS?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
 
 ## 2. Project Setup
 
@@ -176,3 +212,116 @@ This step is critical for security, as without rules, your Firestore may be open
 
 ![deploy-to-firebase.avif](imgs/deploy-to-firebase.avif)
 
+## 5. Configure Authentication
+
+If the generated client code includes authentication-related functionality, you must configure sign-in providers in the Firebase Console to make it work.
+
+To enable authentication, click **Configure Authentication**. This opens the Authentication page in the Firebase Console, where you can select a sign-in provider such as Email/Password, Google, or Facebook. Enable the chosen provider, configure its settings (for example, OAuth credentials for Google or Facebook), and click **Save**. Repeat this process to enable any additional providers required by your app.
+
+Here’s an example of enabling email/password authentication:
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/rUFzONPrr5SSnRDTvy07?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+## Add Sample Data to Firebase
+
+Dreamflow lets you add sample data to your Firebase project for easier development and testing. The generated data follows your app’s schema, so you can quickly check how your app works with populated users, collections, and documents.
+
+To add sample data from Dreamflow, go to the **Firebase** module **> Add Sample Data to Firebase**. Enter the email address of your test account in the **User Email** field. This account will be associated with the generated sample data. Click **Generate Sample Data**.
+
+Once the process is complete, you will see the generated sample data entries inside your **Cloud Firestore** under the respective collections defined in your schema.
+
+:::info
+
+This process only inserts sample data into the **Firestore Database** for the specified user email. It does **not** create a user in Firebase Authentication. Make sure the user with the specified email exists in Firebase Authentication to be able to access the data.
+
+:::
+
+![add-sample-data.avif](imgs/add-sample-data.avif)
+
+## Enable Billing
+
+Certain Firebase services, such as [Cloud Functions](https://firebase.google.com/docs/functions), require billing to be enabled before they can be used. If your project uses other Firebase services beyond their free tier limits, for example, Cloud Firestore, Cloud Storage (over 5 GB), or Phone Authentication (billed per SMS), you must enable billing on your Firebase project. 
+
+To enable billing on your Firebase project, open the Firebase Console. On the project dashboard, click on the current plan and select the **Blaze** plan. You can either create a new billing account or link an existing one. During setup, you can also set a budget amount. Once your usage exceeds this amount, you will receive an email notification. After enabling, the Blaze plan will appear on your project dashboard.
+
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/7Z5BmfA19TkPrXV2pPuX?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+
+<details>
+<summary> Why do cloud function deployments fail? </summary>
+
+<p>
+Cloud function deployments usually fail when your Google Cloud Platform (GCP) or Firebase project hasn’t been fully set up with the necessary APIs and permissions.
+
+By default, when you create a new Firebase project, some APIs required by Cloud Functions are not enabled automatically. In addition, the default compute service account may not have the correct roles to deploy functions. Without these APIs and permissions, Dreamflow cannot deploy functions successfully, and you’ll see deployment errors.
+
+Follow the steps below to fix the issue:
+
+1. To be able to deploy and run cloud functions, make sure to [**enable billing**](#enable-billing) for your Firebase/GCP project.
+2. If you haven’t already, [**enable the authentication**](#5-configure-authentication) in the Firebase console.
+3. Next, open your browser and navigate to the following URL: `https://console.cloud.google.com/functions/list?referrer=search&hl=en&project=<projectID>` Replace `<projectID>` with your GCP or Firebase project ID.
+4. Click on the **Create Function** button. GCP will prompt you to enable the necessary APIs: **Cloud Build** and **Cloud Functions**.
+5. After clicking **Next**, you will be prompted to enable the **Cloud Run Admin API**.
+    
+    ![cloud-run-admin-api](https://docs.flutterflow.io/assets/images/cloud-run-admin-api-6289d1d79337a0f909d0e29e555335f6.png)
+    
+6. Now, you need to grant the default compute service account the appropriate permissions. In the next page, you will see the option to deploy an example cloud function like `helloHttp`. Deploy this function. You will be prompted to grant permissions to the default compute service account. The message will look like: `You need to grant the following roles to the build service account to deploy a function: roles/cloudbuild.builds.builder to <projectID>-compute@developer.gserviceaccount.com.`
+7. Click **Grant** to provide the required permissions and deploy the example cloud function. Once deployed, you can delete this function if you wish.
+8. After completing these steps, go to **Dreamflow > Firebase > Deploy to Firebase**. Under Deployment Target, select **Functions** and click **Deploy Changes**.
+    
+    ![deploy-cloud-functions.avif](imgs/deploy-cloud-functions.avif)
+    
+
+With the required permissions granted and correct configurations, you should now be able to deploy cloud functions from Dreamflow without any issues.
+</p> 
+
+</details>
