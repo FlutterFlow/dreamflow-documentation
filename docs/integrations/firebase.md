@@ -296,6 +296,7 @@ To enable billing on your Firebase project, open the Firebase Console. On the pr
 <p></p>
 
 
+## FAQs
 <details>
 <summary> Why do cloud function deployments fail? </summary>
 
@@ -324,4 +325,66 @@ Follow the steps below to fix the issue:
 With the required permissions granted and correct configurations, you should now be able to deploy cloud functions from Dreamflow without any issues.
 </p> 
 
+</details>
+
+<details>
+<summary>
+Why do I see the error `[cloud_firestore/failed-precondition] The query requires an index`? 
+</summary>
+
+<p>
+This error occurs when Firestore needs a composite index to run your query, but the index has not been created yet.
+
+When this error appears, it includes a link to the Firebase Console. Open that link, and it will redirect directly to the required index creation page in your Firestore project. Simply click **Save** to create the index.
+
+After the index is built (this may take a few minutes), retry running your app. The query should now work without errors.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/xJppTqks1wSl1xE5yw5p?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+</p> 
+</details>
+
+<details>
+<summary>
+Why do I see the error `[cloud_firestore/permission-denied] Missing or insufficient permissions on screen`? 
+</summary>
+
+<p>
+
+
+![missing-permission.avif](imgs/missing-permission.avif)
+
+This error occurs when your app tries to read or write data in the Firestore Database without the correct security rules in place.
+
+To fix this:
+
+- **Redeploy rules:** Go to the Firebase panel in Dreamflow and [**redeploy**](#4-deploy-to-firebase) your Firestore security rules.
+- **Update rules if needed:** If your current rules are incorrect (e.g., don’t match your app’s data model or intended access control), you need to update them. You can edit the rules manually in the `firestore.rules` file or update them using the Dreamflow Agent, and then [**redeploy**](#4-deploy-to-firebase) to apply the changes.
+
+Once the correct rules are applied, the error should no longer appear when adding or retrieving data.
+</p> 
 </details>
