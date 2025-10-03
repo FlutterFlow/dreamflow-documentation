@@ -48,7 +48,7 @@ Once complete, Dreamflow will confirm the connection with a **Connected** status
 </div>
 <p></p>
 
-### First-Time Firebase Project Setup
+### Initial Firebase Project Setup
 
 If this is your first time connecting to Firebase, you must create a new project in the Firebase Console and accept the Terms of Service before continuing.
 
@@ -254,13 +254,48 @@ To add sample data from Dreamflow, go to the **Firebase** module **> Add Sample 
 
 Once the process is complete, you will see the generated sample data entries inside your **Cloud Firestore** under the respective collections defined in your schema.
 
+:::warning
+
+You can only generate sample data **once.** If you need to modify or remove the sample data later, you can do so directly in the **Firebase Console** under **Firestore Database**.
+
+:::
+
+
+![add-sample-data.avif](imgs/add-sample-data.avif)
+
 :::info
 
 This process only inserts sample data into the **Firestore Database** for the specified user email. It does **not** create a user in Firebase Authentication. Make sure the user with the specified email exists in Firebase Authentication to be able to access the data.
 
-:::
+You can directly add a user to Firebase Authentication. To do so, open the Firebase Console and navigate to **Authentication > Users**. Click **Add user** in the top-right corner, enter the user’s email and password, and then click **Add User** to create the account.
 
-![add-sample-data.avif](imgs/add-sample-data.avif)
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/VYKJVNzPMjQjb8wU4mcJ?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+:::
 
 ## Enable Billing
 
@@ -298,9 +333,12 @@ To enable billing on your Firebase project, open the Firebase Console. On the pr
 
 ## FAQs
 <details>
-<summary> Why do cloud function deployments fail? </summary>
+<summary>
+Why am I getting the error `functions predeploy error: Command terminated with non-zero exit code 2` when deploying Cloud Functions from Dreamflow?
+</summary>
 
 <p>
+![cloud-fn-deploy-failed](imgs/cloud-fn-deploy-failed.avif)
 Cloud function deployments usually fail when your Google Cloud Platform (GCP) or Firebase project hasn’t been fully set up with the necessary APIs and permissions.
 
 By default, when you create a new Firebase project, some APIs required by Cloud Functions are not enabled automatically. In addition, the default compute service account may not have the correct roles to deploy functions. Without these APIs and permissions, Dreamflow cannot deploy functions successfully, and you’ll see deployment errors.
