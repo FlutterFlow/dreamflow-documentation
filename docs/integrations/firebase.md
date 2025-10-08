@@ -250,18 +250,21 @@ Here’s an example of enabling email/password authentication:
 
 Dreamflow lets you add sample data to your Firebase project for easier development and testing. The generated data follows your app’s schema, so you can quickly check how your app works with populated users, collections, and documents.
 
-To add sample data from Dreamflow, go to the **Firebase** module **> Add Sample Data to Firebase**. Enter the email address of your test account in the **User Email** field. This account will be associated with the generated sample data. Click **Generate Sample Data**.
+To add sample data from Dreamflow, go to the **Firebase > Sample Data**, and follow the instructions below:
 
-Once the process is complete, you will see the generated sample data entries inside your **Cloud Firestore** under the respective collections defined in your schema.
+- **For Apps with Login Functionality:** First, sign up in your app using an email and password. After logging in, enter the same email address in the **User Email** field and click **Generate Sample Data**. This will generate sample records linked to that user account.
+
+![add-sample-data-firebase-with-login.avif](imgs/add-sample-data-firebase-with-login.avif)
+
+- **For Apps without Login Functionality:** You can skip the email step, as it’s optional. Simply click **Generate Sample Data** to generate test documents directly in your Firestore Database.
+
+![add-sample-data-firebase-without-login.avif](imgs/add-sample-data-firebase-wihtout-login.avif)
 
 :::warning
 
 You can only generate sample data **once.** If you need to modify or remove the sample data later, you can do so directly in the **Firebase Console** under **Firestore Database**.
 
 :::
-
-
-![add-sample-data.avif](imgs/add-sample-data.avif)
 
 :::info
 
