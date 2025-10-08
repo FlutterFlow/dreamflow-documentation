@@ -144,21 +144,26 @@ After the initial setup, any new updates or modifications you make will be added
 </div>
 <p></p>
 
-## Add Sample Data to Firebase
+## Add Sample Data to Supabase
 
 Dreamflow lets you add sample data to your Supabase project for easier development and testing. The generated data follows your app’s schema, allowing you to quickly verify how your app behaves with populated tables.
 
-To add sample data from Dreamflow, go to the **Supabase** module **> Sample Data**. Enter the email address of your test account in the **User Email** field. This account will be associated with the generated sample data. Click **Create Sample Data**.
 
-Once the process is complete, you will see the generated sample data entries inside your Supabase tables.
+To add sample data from Dreamflow, go to the **Supabase > Sample Data**, and follow the instructions below:
+
+- **For Apps with Login Functionality:** First, sign up in your app using an email and password. After logging in, enter the same email address in the **User Email** field and click **Create Sample Data**. This will generate sample records linked to that user account.
+
+    ![add-sample-data-supabase-with-login.avif](imgs/add-sample-data-supabase-with-login.avif)
+
+- **For Apps without Login Functionality:** You can skip the email step, as it’s optional. Simply click **Create Sample Data** to generate test records directly in your Supabase database.
+
+    ![add-sample-data-supabase-wihtout-login.avif](imgs/add-sample-data-supabase-wihtout-login.avif)
 
 :::warning
 
 You can only generate sample data **once** per project. If you need to modify or remove the sample data later, you can do so directly from the **Supabase** **Table Editor**.
 
 :::
-
-![add-sample-data-supabase.avif](imgs/add-sample-data-supabase.avif)
 
 ## FAQs
 
@@ -186,3 +191,14 @@ Currently, **Edge Functions are not supported in Dreamflow**. If you need to cre
 </p> 
 </details>
 
+<details>
+<summary>
+Why can’t I log in with the email I used to generate sample data? 
+</summary>
+
+<p>
+If you generated sample data before adding authentication to your app, logging in with that same email will fail — and this is expected behavior.
+
+When sample data is created, it inserts records directly into the Supabase database, including user details, but it doesn’t go through the actual authentication process. As a result, those users exist in the database but don’t have valid authentication credentials in Supabase Auth.
+</p> 
+</details>
