@@ -12,26 +12,13 @@ keywords: [Supabase, Integration, Dreamflow, Backend]
 
 Dreamflow makes it easy to integrate [Supabase](https://supabase.com/) into your app with a guided, step-by-step setup. This process connects your project to Supabase, sets up a database, generates client code, and deploys schemas, all without manual setup.
 
-## 1. Connection and Project Setup
+## 1. Connection
 
-The first step is to connect Dreamflow with your Supabase account and set up a project.
+The first step is to connect Dreamflow with your Supabase account so it can create new Supabase projects or link to existing ones.
 
-To begin, open the **Supabase** tab in Dreamflow and click **Connect to Supabase**. A Supabase authentication window will appear where you can sign in and review the requested permissions. Next, select an organization and click **Authorize Dreamflow**. These permissions allow Dreamflow to create and manage projects, configure database schemas, and generate API keys on your behalf. 
+To begin, open the **Supabase** module in Dreamflow and click **Connect to Supabase**. A Supabase authentication window will appear where you can sign in and review the requested permissions. Next, select an organization and click **Authorize Dreamflow**. These permissions allow Dreamflow to create and manage projects, configure database schemas, and generate API keys on your behalf. 
 
-After connecting, Dreamflow automatically creates a new Supabase project and links it to your app. This sets up the backend infrastructure and database for your project. Specifically:
-
-- A new project is provisioned in Supabase with a **Project Name**, **Project ID**, **API URL**, and **Anon Key**.
-- Dreamflow initializes the database, ensuring you have a ready-to-use backend.
-- These details are securely linked back to your Dreamflow project so you can start building right away.
-
-This setup may take a few minutes while Dreamflow provisions the resources and configures your database.
-
-:::info
-
-You can quickly jump into your Supabase dashboard using the **Open in Supabase** button.
-
-:::
-
+Once complete, Dreamflow will confirm the connection with a **Connected** status.
 
 <div style={{
     position: 'relative',
@@ -59,8 +46,33 @@ You can quickly jump into your Supabase dashboard using the **Open in Supabase**
 </div>
 <p></p>
 
+## 2. Project Setup
 
-## 2. Generate Client Code
+After connecting your Supabase account, the next step is to set up a Supabase project, which will serve as the backend for your app. You can do this in two ways:
+
+- **Select an existing Supabase project:** Choose from the list of your existing Supabase projects.
+
+![select-from-existing-supabase-project.avif](imgs/select-from-existing-supabase-project.avif)
+
+- **Create a new Supabase project:** Let Dreamflow automatically create and configure a new Supabase project for you.
+
+![create-new-supabase-project.avif](imgs/create-new-supabase-project.avif)
+
+**During new project creation:**
+
+- Dreamflow provisions a new project in Supabase, generating a **Project Name**, **Project ID**, **API URL**, and **Anon Key**.
+- The database is automatically initialized, giving you a fully configured backend environment.
+- All credentials are securely linked to your Dreamflow project, allowing you to start building immediately.
+
+This setup may take a few minutes while Dreamflow provisions the resources and configures your database.
+
+:::info
+
+You can quickly jump into your Supabase dashboard using the **Open in Supabase** button.
+
+:::
+
+## 3. Generate Client Code
 
 Once the project setup is complete, click **Generate Client Code** to let Dreamflow automatically create ready-to-use Supabase integration code tailored to your app. This step eliminates most of the manual setup by wiring your app directly to Supabase with authentication, data models, and database operations.
 
@@ -92,19 +104,101 @@ When you trigger code generation, Dreamflow performs several background steps, i
 
 By the end of this step, your app will be fully integrated with Supabase, ready to authenticate users, persist data securely, and sync changes in real time with proper RLS policies in place.
 
-## 3. Schema Deployment
+## 4. Schema Deployment
 
-The final step is to deploy your database schema changes to Supabase. To do so, just click **Deploy Schema Changes**. During this process:
+The final step is to deploy your database schema changes to Supabase. You’ll see a list of generated **Migration Files** under the **Schema Deployment** menu (in the left side panel). Follow these steps to apply them in the correct order:
 
-- Dreamflow applies your generated schema, including tables, relationships, constraints, and security policies, directly to your Supabase project.
-- As part of deployment, Dreamflow can run migrations and update your live database structure. You can review `pending_migrations.sql` beforehand to see exactly what changes will be applied.
+1. **Deploy Tables:** Select the table migration file (i.e., `lib/supabase/supabase_tables.sql`) and click **Deploy Schema Changes**. This will create all the required database tables, along with their defined columns, relationships, and constraints, as specified in your generated schema.
+2. **Deploy Policies:** Once the tables are successfully created, select the policy migration file (i.e., `lib/supabase/supabase_policies.sql`) and click **Deploy Schema Changes**. This will enable **Row Level Security (RLS)** on your tables and apply access control policies that restrict data operations to authenticated users. For example, users will only be able to view, insert, update, or delete their own records in the `users` and other tables, ensuring that each user can access only their personal data within the app.
 
-Once deployed, your Supabase backend is live. Users can sign up, authenticate, and their data will automatically sync to the cloud with Row Level Security (RLS) and policies enforced to protect privacy.
+:::info
 
-:::warning
-
-Schema deployment is an ongoing process. Any time you modify tables, relationships, or security rules in Dreamflow, you’ll need to redeploy to keep your Supabase project up to date.
+After the initial setup, any new updates or modifications you make will be added to the `pending_migrations.sql` file. You only need to deploy these new migrations; previously deployed tables and policies do not need to be redeployed.
 
 :::
 
-![deploy-schema-changes.avif](imgs/deploy-schema-changes.avif)
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/99SOvWJi7ICY3REWYU3d?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+## Add Sample Data to Supabase
+
+Dreamflow lets you add sample data to your Supabase project for easier development and testing. The generated data follows your app’s schema, allowing you to quickly verify how your app behaves with populated tables.
+
+
+To add sample data from Dreamflow, go to the **Supabase > Sample Data**, and follow the instructions below:
+
+- **For Apps with Login Functionality:** First, sign up in your app using an email and password. After logging in, enter the same email address in the **User Email** field and click **Create Sample Data**. This will generate sample records linked to that user account.
+
+    ![add-sample-data-supabase-with-login.avif](imgs/add-sample-data-supabase-with-login.avif)
+
+- **For Apps without Login Functionality:** You can skip the email step, as it’s optional. Simply click **Create Sample Data** to generate test records directly in your Supabase database.
+
+    ![add-sample-data-supabase-wihtout-login.avif](imgs/add-sample-data-supabase-wihtout-login.avif)
+
+:::warning
+
+You can only generate sample data **once** per project. If you need to modify or remove the sample data later, you can do so directly from the **Supabase** **Table Editor**.
+
+:::
+
+## FAQs
+
+<details>
+<summary>
+Why can’t I sign up with Supabase Authentication? 
+</summary>
+
+<p>
+If you are unable to sign up in the generated Supabase authentication code, it’s likely due to **Supabase authentication settings**. By default, Supabase requires **email confirmation** for new accounts. This means that sign-ups using invalid or dummy email addresses will fail.
+
+To fix this, use a valid email address during sign-up so you can receive and confirm the verification email.
+</p> 
+</details>
+
+
+
+<details>
+<summary>
+Are Supabase Edge Functions supported in Dreamflow? 
+</summary>
+
+<p>
+Currently, **Edge Functions are not supported in Dreamflow**. If you need to create or manage Edge Functions, you’ll have to do so directly from the **Supabase Console**.
+</p> 
+</details>
+
+<details>
+<summary>
+Why can’t I log in with the email I used to generate sample data? 
+</summary>
+
+<p>
+If you generated sample data before adding authentication to your app, logging in with that same email will fail — and this is expected behavior.
+
+When sample data is created, it inserts records directly into the Supabase database, including user details, but it doesn’t go through the actual authentication process. As a result, those users exist in the database but don’t have valid authentication credentials in Supabase Auth.
+</p> 
+</details>
