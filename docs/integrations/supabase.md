@@ -200,5 +200,7 @@ Why can’t I log in with the email I used to generate sample data?
 If you generated sample data before adding authentication to your app, logging in with that same email will fail — and this is expected behavior.
 
 When sample data is created, it inserts records directly into the Supabase database, including user details, but it doesn’t go through the actual authentication process. As a result, those users exist in the database but don’t have valid authentication credentials in Supabase Auth.
+
+To fix it, you can delete the dummy user record from the Auth table and then sign up again in your app with that email.
 </p> 
 </details>
