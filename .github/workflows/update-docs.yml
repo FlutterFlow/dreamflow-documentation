@@ -2,7 +2,7 @@ name: Update Documentation
 
 on:
   push:
-    branches: [ main ]
+    branches: [ anusha/pinecone-github-action ]
 
 jobs:
   update-docs:
