@@ -4,7 +4,7 @@ title: Firebase
 description: Learn how to connect your Dreamflow app with Firebase to enable powerful backend features such as authentication, real-time databases, analytics, and more.
 tags: [Firebase, Integration, Dreamflow, Backend]
 sidebar_position: 1
-toc_max_heading_level: 4
+toc_max_heading_level: 3
 keywords: [Firebase, Integration, Dreamflow, Backend]
 ---
 
@@ -245,6 +245,97 @@ Here’s an example of enabling email/password authentication:
     </iframe>
 </div>
 <p></p>
+
+### Google Authentication
+
+To configure Google Sign-In for your app, follow these steps:
+
+#### 1. Enable Google Authentication in Firebase Console
+
+In the **Firebase Console**, go to **Authentication > Sign-in method**, select **Google**, and enable it. Click **Save** to confirm.
+
+#### 2. Add SHA-1 Key for Android
+
+For Android apps, generate your SHA-1 key by following the instructions in the [Google Developer Guide](https://developers.google.com/android/guides/client-auth). Then, open the **Firebase Console > Project Settings**, scroll to **Your Apps** section, select your Android app, and under **SHA certificate fingerprints**, click **Add fingerprint**. Paste the SHA-1 key and click **Save**.
+
+![add-sha-1-key.avif](imgs/add-sha-1-key.avif)
+
+#### 3. Update Firebase Configuration Files
+
+After enabling Google Authentication, download the latest Firebase configuration files, i.e., `google-services.json` for Android and `GoogleService-Info.plist` for iOS, from the Firebase Console, and then upload these files to your Dreamflow app at the following location:
+
+- Place the `google-services.json` file inside your project at `android/app/`.
+- Place the `GoogleService-Info.plist` file inside `ios/Runner/`.
+
+![update-firebase-configuration-file.avif](imgs/update-firebase-configuration-file.avif)
+
+#### 4. Add Google Authentication Code
+
+You can add the Google sign-in code manually or let the Dreamflow Agent generate it for you. Here’s the **sample agent prompt** you can try:
+
+```jsx
+Generate Google Sign-In authentication code for both mobile and web using the latest versions of firebase_auth and google_sign_in Dart packages.
+```
+#### 5. Add Authorized Domain
+
+If you’re building for the web and want to test authentication while running your app in Dreamflow, follow the steps in the [Add Authorized Domain](#add-authorized-domain) section to add your Dreamflow preview domain to the Authorized Domains list in the Firebase Console.
+
+### Facebook Authentication
+
+To enable Facebook login in your app, follow the steps below:
+
+#### 1. Set Up a Facebook Developer App
+
+Before getting started, create and configure your [**Facebook Developer App**](https://developers.facebook.com/apps/). During setup, enable the **Facebook Login** product and complete the basic configuration.
+
+#### 2. Enable Facebook Authentication in Firebase Console
+
+1. In the **Firebase Console**, go to **Authentication > Sign-in method**. Select **Facebook** and enable it.
+2. You’ll be prompted to enter your **App ID** and **App Secret**, which you can find in your Facebook Developer App Dashboard under **App** **Settings > Basic**.
+
+    ![add-app-details.avif](imgs/add-app-details.avif)
+
+3. Copy the **OAuth Redirect URI** displayed in Firebase and add it to your Facebook app settings under **Facebook Login > Settings > Valid OAuth Redirect URIs**.
+
+    ![add-facebook-uri.avif](imgs/add-facebook-uri.avif)
+
+4. Click **Save** in Firebase once everything is configured.
+
+#### 3. Add Facebook Authentication Code
+
+You can add the Facebook sign-in code manually or let the Dreamflow Agent generate it for you. Here’s the **sample agent prompt** you can try:
+
+```jsx
+Generate Facebook authentication code for both mobile and web using the latest versions of firebase_auth and flutter_facebook_auth Dart packages.
+```
+
+#### 4. Configure Platform-Specific Code
+
+Once the authentication code is added, you’ll need to configure your project for **Android** and **iOS** to ensure the Facebook sign-in works properly.
+
+- **For Android:** Follow the setup guide in the [Facebook Android configuration documentation](https://facebook.meedu.app/docs/7.x.x/android).
+- **For iOS:** Refer to the [Facebook iOS configuration guide](https://facebook.meedu.app/docs/7.x.x/ios).
+
+#### 5. Add Authorized Domain
+
+If you’re building for the web and want to test authentication while running your app in Dreamflow, follow the steps in the [Add Authorized Domain](#add-authorized-domain) section to add your Dreamflow preview domain to the **Authorized Domains** list in the Firebase Console.
+
+### Add Authorized Domain
+
+If you’re building for the web and want to test authentication while running your app in Dreamflow, you must add your Dreamflow preview domain to the **Authorized Domains** list in the Firebase Console.
+
+To add authorized domain:
+
+1. Open **Developer Tools** in your browser; press **`Ctrl + Shift + J`** (Windows/Linux) or **`Cmd + Option + J`** (Mac) to open it directly in **Google Chrome**.
+2. In the **Console** tab, press **Ctrl + F** (or **Cmd + F** on Mac) and search for `dreamflow.cloud`.
+Locate the log entry that contains a URL like: `wss://summer-firefly-vuh34ynj.mum0.dreamflow.cloud`
+3. Copy the domain part — for example: `summer-firefly-vuh34ynj.mum0.dreamflow.cloud`
+4. Go to the **Firebase Console** → **Authentication** → **Settings** → **Authorized Domains**. Click **Add Domain**, paste the copied Dreamflow domain, and click **Save**.
+5. Reload and test your app.
+
+![add-authorized-domain](imgs/add-authorized-domain.avif)
+
+
 
 ## Add Sample Data to Firebase
 
