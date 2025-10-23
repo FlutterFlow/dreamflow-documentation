@@ -1,1 +1,2 @@
-pinecone
+openai
+google-cloud-firestore

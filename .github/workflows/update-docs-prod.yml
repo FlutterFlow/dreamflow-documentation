@@ -1,0 +1,51 @@
+name: Deploy to Prod Firestore
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Deploy to Prod Firestore
+      env:
+        FIRESTORE_PROJECT_ID: ${{ secrets.PROD_FIRESTORE_PROJECT_ID }}
+        FIRESTORE_CREDENTIALS_JSON: ${{ secrets.PROD_FIRESTORE_CREDENTIALS_JSON }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        python update_docs.py --mode full
+        
+    - name: Verify deployment
+      env:
+        FIRESTORE_PROJECT_ID: ${{ secrets.PROD_FIRESTORE_PROJECT_ID }}
+        FIRESTORE_CREDENTIALS_JSON: ${{ secrets.PROD_FIRESTORE_CREDENTIALS_JSON }}
+      run: |
+        python -c "
+        from google.cloud import firestore
+        from google.oauth2 import service_account
+        import json
+        
+        credentials_info = json.loads('$FIRESTORE_CREDENTIALS_JSON')
+        credentials = service_account.Credentials.from_service_account_info(credentials_info)
+        db = firestore.Client(project='$FIRESTORE_PROJECT_ID', credentials=credentials)
+        
+        docs = db.collection('knowledge_base').stream()
+        count = sum(1 for _ in docs)
+        print(f'✅ Prod Firestore contains {count} documents')
+        "

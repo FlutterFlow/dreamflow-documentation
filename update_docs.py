@@ -1,22 +1,14 @@
 #!/usr/bin/env python3
-"""
-Enhanced script for incremental documentation updates to Pinecone.
-
-This script supports:
-1. Incremental updates (only changed files)
-2. Full refresh (delete all and regenerate)
-3. File change detection
-4. Selective file processing
-"""
-
 import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
-from pathlib import Path
 from typing import Dict, List, Tuple, Optional
+import openai
+from google.cloud import firestore
+from google.oauth2 import service_account
 
 # Configuration Constants
 class Config:
@@ -29,31 +21,18 @@ class Config:
     DELETE_BATCH_SIZE = 100
     BASE_URL = "https://docs.dreamflow.com"
     
-    # Pinecone Configuration (must be set via environment variables)
-    PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-    PINECONE_INDEX_HOST = os.getenv("PINECONE_INDEX_HOST")
-
-# Utility Functions
-def install_dependencies() -> None:
-    """Install required Python packages."""
-    print("📦 Installing required dependencies...")
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "pinecone"])
-        print("✅ Dependencies installed successfully")
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Error installing dependencies: {e}")
-        sys.exit(1)
+    # Firestore Configuration (must be set via environment variables)
+    FIRESTORE_PROJECT_ID = os.getenv("FIRESTORE_PROJECT_ID")
+    FIRESTORE_COLLECTION = "knowledge_base"
+    FIRESTORE_CREDENTIALS_JSON = os.getenv("FIRESTORE_CREDENTIALS_JSON")
+    
+    # OpenAI Configuration
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    OPENAI_EMBEDDING_MODEL = "text-embedding-3-small"
 
 
 def get_file_hash(file_path: str) -> Optional[str]:
-    """Get MD5 hash of file content for change detection.
-    
-    Args:
-        file_path: Path to the file to hash
-        
-    Returns:
-        MD5 hash as hex string, or None if file cannot be read
-    """
+    """Get MD5 hash of file content for change detection."""
     try:
         with open(file_path, 'rb') as f:
             return hashlib.md5(f.read()).hexdigest()
@@ -62,11 +41,7 @@ def get_file_hash(file_path: str) -> Optional[str]:
 
 
 def load_file_state() -> Dict[str, Dict[str, str]]:
-    """Load previous file states for change detection.
-    
-    Returns:
-        Dictionary mapping file paths to their state information
-    """
+    """Load previous file states for change detection."""
     if os.path.exists(Config.STATE_FILE):
         try:
             with open(Config.STATE_FILE, 'r') as f:
@@ -77,21 +52,12 @@ def load_file_state() -> Dict[str, Dict[str, str]]:
 
 
 def save_file_state(state: Dict[str, Dict[str, str]]) -> None:
-    """Save current file states.
-    
-    Args:
-        state: Dictionary of file states to save
-    """
+    """Save current file states."""
     with open(Config.STATE_FILE, 'w') as f:
         json.dump(state, f, indent=2)
 
-# File Change Detection
 def get_changed_files() -> Tuple[List[str], List[str], Dict[str, str]]:
-    """Detect which files have changed since last run.
-    
-    Returns:
-        Tuple of (changed_files, deleted_files, current_hashes)
-    """
+    """Detect which files have changed since last run."""
     print("🔍 Detecting changed files...")
     
     previous_state = load_file_state()
@@ -140,39 +106,22 @@ def _find_deleted_files(previous_state: Dict[str, Dict[str, str]]) -> List[str]:
             print(f"  🗑️ Deleted: {rel_path}")
     return deleted_files
 
-# Markdown Processing
 def clean_markdown_content(md_text: str) -> str:
-    """Remove HTML content and images from markdown text.
-    
-    Args:
-        md_text: Raw markdown text
-        
-    Returns:
-        Cleaned markdown text
-    """
-    # Remove HTML tags
+    """Remove HTML content and images from markdown text."""
+    # Remove HTML tags and images
     md_text = re.sub(r'<[^>]+>', '', md_text)
+    md_text = re.sub(r'!\[.*?\]\(.*?\)', '', md_text)
+    md_text = re.sub(r'<img[^>]*>', '', md_text)
     
-    # Remove image references (both markdown and HTML formats)
-    md_text = re.sub(r'!\[.*?\]\(.*?\)', '', md_text)  # ![alt](url)
-    md_text = re.sub(r'<img[^>]*>', '', md_text)  # <img> tags
-    
-    # Remove HTML entities and clean up whitespace
+    # Clean up HTML entities and whitespace
     md_text = re.sub(r'&[^;]+;', '', md_text)
-    md_text = re.sub(r'\n\s*\n\s*\n', '\n\n', md_text)  # Clean up multiple newlines
+    md_text = re.sub(r'\n\s*\n\s*\n', '\n\n', md_text)
     
     return md_text.strip()
 
 
 def split_by_headers(md_text: str) -> List[Dict[str, str]]:
-    """Split markdown text by headers to create navigatable chunks.
-    
-    Args:
-        md_text: Markdown text to split
-        
-    Returns:
-        List of chunks with header and content
-    """
+    """Split markdown text by headers to create navigatable chunks."""
     md_text = clean_markdown_content(md_text)
     header_pattern = r'^(#{2,6})\s+(.+)$'
     lines = md_text.split('\n')
@@ -221,17 +170,7 @@ def split_by_headers(md_text: str) -> List[Dict[str, str]]:
     return chunks
 
 def generate_url_for_chunk(source_file: str, header: str, md_content: str = "") -> str:
-    """Generate a URL for a specific chunk based on file path and header.
-    
-    Args:
-        source_file: Relative path to the source file
-        header: Header text for the chunk
-        md_content: Markdown content to extract slug from frontmatter
-        
-    Returns:
-        Full URL for the chunk
-    """
-    # Try to extract slug from frontmatter
+    """Generate a URL for a specific chunk based on file path and header."""
     url_path = _extract_slug_from_frontmatter(md_content)
     
     # Fallback to file path if no slug found
@@ -250,14 +189,7 @@ def generate_url_for_chunk(source_file: str, header: str, md_content: str = "") 
 
 
 def _extract_slug_from_frontmatter(md_content: str) -> str:
-    """Extract slug from markdown frontmatter.
-    
-    Args:
-        md_content: Markdown content with frontmatter
-        
-    Returns:
-        Slug path or empty string if not found
-    """
+    """Extract slug from markdown frontmatter."""
     if not md_content:
         return ""
     
@@ -270,14 +202,7 @@ def _extract_slug_from_frontmatter(md_content: str) -> str:
 
 
 def process_specific_files(file_paths: List[str]) -> List[Dict[str, any]]:
-    """Process only specific files and return records for Pinecone.
-    
-    Args:
-        file_paths: List of file paths to process
-        
-    Returns:
-        List of records ready for Pinecone upload
-    """
+    """Process only specific files and return records for Firestore."""
     print(f"📄 Processing {len(file_paths)} specific files...")
     
     all_records = []
@@ -320,106 +245,122 @@ def _generate_chunk_id(file_path: str, header: str, index: int) -> str:
     header_slug = header.lower().replace(' ', '-')
     return f"{filename}-{header_slug}-{index}"
 
-# Pinecone Operations
-def _get_pinecone_index():
-    """Get initialized Pinecone index."""
-    # Validate environment variables
-    if not Config.PINECONE_API_KEY:
-        print("❌ PINECONE_API_KEY environment variable is not set")
-        sys.exit(1)
-    if not Config.PINECONE_INDEX_HOST:
-        print("❌ PINECONE_INDEX_HOST environment variable is not set")
+
+def get_openai_embedding(text: str) -> List[float]:
+    """Get OpenAI embedding for text."""
+    if not Config.OPENAI_API_KEY:
+        print("❌ OPENAI_API_KEY environment variable is not set")
         sys.exit(1)
     
     try:
-        from pinecone import Pinecone
-        pc = Pinecone(api_key=Config.PINECONE_API_KEY)
-        return pc.Index(host=Config.PINECONE_INDEX_HOST)
-    except ImportError:
-        print("❌ Pinecone client not installed. Please run: pip install pinecone")
+        client = openai.OpenAI(api_key=Config.OPENAI_API_KEY)
+        response = client.embeddings.create(
+            model=Config.OPENAI_EMBEDDING_MODEL,
+            input=text
+        )
+        return response.data[0].embedding
+    except Exception as e:
+        print(f"❌ Error getting OpenAI embedding: {e}")
         sys.exit(1)
 
 
-def delete_records_from_pinecone(source_files: List[str]) -> None:
-    """Delete records from Pinecone for specific source files.
-    
-    Args:
-        source_files: List of source file paths to delete records for
-    """
-    print("🗑️ Deleting records from Pinecone...")
+def get_firestore_client():
+    """Get initialized Firestore client."""
+    if not Config.FIRESTORE_PROJECT_ID:
+        print("❌ FIRESTORE_PROJECT_ID environment variable is not set")
+        sys.exit(1)
     
     try:
-        index = _get_pinecone_index()
+        if Config.FIRESTORE_CREDENTIALS_JSON:
+            # Check if it's a file path or JSON string
+            if os.path.exists(Config.FIRESTORE_CREDENTIALS_JSON):
+                credentials = service_account.Credentials.from_service_account_file(Config.FIRESTORE_CREDENTIALS_JSON)
+            else:
+                credentials_info = json.loads(Config.FIRESTORE_CREDENTIALS_JSON)
+                credentials = service_account.Credentials.from_service_account_info(credentials_info)
+            
+            return firestore.Client(project=Config.FIRESTORE_PROJECT_ID, credentials=credentials)
+        else:
+            # Use default credentials (for local development or when running in GCP)
+            return firestore.Client(project=Config.FIRESTORE_PROJECT_ID)
+    except json.JSONDecodeError as e:
+        print(f"❌ Invalid JSON in FIRESTORE_CREDENTIALS_JSON: {e}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"❌ Error initializing Firestore client: {e}")
+        sys.exit(1)
+
+def delete_records_from_firestore(source_files: List[str]) -> None:
+    """Delete records from Firestore for specific source files."""
+    print("🗑️ Deleting records from knowledge_base collection...")
+    
+    try:
+        db = get_firestore_client()
+        collection_ref = db.collection(Config.FIRESTORE_COLLECTION)
         
         for source_file in source_files:
-            # Query to find records with this source file
-            query_response = index.query(
-                vector=[0] * 1024,  # Dummy vector for metadata filtering (matches index dimension)
-                top_k=10000,  # Large number to get all matches
-                include_metadata=True,
-                filter={"source_file": source_file}
-            )
+            query = collection_ref.where("source_file", "==", source_file)
+            docs = query.stream()
             
-            if query_response.matches:
-                ids_to_delete = [match.id for match in query_response.matches]
-                print(f"  🗑️ Deleting {len(ids_to_delete)} records for {source_file}")
+            docs_to_delete = [doc.id for doc in docs]
+            
+            if docs_to_delete:
+                print(f"  🗑️ Deleting {len(docs_to_delete)} records for {source_file}")
                 
-                # Delete in batches
-                for i in range(0, len(ids_to_delete), Config.DELETE_BATCH_SIZE):
-                    batch_ids = ids_to_delete[i:i+Config.DELETE_BATCH_SIZE]
-                    index.delete(ids=batch_ids)
+                for i in range(0, len(docs_to_delete), Config.DELETE_BATCH_SIZE):
+                    batch = db.batch()
+                    batch_ids = docs_to_delete[i:i+Config.DELETE_BATCH_SIZE]
+                    for doc_id in batch_ids:
+                        batch.delete(collection_ref.document(doc_id))
+                    batch.commit()
         
         print("✅ Deletion completed")
         
     except Exception as e:
-        print(f"❌ Error deleting from Pinecone: {e}")
+        print(f"❌ Error deleting from Firestore: {e}")
 
 
-def upload_to_pinecone(chunks: List[Dict[str, any]]) -> None:
-    """Upload processed chunks to Pinecone.
-    
-    Args:
-        chunks: List of chunk records to upload
-    """
-    print("🌲 Uploading to Pinecone...")
+def upload_to_firestore(chunks: List[Dict[str, any]]) -> None:
+    """Upload processed chunks to Firestore."""
+    print("🔥 Uploading to knowledge_base collection...")
     
     try:
-        index = _get_pinecone_index()
+        db = get_firestore_client()
+        collection_ref = db.collection(Config.FIRESTORE_COLLECTION)
         
-        # Convert chunks to Pinecone format
-        records = _convert_chunks_to_pinecone_records(chunks)
-        
-        # Upload in batches
         total_uploaded = 0
-        for i in range(0, len(records), Config.BATCH_SIZE):
-            batch = records[i:i+Config.BATCH_SIZE]
-            index.upsert_records("__default__", batch)
-            total_uploaded += len(batch)
-            print(f"  📤 Uploaded batch {i//Config.BATCH_SIZE + 1}/{(len(records)-1)//Config.BATCH_SIZE + 1} ({total_uploaded}/{len(records)} records)")
+        for i in range(0, len(chunks), Config.BATCH_SIZE):
+            batch = db.batch()
+            batch_chunks = chunks[i:i+Config.BATCH_SIZE]
+            
+            for chunk in batch_chunks:
+                embedding = get_openai_embedding(chunk["text"])
+                
+                doc_data = {
+                    "id": chunk["id"],
+                    "text": chunk["text"],
+                    "embedding": embedding,
+                    "chunk_index": chunk["metadata"]["chunk_index"],
+                    "source_file": chunk["metadata"]["source_file"],
+                    "header": chunk["metadata"]["header"],
+                    "docs_url": chunk["metadata"]["docs_url"],
+                    "category": chunk["metadata"]["category"],
+                    "created_at": firestore.SERVER_TIMESTAMP
+                }
+                
+                doc_ref = collection_ref.document(chunk["id"])
+                batch.set(doc_ref, doc_data)
+            
+            batch.commit()
+            total_uploaded += len(batch_chunks)
+            print(f"  📤 Uploaded batch {i//Config.BATCH_SIZE + 1}/{(len(chunks)-1)//Config.BATCH_SIZE + 1} ({total_uploaded}/{len(chunks)} records)")
 
-        print(f"✅ Successfully uploaded {len(records)} records to Pinecone")
+        print(f"✅ Successfully uploaded {len(chunks)} records to Firestore")
         
     except Exception as e:
-        print(f"❌ Error uploading to Pinecone: {e}")
+        print(f"❌ Error uploading to Firestore: {e}")
         sys.exit(1)
 
-
-def _convert_chunks_to_pinecone_records(chunks: List[Dict[str, any]]) -> List[Dict[str, any]]:
-    """Convert chunk records to Pinecone format."""
-    records = []
-    for chunk in chunks:
-        record = {
-            "_id": chunk["id"],
-            "text": chunk["text"],  # Pinecone will embed this
-            "chunk_index": chunk["metadata"]["chunk_index"],
-            "source_file": chunk["metadata"]["source_file"],
-            "header": chunk["metadata"]["header"],
-            "docs_url": chunk["metadata"]["docs_url"]
-        }
-        records.append(record)
-    return records
-
-# Main Update Functions
 def incremental_update() -> None:
     """Perform incremental update - only process changed files."""
     print("🔄 Starting incremental update...")
@@ -430,46 +371,54 @@ def incremental_update() -> None:
         print("✅ No changes detected. Index is up to date!")
         return
     
-    # Delete records for deleted files AND changed files
     files_to_clean = deleted_files + [os.path.relpath(f, Config.REPO_FOLDER) for f in changed_files]
     if files_to_clean:
-        delete_records_from_pinecone(files_to_clean)
+        delete_records_from_firestore(files_to_clean)
     
-    # Process changed files
     if changed_files:
         chunks = process_specific_files(changed_files)
-        #_save_chunks_to_json(chunks)
-        upload_to_pinecone(chunks)
-        
+        upload_to_firestore(chunks)
     
-    # Save state only after successful processing
     state_to_save = {rel_path: {'hash': hash_value} for rel_path, hash_value in current_hashes.items()}
     save_file_state(state_to_save)
     
     print("✅ Incremental update completed!")
 
 
+def save_to_json(chunks: List[Dict[str, any]]) -> None:
+    """Save processed chunks to JSON file for inspection."""
+    try:
+        with open(Config.OUTPUT_FILE, 'w', encoding='utf-8') as f:
+            json.dump(chunks, f, indent=2, ensure_ascii=False)
+        print(f"📄 Saved {len(chunks)} chunks to {Config.OUTPUT_FILE}")
+    except Exception as e:
+        print(f"⚠️ Error saving chunks to JSON: {e}")
+
 def full_refresh() -> None:
     """Perform full refresh - delete all and regenerate."""
     print("🔄 Starting full refresh...")
     
     try:
-        index = _get_pinecone_index()
+        db = get_firestore_client()
+        collection_ref = db.collection(Config.FIRESTORE_COLLECTION)
         
-        # Delete all records
-        print("🗑️ Deleting all existing records...")
-        index.delete(delete_all=True)
+        print("🗑️ Deleting all existing records from knowledge_base collection...")
+        docs = collection_ref.stream()
+        docs_to_delete = [doc.id for doc in docs]
         
-        # Process all files
-        print("📄 Processing all files...")
+        if docs_to_delete:
+            for i in range(0, len(docs_to_delete), Config.DELETE_BATCH_SIZE):
+                batch = db.batch()
+                batch_ids = docs_to_delete[i:i+Config.DELETE_BATCH_SIZE]
+                for doc_id in batch_ids:
+                    batch.delete(collection_ref.document(doc_id))
+                batch.commit()
+        
         all_files = _get_all_markdown_files()
         
         chunks = process_specific_files(all_files)
-        #_save_chunks_to_json(chunks)
-        upload_to_pinecone(chunks)
-    
+        upload_to_firestore(chunks)
         
-        # Save current file hashes for future incremental updates
         current_hashes = {}
         for file_path in all_files:
             rel_path = os.path.relpath(file_path, Config.REPO_FOLDER)
@@ -495,33 +444,18 @@ def _get_all_markdown_files() -> List[str]:
                 all_files.append(os.path.join(root, filename))
     return all_files
 
-# Only used for debugging
-def _save_chunks_to_json(chunks: List[Dict[str, any]]) -> None:
-    """Save processed chunks to JSON file for inspection.
-    
-    Args:
-        chunks: List of chunk records to save
-    """
-    try:
-        with open(Config.OUTPUT_FILE, 'w', encoding='utf-8') as f:
-            json.dump(chunks, f, indent=2, ensure_ascii=False)
-        print(f"📄 Saved {len(chunks)} chunks to {Config.OUTPUT_FILE}")
-    except Exception as e:
-        print(f"⚠️ Error saving chunks to JSON: {e}")
 
-# Main Entry Point
 def main() -> None:
     """Main function with command line options."""
     import argparse
     
     parser = argparse.ArgumentParser(
-        description='Update Dreamflow documentation in Pinecone',
+        description='Update Dreamflow documentation in Firestore',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   python update_docs.py                    # Incremental update (default)
   python update_docs.py --mode full        # Full refresh
-  python update_docs.py --install-deps     # Install dependencies first
         """
     )
     
@@ -531,19 +465,11 @@ Examples:
         default='incremental',
         help='Update mode: incremental (default) or full refresh'
     )
-    parser.add_argument(
-        '--install-deps', 
-        action='store_true',
-        help='Install dependencies before running'
-    )
     
     args = parser.parse_args()
     
     print("🚀 Starting Dreamflow Documentation Update")
     print("=" * 50)
-    
-    if args.install_deps:
-        install_dependencies()
     
     try:
         if args.mode == 'incremental':

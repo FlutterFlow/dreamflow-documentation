@@ -1,11 +1,11 @@
-name: Update Documentation
+name: Deploy to Dev Firestore
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main]
 
 jobs:
-  update-docs:
+  deploy-dev:
     runs-on: ubuntu-latest
     
     steps:
@@ -22,9 +22,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Run incremental documentation update
-      run: |
-        python update_docs.py --mode incremental
+    - name: Deploy to Dev Firestore
       env:
-        PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
-        PINECONE_INDEX_HOST: ${{ secrets.PINECONE_INDEX_HOST }}
+        FIRESTORE_PROJECT_ID: ${{ secrets.DEV_FIRESTORE_PROJECT_ID }}
+        FIRESTORE_CREDENTIALS_JSON: ${{ secrets.DEV_FIRESTORE_CREDENTIALS_JSON }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        python update_docs.py --mode full
+      
