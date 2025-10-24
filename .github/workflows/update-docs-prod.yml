@@ -3,7 +3,6 @@ name: Deploy to Prod Firestore
 on:
   push:
     branches: [ main ]
-    tags: [ 'v*' ]
 
 jobs:
   deploy-prod:
