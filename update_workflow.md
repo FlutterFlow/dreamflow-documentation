@@ -157,7 +157,7 @@ The repository includes automated deployment workflows:
   - `OPENAI_API_KEY`
 
 ### Prod Deployment
-- **Trigger**: Push to `main` branch or tag creation
+- **Trigger**: Push to `main` branch
 - **Workflow**: `.github/workflows/update-docs-prod.yml`
 - **Environment**: Prod Firestore project
 - **Secrets Required**:
