@@ -18,7 +18,7 @@ class Config:
     STATE_FILE = "docs_state.json"
     MAX_CHUNK_SIZE = 500
     BATCH_SIZE = 50
-    DELETE_BATCH_SIZE = 100
+    DELETE_BATCH_SIZE = 20
     BASE_URL = "https://docs.dreamflow.com"
     
     # Firestore Configuration (must be set via environment variables)
@@ -339,7 +339,7 @@ def upload_to_firestore(chunks: List[Dict[str, any]]) -> None:
                 doc_data = {
                     "id": chunk["id"],
                     "text": chunk["text"],
-                    "embedding": embedding,
+                    "embedding": Vector(embedding),
                     "chunk_index": chunk["metadata"]["chunk_index"],
                     "source_file": chunk["metadata"]["source_file"],
                     "header": chunk["metadata"]["header"],
@@ -407,12 +407,14 @@ def full_refresh() -> None:
         docs_to_delete = [doc.id for doc in docs]
         
         if docs_to_delete:
+            print(f"🗑️ Deleting {len(docs_to_delete)} existing records...")
             for i in range(0, len(docs_to_delete), Config.DELETE_BATCH_SIZE):
                 batch = db.batch()
                 batch_ids = docs_to_delete[i:i+Config.DELETE_BATCH_SIZE]
                 for doc_id in batch_ids:
                     batch.delete(collection_ref.document(doc_id))
                 batch.commit()
+                print(f"  📤 Deleted batch {i//Config.DELETE_BATCH_SIZE + 1}/{(len(docs_to_delete)-1)//Config.DELETE_BATCH_SIZE + 1}")
         
         all_files = _get_all_markdown_files()
         
