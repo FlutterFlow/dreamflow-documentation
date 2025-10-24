@@ -2,7 +2,7 @@ name: Deploy to Dev Firestore
 
 on:
   push:
-    branches: [ main]
+    branches: [ anusha/pinecone-github-action ]
 
 jobs:
   deploy-dev:
@@ -28,5 +28,5 @@ jobs:
         FIRESTORE_CREDENTIALS_JSON: ${{ secrets.DEV_FIRESTORE_CREDENTIALS_JSON }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        python update_docs.py --mode full
+        python update_docs.py --mode incremental
       

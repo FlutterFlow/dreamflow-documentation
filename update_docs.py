@@ -14,7 +14,6 @@ from google.oauth2 import service_account
 class Config:
     """Configuration constants for the documentation updater."""
     REPO_FOLDER = "./docs"
-    OUTPUT_FILE = "documentation_rag_chunks.json"
     STATE_FILE = "docs_state.json"
     MAX_CHUNK_SIZE = 500
     BATCH_SIZE = 50
@@ -55,6 +54,7 @@ def save_file_state(state: Dict[str, Dict[str, str]]) -> None:
     """Save current file states."""
     with open(Config.STATE_FILE, 'w') as f:
         json.dump(state, f, indent=2)
+        
 
 def get_changed_files() -> Tuple[List[str], List[str], Dict[str, str]]:
     """Detect which files have changed since last run."""
@@ -384,15 +384,6 @@ def incremental_update() -> None:
     
     print("✅ Incremental update completed!")
 
-
-def save_to_json(chunks: List[Dict[str, any]]) -> None:
-    """Save processed chunks to JSON file for inspection."""
-    try:
-        with open(Config.OUTPUT_FILE, 'w', encoding='utf-8') as f:
-            json.dump(chunks, f, indent=2, ensure_ascii=False)
-        print(f"📄 Saved {len(chunks)} chunks to {Config.OUTPUT_FILE}")
-    except Exception as e:
-        print(f"⚠️ Error saving chunks to JSON: {e}")
 
 def full_refresh() -> None:
     """Perform full refresh - delete all and regenerate."""
