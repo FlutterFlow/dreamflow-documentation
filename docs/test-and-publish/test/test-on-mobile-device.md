@@ -8,13 +8,86 @@ keywords: [Dreamflow, Test, Mobile Device, Android, iOS]
 ---
 
 # Testing App on Mobile Devices
-Testing your app on mobile devices is essential to ensure it performs as expected in real-world scenarios. You can do this by downloading the code and running it locally on your machine.
+Testing your app on real phones and tablets helps you make sure it looks and behaves exactly as your users will experience it. Dreamflow offers two main ways to test:
+
+1. **Live Preview on Your Mobile Device**
+- Great for quickly trying out changes as you build in Dreamflow
+- Instantly updates as you make edits
+- Runs in your mobile browser, so it won’t test device-specific features like push notifications, camera access, location services, or in-app purchases
+
+2. **Download and Run the App on Your Device**
+- Best for testing how your app behaves as a real iOS or Android app
+- Lets you verify that features tied to the device’s operating system—such as notifications, camera, file storage, or app permissions—work properly
+- Requires some setup; you’ll need to download, build, and install the app each time you want to test new changes
 
 :::info[Prerequisites]
 Downloading the code is only available with a [**paid subscription**](https://dreamflow.app/pricing).
 :::
 
-## Android Setup
+## Using the Live Preview on Your Mobile Device
+
+In Dreamflow you can use the device icon button in the bottom right corner of the canvas to pull up a QR code for accessing the preview on your mobile device. 
+
+![device_icon.png](imgs/device_icon.png)
+
+When you scan the QR code or open the preview link on your phone, here’s what to keep in mind:
+
+- **For testing only** — The mobile preview is meant for testing your app as you build. It’s not intended for sharing with others or hosting your live app.
+- **Real-time updates** — Any change you make in Dreamflow will instantly appear in the mobile preview, just like in the builder preview.
+- **Persistent link** — The QR code and preview link stay the same for your project, so you can reuse them. However, the preview will only load when your project is open and running in Dreamflow.
+- **Session limit** — You can have up to 5 preview sessions open at once. Each open browser tab or connected device counts as one session.
+- **Preview controlled through Dreamflow Project** — You must have your project open and running Dreamflow to use the mobile preview. If you close your Dreamflow project, the preview will stop working until you reopen it. The preview controls like hot reload, hot restart and stop also control the preview on your mobile device. 
+- **Browser-based** — The preview runs in your mobile browser. It’s great for checking layout, user interactions and functionality but won’t test features that rely on the actual app installation (like push notifications, camera access, or offline storage).
+
+:::warning
+
+You must have your project open and running Dreamflow to use the mobile preview. 
+
+:::
+
+### Installing the Preview as a PWA (Progressive Web App)
+
+You can also install your app on your phone or tablet as a Progressive Web App (PWA). This lets you open it directly from your home screen—just like a regular mobile app.
+
+#### Why install as a PWA?
+
+Installing as a PWA is helpful when you want to:
+
+- **Experience your app like a real mobile app** — It opens in full-screen mode without the browser interface (no address bar or tabs).
+
+- **Quickly access your app** — You can launch it with a single tap from your home screen. Note that your project will need to be open and running in Dreamflow for the PWA to load. The quick access still allows you to rapdily pull up the preview without needing to scan the QR code again.
+
+
+:::note
+A PWA still runs in your browser under the hood, so it won’t support native device features like push notifications, camera, or local file access. To test those, you’ll need to run the actual iOS or Android build as mentioned below.
+:::
+
+#### How to install PWA
+
+##### On iOS
+
+1. Open the preview link or scan the QR code in **Safari**
+2. Tap the Share icon (the square with an arrow).
+3. Select Add to Home Screen.
+4. Optionally modify the name for your app and tap **Add**.
+5. The app will appear on your home screen and open in full screen when tapped.
+
+:::note
+Other browsers on iOS (like Chrome or Edge) may work, but for the most reliable experience use Safari.
+:::
+
+##### On Android
+
+1. Open the preview link or scan the QR code using your mobile browser.
+2. When prompted, tap **Install App** or **Add to Home Screen**.
+    - If you don’t see a prompt, open the browser menu (⋮) and select **Add to Home Screen.**
+4. Optionally modify the name for your app and confirm.
+5. The app will appear on your home screen and can be opened like any other app.
+
+
+## Setup Instructions for Downloading & Running on Your Device
+
+### Android Setup
 
 To test your app on an Android device or emulator, you first need to set up your development environment, install Flutter, and configure your target device. Instructions for each platform are available here: [**Windows**](https://docs.flutter.dev/get-started/install/windows/mobile), [**Mac**](https://docs.flutter.dev/get-started/install/macos/mobile-android), [**Linux**](https://docs.flutter.dev/get-started/install/linux/android).
 
@@ -28,7 +101,7 @@ For more detailed guidance, refer to the [**Android Flutter documentation**](ht
 
 :::
 
-## iOS Setup
+### iOS Setup
 
 For app testing on an iOS device or simulator, you need a Mac with Xcode installed. Follow [**these instructions**](https://docs.flutter.dev/get-started/install/macos/mobile-ios) to set up your Mac.
 
@@ -44,7 +117,7 @@ For more detailed guidance, refer to the [**iOS Flutter documentation**](https:
 
 :::
 
-## Download Code and Run
+### Download Code and Run
 
 To download your app code, click on your project name and select the **Download Code** option.
 
@@ -65,7 +138,7 @@ Once downloaded, open the project in your preferred IDE and run your app on eith
 If you encounter a version compatibility issue with Flutter, you can resolve it by upgrading to the latest version. Simply execute the `flutter upgrade` command in your terminal. To verify your current Flutter version, use the `flutter --version` command.
 :::
 
-## Building APK File
+### Building APK File
 
 You can build APK files locally to test your app on Android devices or prepare it for release on the Google Play Store.
 
@@ -114,7 +187,7 @@ You can follow the official Flutter documentation for detailed steps:
 - [Sign the app](https://docs.flutter.dev/deployment/android#sign-the-app)
 - [Build the app for release](https://docs.flutter.dev/deployment/android#build-the-app-for-release)
 
-## Building IPA File
+### Building IPA File
 
 You can’t generate a debug `.ipa` file. Debug builds are only for local development and testing, and once your [iOS setup](#ios-setup) is complete, you can [run](#download-code-and-run) them directly on your device.
 
