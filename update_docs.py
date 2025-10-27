@@ -29,24 +29,6 @@ class Config:
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     OPENAI_EMBEDDING_MODEL = "text-embedding-3-small"
     
-    @classmethod
-    def get_state_file(cls) -> str:
-        """Get environment-specific state file name."""
-        project_id = cls.FIRESTORE_PROJECT_ID
-        if not project_id:
-            return "docs_state_dev.json"  # fallback to dev state file
-        
-        # Extract environment from project ID (assuming naming convention like dreamflow-docs-dev, dreamflow-docs-alpha, dreamflow-docs-prod)
-        if "dev" in project_id.lower():
-            return "docs_state_dev.json"
-        elif "alpha" in project_id.lower():
-            return "docs_state_alpha.json"
-        elif "prod" in project_id.lower():
-            return "docs_state_prod.json"
-        else:
-            # Use project ID as suffix for other environments
-            safe_project_id = project_id.replace("-", "_").replace(".", "_")
-            return f"docs_state_{safe_project_id}.json"
 
 
 def get_file_hash(file_path: str) -> Optional[str]:
@@ -58,60 +40,86 @@ def get_file_hash(file_path: str) -> Optional[str]:
         return None
 
 
-def load_file_state() -> Dict[str, Dict[str, str]]:
-    """Load previous file states for change detection."""
-    state_file = Config.get_state_file()
-    if os.path.exists(state_file):
-        try:
-            with open(state_file, 'r') as f:
-                return json.load(f)
-        except (json.JSONDecodeError, IOError):
-            return {}
-    return {}
-
-
-def save_file_state(state: Dict[str, Dict[str, str]]) -> None:
-    """Save current file states."""
-    state_file = Config.get_state_file()
-    print(f"💾 Saving state to: {state_file}")
-    with open(state_file, 'w') as f:
-        json.dump(state, f, indent=2)
+def get_git_changed_files() -> Tuple[List[str], List[str]]:
+    """Get changed files using Git diff."""
+    try:
+        print("🔍 Comparing against base branch: origin/main")
+        
+        # Get all files changed since origin/main
+        result = subprocess.run(
+            ['git', 'diff', '--name-only', 'origin/main', 'HEAD'],
+            capture_output=True,
+            text=True,
+            cwd=os.getcwd()
+        )
+        
+        if result.returncode != 0:
+            print("⚠️ Could not get Git diff, processing all files")
+            return [], []
+        
+        changed_files = []
+        for line in result.stdout.strip().split('\n'):
+            if line and line.startswith('docs/') and line.endswith('.md') and line != 'docs/index.md':
+                full_path = os.path.join('.', line)
+                if os.path.exists(full_path):
+                    changed_files.append(full_path)
+        
+        # Also check for new files (untracked files that are now tracked)
+        result = subprocess.run(
+            ['git', 'ls-files', '--others', '--exclude-standard'],
+            capture_output=True,
+            text=True,
+            cwd=os.getcwd()
+        )
+        
+        new_files = []
+        if result.returncode == 0:
+            for line in result.stdout.strip().split('\n'):
+                if line and line.startswith('docs/') and line.endswith('.md') and line != 'docs/index.md':
+                    full_path = os.path.join('.', line)
+                    if os.path.exists(full_path):
+                        new_files.append(full_path)
+        
+        return changed_files, new_files
+        
+    except Exception as e:
+        print(f"⚠️ Error using Git: {e}")
+        return [], []
         
 
 def get_changed_files() -> Tuple[List[str], List[str], Dict[str, str]]:
-    """Detect which files have changed since last run."""
-    state_file = Config.get_state_file()
-    print(f"🔍 Detecting changed files using state file: {state_file}")
+    """Detect which files have changed using Git."""
+    print("🔍 Detecting changed files using Git...")
     
-    previous_state = load_file_state()
+    changed_files, new_files = get_git_changed_files()
+    
+    # For first run or if Git fails, process all files
+    if not changed_files and not new_files:
+        print("🔄 No Git changes detected, processing all files...")
+        all_files = _get_all_markdown_files()
+        changed_files = all_files
+        new_files = []
+    
+    # Generate current hashes for all processed files
     current_hashes = {}
-    changed_files = []
-    new_files = []
+    all_processed_files = changed_files + new_files
     
-    # Scan for markdown files
-    for root, _, files in os.walk(Config.REPO_FOLDER):
-        for filename in files:
-            if _is_valid_markdown_file(filename):
-                file_path = os.path.join(root, filename)
-                rel_path = os.path.relpath(file_path, Config.REPO_FOLDER)
-                
-                current_hash = get_file_hash(file_path)
-                if current_hash:
-                    current_hashes[rel_path] = current_hash
-                    
-                    if rel_path in previous_state:
-                        if previous_state[rel_path]['hash'] != current_hash:
-                            changed_files.append(file_path)
-                            print(f"  📝 Changed: {rel_path}")
-                    else:
-                        new_files.append(file_path)
-                        print(f"  🆕 New: {rel_path}")
+    for file_path in all_processed_files:
+        rel_path = os.path.relpath(file_path, Config.REPO_FOLDER)
+        current_hash = get_file_hash(file_path)
+        if current_hash:
+            current_hashes[rel_path] = current_hash
     
-    # Check for deleted files
-    deleted_files = _find_deleted_files(previous_state)
+    # Print summary
+    print(f"📊 Summary: {len(changed_files)} changed, {len(new_files)} new files")
+    for file_path in changed_files:
+        rel_path = os.path.relpath(file_path, Config.REPO_FOLDER)
+        print(f"  📝 Changed: {rel_path}")
+    for file_path in new_files:
+        rel_path = os.path.relpath(file_path, Config.REPO_FOLDER)
+        print(f"  🆕 New: {rel_path}")
     
-    print(f"📊 Summary: {len(changed_files)} changed, {len(new_files)} new, {len(deleted_files)} deleted")
-    return changed_files + new_files, deleted_files, current_hashes
+    return all_processed_files, [], current_hashes
 
 
 def _is_valid_markdown_file(filename: str) -> bool:
@@ -119,15 +127,6 @@ def _is_valid_markdown_file(filename: str) -> bool:
     return filename.endswith(".md") and filename != "index.md"
 
 
-def _find_deleted_files(previous_state: Dict[str, Dict[str, str]]) -> List[str]:
-    """Find files that were deleted since last run."""
-    deleted_files = []
-    for rel_path in previous_state:
-        full_path = os.path.join(Config.REPO_FOLDER, rel_path)
-        if not os.path.exists(full_path):
-            deleted_files.append(rel_path)
-            print(f"  🗑️ Deleted: {rel_path}")
-    return deleted_files
 
 def clean_markdown_content(md_text: str) -> str:
     """Remove HTML content and images from markdown text."""
@@ -390,20 +389,18 @@ def incremental_update() -> None:
     
     changed_files, deleted_files, current_hashes = get_changed_files()
     
-    if not changed_files and not deleted_files:
+    if not changed_files:
         print("✅ No changes detected. Index is up to date!")
         return
     
-    files_to_clean = deleted_files + [os.path.relpath(f, Config.REPO_FOLDER) for f in changed_files]
+    # Clean up old records for changed files
+    files_to_clean = [os.path.relpath(f, Config.REPO_FOLDER) for f in changed_files]
     if files_to_clean:
         delete_records_from_firestore(files_to_clean)
     
-    if changed_files:
-        chunks = process_specific_files(changed_files)
-        upload_to_firestore(chunks)
-    
-    state_to_save = {rel_path: {'hash': hash_value} for rel_path, hash_value in current_hashes.items()}
-    save_file_state(state_to_save)
+    # Process and upload changed files
+    chunks = process_specific_files(changed_files)
+    upload_to_firestore(chunks)
     
     print("✅ Incremental update completed!")
 
@@ -434,15 +431,6 @@ def full_refresh() -> None:
         
         chunks = process_specific_files(all_files)
         upload_to_firestore(chunks)
-        
-        current_hashes = {}
-        for file_path in all_files:
-            rel_path = os.path.relpath(file_path, Config.REPO_FOLDER)
-            file_hash = get_file_hash(file_path)
-            if file_hash:
-                current_hashes[rel_path] = {'hash': file_hash}
-        
-        save_file_state(current_hashes)
         
         print("✅ Full refresh completed!")
         
