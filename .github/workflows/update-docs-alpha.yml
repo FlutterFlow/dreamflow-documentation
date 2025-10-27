@@ -2,7 +2,7 @@ name: Deploy to Alpha Firestore
 
 on:
   push:
-    branches: [ anusha/pinecone-github-actions ]
+    branches: [ anusha/pinecone-github-action ]
 
 jobs:
   deploy-alpha:
