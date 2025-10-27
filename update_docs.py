@@ -40,8 +40,8 @@ def get_file_hash(file_path: str) -> Optional[str]:
         return None
 
 
-def get_git_changed_files() -> Tuple[List[str], List[str]]:
-    """Get changed files using Git diff."""
+def get_git_changed_files() -> Tuple[List[str], List[str], bool]:
+    """Get changed files using Git diff. Returns (changed_files, new_files, git_success)."""
     try:
         print("🔍 Comparing against base branch: origin/main")
         
@@ -54,8 +54,8 @@ def get_git_changed_files() -> Tuple[List[str], List[str]]:
         )
         
         if result.returncode != 0:
-            print("⚠️ Could not get Git diff, processing all files")
-            return [], []
+            print("⚠️ Could not get Git diff")
+            return [], [], False
         
         changed_files = []
         for line in result.stdout.strip().split('\n'):
@@ -80,25 +80,30 @@ def get_git_changed_files() -> Tuple[List[str], List[str]]:
                     if os.path.exists(full_path):
                         new_files.append(full_path)
         
-        return changed_files, new_files
+        return changed_files, new_files, True
         
     except Exception as e:
         print(f"⚠️ Error using Git: {e}")
-        return [], []
+        return [], [], False
         
 
 def get_changed_files() -> Tuple[List[str], List[str], Dict[str, str]]:
     """Detect which files have changed using Git."""
     print("🔍 Detecting changed files using Git...")
     
-    changed_files, new_files = get_git_changed_files()
+    changed_files, new_files, git_success = get_git_changed_files()
     
-    # For first run or if Git fails, process all files
-    if not changed_files and not new_files:
-        print("🔄 No Git changes detected, processing all files...")
+    # If Git diff failed, fall back to processing all files for safety
+    if not git_success:
+        print("🔄 Git diff failed - processing all files to ensure no changes are missed")
+        print("⚠️  This is a safety fallback to prevent missing updates")
         all_files = _get_all_markdown_files()
         changed_files = all_files
         new_files = []
+    # If Git succeeded but no markdown changes detected, return empty lists
+    elif not changed_files and not new_files:
+        print("✅ No markdown file changes detected, nothing to process")
+        return [], [], {}
     
     # Generate current hashes for all processed files
     current_hashes = {}
@@ -390,7 +395,7 @@ def incremental_update() -> None:
     changed_files, deleted_files, current_hashes = get_changed_files()
     
     if not changed_files:
-        print("✅ No changes detected. Index is up to date!")
+        print("✅ No markdown file changes detected. Index is up to date!")
         return
     
     # Clean up old records for changed files
