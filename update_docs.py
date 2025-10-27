@@ -94,7 +94,7 @@ def get_changed_files() -> Tuple[List[str], List[str], Dict[str, str]]:
     changed_files, new_files, git_success = get_git_changed_files()
     
     # If Git diff failed, fall back to processing all files for safety
-    if not git_success:
+    if not git_success or len(changed_files) == 0:
         print("🔄 Git diff failed - processing all files to ensure no changes are missed")
         print("⚠️  This is a safety fallback to prevent missing updates")
         all_files = _get_all_markdown_files()

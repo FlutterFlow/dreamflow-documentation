@@ -2,7 +2,7 @@ name: Deploy to Prod Firestore
 
 on:
   push:
-    branches: [ main ]
+    branches: [ anusha/pinecone-github-action ]
 
 jobs:
   deploy-prod:
