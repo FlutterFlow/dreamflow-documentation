@@ -14,7 +14,6 @@ from google.oauth2 import service_account
 class Config:
     """Configuration constants for the documentation updater."""
     REPO_FOLDER = "./docs"
-    STATE_FILE = "docs_state.json"
     MAX_CHUNK_SIZE = 500
     BATCH_SIZE = 50
     DELETE_BATCH_SIZE = 20
@@ -28,6 +27,25 @@ class Config:
     # OpenAI Configuration
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     OPENAI_EMBEDDING_MODEL = "text-embedding-3-small"
+    
+    @classmethod
+    def get_state_file(cls) -> str:
+        """Get environment-specific state file name."""
+        project_id = cls.FIRESTORE_PROJECT_ID
+        if not project_id:
+            return "docs_state_dev.json"  # fallback to dev state file
+        
+        # Extract environment from project ID (assuming naming convention like dreamflow-docs-dev, dreamflow-docs-alpha, dreamflow-docs-prod)
+        if "dev" in project_id.lower():
+            return "docs_state_dev.json"
+        elif "alpha" in project_id.lower():
+            return "docs_state_alpha.json"
+        elif "prod" in project_id.lower():
+            return "docs_state_prod.json"
+        else:
+            # Use project ID as suffix for other environments
+            safe_project_id = project_id.replace("-", "_").replace(".", "_")
+            return f"docs_state_{safe_project_id}.json"
 
 
 def get_file_hash(file_path: str) -> Optional[str]:
@@ -41,9 +59,10 @@ def get_file_hash(file_path: str) -> Optional[str]:
 
 def load_file_state() -> Dict[str, Dict[str, str]]:
     """Load previous file states for change detection."""
-    if os.path.exists(Config.STATE_FILE):
+    state_file = Config.get_state_file()
+    if os.path.exists(state_file):
         try:
-            with open(Config.STATE_FILE, 'r') as f:
+            with open(state_file, 'r') as f:
                 return json.load(f)
         except (json.JSONDecodeError, IOError):
             return {}
@@ -52,13 +71,16 @@ def load_file_state() -> Dict[str, Dict[str, str]]:
 
 def save_file_state(state: Dict[str, Dict[str, str]]) -> None:
     """Save current file states."""
-    with open(Config.STATE_FILE, 'w') as f:
+    state_file = Config.get_state_file()
+    print(f"💾 Saving state to: {state_file}")
+    with open(state_file, 'w') as f:
         json.dump(state, f, indent=2)
         
 
 def get_changed_files() -> Tuple[List[str], List[str], Dict[str, str]]:
     """Detect which files have changed since last run."""
-    print("🔍 Detecting changed files...")
+    state_file = Config.get_state_file()
+    print(f"🔍 Detecting changed files using state file: {state_file}")
     
     previous_state = load_file_state()
     current_hashes = {}

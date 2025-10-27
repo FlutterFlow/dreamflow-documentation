@@ -1,0 +1,32 @@
+name: Deploy to Alpha Firestore
+
+on:
+  push:
+    branches: [ anusha/pinecone-github-actions ]
+
+jobs:
+  deploy-alpha:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Deploy to Alpha Firestore
+      env:
+        FIRESTORE_PROJECT_ID: ${{ secrets.ALPHA_FIRESTORE_PROJECT_ID }}
+        FIRESTORE_CREDENTIALS_JSON: ${{ secrets.ALPHA_FIRESTORE_CREDENTIALS_JSON }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        python update_docs.py --mode incremental
+      
