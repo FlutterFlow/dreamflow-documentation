@@ -11,14 +11,14 @@ keywords: [Dreamflow, Test, Mobile Device, Android, iOS]
 Testing your app on real phones and tablets helps you make sure it looks and behaves exactly as your users will experience it. Dreamflow offers two main ways to test:
 
 1. **Live Preview on Your Mobile Device**
-- Great for quickly trying out changes as you build in Dreamflow
-- Instantly updates as you make edits
-- Runs in your mobile browser, so it won’t test device-specific features like push notifications, camera access, location services, or in-app purchases
+- Great for quickly trying out changes as you build in Dreamflow.
+- Instantly updates as you make edits.
+- Runs in your mobile browser, so it won’t test device-specific features like push notifications, camera access, location services, or in-app purchases.
 
 2. **Download and Run the App on Your Device**
-- Best for testing how your app behaves as a real iOS or Android app
-- Lets you verify that features tied to the device’s operating system—such as notifications, camera, file storage, or app permissions—work properly
-- Requires some setup; you’ll need to download, build, and install the app each time you want to test new changes
+- Best for testing how your app behaves as a real iOS or Android app.
+- Lets you verify that features tied to the device’s operating system—such as notifications, camera, file storage, or app permissions—work properly.
+- Requires some setup; you’ll need to download, build, and install the app each time you want to test new changes.
 
 :::info[Prerequisites]
 Downloading the code is only available with a [**paid subscription**](https://dreamflow.app/pricing).
@@ -32,20 +32,20 @@ In Dreamflow you can use the device icon button in the bottom right corner of th
 
 When you scan the QR code or open the preview link on your phone, here’s what to keep in mind:
 
-- **For testing only** — The mobile preview is meant for testing your app as you build. It’s not intended for sharing with others or hosting your live app.
-- **Real-time updates** — Any change you make in Dreamflow will instantly appear in the mobile preview, just like in the builder preview.
-- **Persistent link** — The QR code and preview link stay the same for your project, so you can reuse them. However, the preview will only load when your project is open and running in Dreamflow.
-- **Session limit** — You can have up to 5 preview sessions open at once. Each open browser tab or connected device counts as one session.
-- **Preview controlled through Dreamflow Project** — You must have your project open and running Dreamflow to use the mobile preview. If you close your Dreamflow project, the preview will stop working until you reopen it. The preview controls like hot reload, hot restart and stop also control the preview on your mobile device. 
-- **Browser-based** — The preview runs in your mobile browser. It’s great for checking layout, user interactions and functionality but won’t test features that rely on the actual app installation (like push notifications, camera access, or offline storage).
+- **For testing only**: The mobile preview is meant for testing your app as you build. It’s not intended for sharing with others or hosting your live app.
+- **Real-time updates**: Any change you make in Dreamflow will instantly appear in the mobile preview, just like in the builder preview.
+- **Persistent link**: The QR code and preview link stay the same for your project, so you can reuse them. However, the preview will only load when your project is open and running in Dreamflow.
+- **Session limit**:  You can have up to 5 preview sessions open at once. Each open browser tab or connected device counts as one session.
+- **Preview controlled through Dreamflow Project**: You must have your project open and running Dreamflow to use the mobile preview. If you close your Dreamflow project, the preview will stop working until you reopen it. The preview controls like hot reload, hot restart and stop also control the preview on your mobile device. 
+- **Browser-based**: The preview runs in your mobile browser. It’s great for checking layout, user interactions and functionality but won’t test features that rely on the actual app installation (like push notifications, camera access, or offline storage).
 
-:::warning
+:::warning[reminder]
 
 You must have your project open and running Dreamflow to use the mobile preview. 
 
 :::
 
-### Installing the Preview as a PWA (Progressive Web App)
+### Installing the Preview as a PWA
 
 You can also install your app on your phone or tablet as a Progressive Web App (PWA). This lets you open it directly from your home screen—just like a regular mobile app.
 
@@ -53,9 +53,9 @@ You can also install your app on your phone or tablet as a Progressive Web App (
 
 Installing as a PWA is helpful when you want to:
 
-- **Experience your app like a real mobile app** — It opens in full-screen mode without the browser interface (no address bar or tabs).
+- **Experience your app like a real mobile app**: It opens in full-screen mode without the browser interface (no address bar or tabs).
 
-- **Quickly access your app** — You can launch it with a single tap from your home screen. Note that your project will need to be open and running in Dreamflow for the PWA to load. The quick access still allows you to rapdily pull up the preview without needing to scan the QR code again.
+- **Quickly access your app**: You can launch it with a single tap from your home screen. Note that your project will need to be open and running in Dreamflow for the PWA to load. The quick access still allows you to rapdily pull up the preview without needing to scan the QR code again.
 
 
 :::note
@@ -64,7 +64,7 @@ A PWA still runs in your browser under the hood, so it won’t support native de
 
 #### How to install PWA
 
-##### On iOS
+**On iOS**
 
 1. Open the preview link or scan the QR code in **Safari**
 2. Tap the Share icon (the square with an arrow).
@@ -76,7 +76,7 @@ A PWA still runs in your browser under the hood, so it won’t support native de
 Other browsers on iOS (like Chrome or Edge) may work, but for the most reliable experience use Safari.
 :::
 
-##### On Android
+**On Android**
 
 1. Open the preview link or scan the QR code using your mobile browser.
 2. When prompted, tap **Install App** or **Add to Home Screen**.
@@ -85,7 +85,7 @@ Other browsers on iOS (like Chrome or Edge) may work, but for the most reliable 
 5. The app will appear on your home screen and can be opened like any other app.
 
 
-## Setup Instructions for Downloading & Running on Your Device
+## Testing Natively on your Device
 
 ### Android Setup
 
