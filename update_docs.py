@@ -9,6 +9,7 @@ from typing import Dict, List, Tuple, Optional
 import openai
 from google.cloud import firestore
 from google.oauth2 import service_account
+from google.cloud.firestore_v1.vector import Vector
 
 # Configuration Constants
 class Config:
