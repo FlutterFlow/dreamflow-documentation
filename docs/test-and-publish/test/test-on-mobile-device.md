@@ -55,7 +55,7 @@ Installing as a PWA is helpful when you want to:
 
 - **Experience your app like a real mobile app**: It opens in full-screen mode without the browser interface (no address bar or tabs).
 
-- **Quickly access your app**: You can launch it with a single tap from your home screen. Note that your project will need to be open and running in Dreamflow for the PWA to load. The quick access still allows you to rapdily pull up the preview without needing to scan the QR code again.
+- **Quickly access your app**: You can launch it with a single tap from your home screen. Note that your project will need to be open and running in Dreamflow for the PWA to load. The quick access still allows you to rapidly pull up the preview without needing to scan the QR code again.
 
 
 :::note
