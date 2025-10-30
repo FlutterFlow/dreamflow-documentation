@@ -520,3 +520,20 @@ To fix this:
 Once the correct rules are applied, the error should no longer appear when adding or retrieving data.
 </p> 
 </details>
+
+<details>
+<summary>
+I am unable to connect to Firebase using a custom email (e.g., @company.com) 
+</summary>
+
+<p>
+This error appears when your Firebase project belongs to a Google Workspace (organization) that has the policy `constraints/iam.disableServiceAccountKeyCreation` enabled. That policy blocks external tools such as Dreamflow from creating or managing service-account keys, which are required to link your project.
+
+To fix it:
+
+- Connect with a personal Gmail account, or
+- Ask your organization’s admin to change its IAM policy to allow service-account key creation.
+
+Once the restriction is lifted or you use a Gmail account, the Firebase connection will complete successfully.
+</p> 
+</details>
