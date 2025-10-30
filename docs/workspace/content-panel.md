@@ -82,7 +82,7 @@ The Code editor is built on **Monaco Editor** (the same editor that powers VS Co
 
 The Debug Console is a dedicated output panel in Dreamflow that displays real-time logs and debug information from your Flutter application. This includes:
 
-- Print statements from your Dart code
+- [Print statements from your Dart code](#print-statements-from-your-dart-code)
 - Flutter framework messages 
 - Hot reload notifications
 - Build process output
@@ -114,6 +114,62 @@ The Debug Console is a dedicated output panel in Dreamflow that displays real-ti
     </iframe>
 </div>
 <p></p>
+
+### Print Statements From Your Dart Code
+
+You can use `print()` or `debugPrint()` in your code to send messages to the Debug Console. These print statements are helpful for tracking user actions, data updates, or debugging logic while your app runs in preview mode.
+
+#### Quick Example
+
+You can add a log message directly in code when a user taps the **Add Habit** button like this:
+
+```dart
+ElevatedButton(
+  onPressed: () {
+    // your existing logic here
+    print('Habit Added');
+  },
+  child: Text('Add Habit'),
+);
+```
+
+![add-print-statement.avif](imgs/add-print-statement.avif)
+
+#### Other Examples
+
+```dart
+// Simple
+print('HomePage built');
+
+// Safer for long text (JSON, lists, etc.)
+debugPrint('Fetched ${items.length} items: ${items.toString()}');
+
+// With context
+debugPrint('[Auth] Sign-in tapped for email=$email');
+
+// Multi-line (debugPrint handles long lines gracefully)
+debugPrint(jsonEncode(responseData));
+```
+
+#### Example Agent Prompt
+
+You can use the Dreamflow Agent to automatically add print statements wherever required. Here’s a sample prompt:
+
+```
+Add a print statement to log habit status in debug console whenever its value changes.
+```
+
+![add-print-statement-via-agent.avif](imgs/add-print-statement-via-agent.avif)
+
+:::tip
+
+- Prefer `debugPrint` for long or multi-line content.
+- **Never** log secrets such as access tokens and passwords.
+- Add short **tags** (`[API]`, `[DB]`, `[Auth]`) so you can filter quickly.
+- For more advanced logging with log levels, timestamps, and formatting, consider using the following Dart packages:
+    - [**logging**](https://pub.dev/packages/logging): a lightweight logging framework from the Dart team.
+    - [**logger**](https://pub.dev/packages/logger): a popular and feature-rich logger with colorful, structured output.
+:::
 
 ## FAQs
 
