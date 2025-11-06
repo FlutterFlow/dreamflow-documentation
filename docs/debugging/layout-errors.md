@@ -27,7 +27,8 @@ Overflow errors typically happen due to one or more of the following reasons:
 
 ### Fixing Renderflex Overflow Errors
 
-#### Fix Manually
+**Fix Manually**
+
 Here are some quick tips to fix overflow errors manually:
 
 - Use **`Expanded`** or **`Flexible`** widgets to make child widgets adapt to available space.
@@ -35,11 +36,9 @@ Here are some quick tips to fix overflow errors manually:
 - Use **`TextOverflow.ellipsis`** or `maxLines` for long text content.
 - Avoid fixed widths/heights; use responsive layout helpers like `MediaQuery` or `LayoutBuilder`.
 
-#### Fix with Agent
+**Fix with Agent**
 
-Dreamflow’s Agent can help you quickly identify and fix overflow errors.
-
-**Here’s how to use it:**
+Dreamflow’s Agent can help you quickly identify and fix overflow errors. Here’s how to use it:
 
 1. [**Take a screenshot**](../workspace/agent-panel.md#screenshot-mode) of your app preview showing the overflow error (yellow/black bars).
 2. **Describe the issue to the Agent.** Here’s an example prompt:
