@@ -56,6 +56,7 @@ The AI automatically has access to:
 - The widget you currently have selected
 - Recent changes you've made
 - Your project's dependencies and configuration
+- Your project-level guideline files (.cursorrules, CLAUDE.md, AGENTS.md, or ARCHITECTURE.md) to keep generated code consistent.
 
 
 ### Image Attachments
@@ -220,5 +221,211 @@ The agent can access the following:
 </div>
 <p></p>
 
+### Project Rules
+
+Dreamflow allows you to define **custom project guidelines** that are automatically loaded into the Agent’s context every time you generate or edit code. It ensures that the Agent always follows your preferred architecture patterns, coding standards, and testing conventions, without needing to repeat them in every prompt.
+
+Without project rules, you repeat long instructions in every prompt, for example:
+
+```
+Add a login screen and use the BLoC pattern for state management, follow Clean Architecture, and place new features under /features/...
+```
+
+With project rules, you can define these standards once in a file such as [`AGENTS.md`](http://AGENTS.md) and then simply ask:
+
+```
+Add a login screen.
+```
+
+#### Supported Rule Files
+
+Dreamflow looks for one of the following files in your project root:
+
+| Priority | Filename | Typical Purpose |
+| --- | --- | --- |
+| 1️⃣ | **.cursorrules** | Originally designed for the Cursor IDE but supported in Dreamflow for compatibility with existing codebases. |
+| 2️⃣ | [**CLAUDE.md**](https://code.claude.com/docs/en/overview) | Anthropic-style AI instruction file that can include guidelines for tone, safety, or project-specific context. |
+| 3️⃣ | [**AGENTS.md**](https://agents.md/) | Defines how AI agents should behave in your project, including coding standards, architecture patterns, and testing rules. |
+| 4️⃣ | [**ARCHITECTURE.md**](https://architecture.md/) | Documents your project’s structure, data flow, and design philosophy for better context. |
+
+:::info
+
+Only the **first file found** in this order is loaded. If multiple exist, Dreamflow stops scanning after the first match. For example, if .cursorrules exists, it will be used even if `AGENTS.md` is also present.
+
+:::
+
+When any of the supported rule files is loaded into the Agent’s context:
+
+- The file’s contents are **appended to the system prompt** and used to fine-tune how the Agent generates, edits, and structures code.
+- These rules are applied to **every Agent action**, ensuring consistent behavior across your entire project.
+- Your rules **do not override** Dreamflow’s internal system instructions, they simply **guide and refine** the Agent’s decisions to match your project’s standards.
+
+#### Adding Project Rules
+
+Follow these steps to add project rules:
+
+**Step 1: Create Rule File**
+
+Create one of the supported rule files with the help of ChatGPT or Claude. While creating the file, include your project’s coding standards, architecture pattern, folder structure, testing requirements, and security guidelines.
+
+Here’s a sample prompt you can use to generate your `AGENTS.md` file:
+
+```jsx
+Create a clean, production-ready AGENTS.md file written specifically for a Flutter project using the BLoC architecture pattern.
+Its structure should clearly guide AI agents to always follow Flutter + BLoC best practices while keeping the file concise.
+[Add any other project-specific details here].
+```
+
+Here are some sections you can include in the rule file:
+
+- **Architecture pattern:** BLoC, Riverpod, MVVM, or Clean Architecture.
+- **Folder structure:** How features, data, and UI should be organized.
+- **Coding standards:** Formatting, naming, widget conventions, and logging.
+- **Testing requirements:** Required test types, structure, and frameworks.
+- **Security guidelines:** What not to log or expose.
+
+Here’s an example output for the `AGENTS.md` file.
+
+```markdown
+# AGENTS.md
+## Architecture: BLoC
+- Use flutter_bloc and equatable.
+- Each feature must include: bloc/, state/, event/, and screens/.
+- Keep business logic out of widgets.
+- Use BlocBuilder and BlocListener for state updates.
+
+## Folder Structure
+features/[feature]/data/
+features/[feature]/domain/
+features/[feature]/presentation/
+
+## Coding Standards
+- Follow effective_dart; use const constructors.
+- Use debugPrint() for logs (never print()).
+
+## Security
+- Never log PII, tokens, or credentials.
+- Firestore access must be scoped to the authenticated user.
+- Validate input before saving to database.
+- Sanitize UI error messages.
+```
+
+**Step 2: Place File in Project Root**
+
+Upload the rule file at the **same level as `pubspec.yaml`**. Dreamflow **does not** scan subfolders. It should look like this:
+
+![project-rule-file.avif](imgs/project-rule-file.avif)
+
+**Step 3: Run Agent Action**
+
+You can view or edit your rule file anytime from the Dreamflow File Editor. Once it’s saved, run any Agent command (for example, “Add a login screen”). Dreamflow will automatically load your rules and apply them to every generation.
+
+#### Best Practices
+
+- Keep the rule file specific, short, and imperative.
+- Keep must-follow standards at the top of the file.
+- Avoid overly long explanations — keep it concise and readable.
+- Update the file when your architecture or policies change.
 
 
+## FAQ
+
+<details>
+<summary>
+Project rules aren’t being applied. Why?
+</summary>
+
+<p>
+Your rule file might not be in the right location. Make sure it’s placed in the project root, at the same level as <code>pubspec.yaml</code>.
+</p>
+</details>
+
+<details>
+<summary>
+Dreamflow isn’t detecting my project rules file.
+</summary>
+
+<p>
+Check the filename — it must exactly match one of the supported names: <code>.cursorrules</code>, <code>CLAUDE.md</code>, <code>AGENTS.md</code>, or <code>ARCHITECTURE.md</code>. Any typos or variations will be ignored.
+</p>
+</details>
+
+<details>
+<summary>
+The wrong project rules file is being used.
+</summary>
+
+<p>
+Dreamflow loads only the first file it finds in the priority order. If a higher-priority file (for example, <code>.cursorrules</code>) exists, it will take precedence. Remove or rename that file if you want Dreamflow to use another one.
+</p>
+</details>
+
+<details>
+<summary>
+I edited my rules file, but the Agent isn’t using the latest version.
+</summary>
+
+<p>
+After editing, save the file and re-run your Agent command. The updated rules will be loaded automatically.
+</p>
+</details>
+
+<details>
+<summary>
+The AI’s output seems inconsistent or off.
+</summary>
+
+<p>
+There may be conflicting or unclear rules in your file. Try simplifying the instructions and making them more explicit.
+</p>
+</details>
+
+<details>
+<summary>
+Isn’t <code>.cursorrules</code> only for the Cursor IDE?
+</summary>
+
+<p>
+Originally yes, but Dreamflow supports <code>.cursorrules</code> for compatibility with existing projects. If a <code>.cursorrules</code> file is present in your project root, Dreamflow will automatically load it — it has the highest priority among all supported rule files.
+</p>
+</details>
+
+<details>
+<summary>
+Do these rules override Dreamflow’s system prompts?
+</summary>
+
+<p>
+No. They append to the system prompts. Dreamflow keeps its built-in logic, and your rules simply provide additional context.
+</p>
+</details>
+
+<details>
+<summary>
+Can I edit or view the existing files?
+</summary>
+
+<p>
+Yes — you can open them directly in Dreamflow’s File Editor.
+</p>
+</details>
+
+<details>
+<summary>
+Can I use multiple rules files?
+</summary>
+
+<p>
+You can keep several for compatibility, but Dreamflow will only load the first one found based on priority order. For consistency, it’s best to keep a single canonical file.
+</p>
+</details>
+
+<details>
+<summary>
+Do I need to reload Dreamflow after adding a rules file?
+</summary>
+
+<p>
+No. Simply add the file and re-run any Agent action. If Dreamflow doesn’t automatically pick it up, you can try reloading the project.
+</p>
+</details>
