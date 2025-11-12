@@ -13,7 +13,7 @@ keywords: [git, Integration, Dreamflow, Version Control, Source Control]
 Dreamflow supports Git integration, allowing you to connect your projects directly to GitHub, GitLab, or other Git providers.
 
 :::info
-Git integration is only available for users on **Pro plan and above**.
+Git integration is only available for users on the **Pro plan and above**.
 :::
 
 ## Connect Repository
