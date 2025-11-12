@@ -11,12 +11,9 @@ keywords: [git, Integration, Dreamflow, Version Control, Source Control]
 # Git
 
 Dreamflow supports Git integration, allowing you to connect your projects directly to GitHub, GitLab, or other Git providers.
-:::warning
 
-Currently, it does not support multi-user collaboration within the same repository. If multiple Dreamflow projects attempt to use the same repo, the system will detect and restrict it.
-
-For team collaboration, please contact the **Enterprise team**.
-
+:::info
+Git integration is only available for users on **Pro plan and above**.
 :::
 
 ## Connect Repository
@@ -26,6 +23,14 @@ You can connect a repository in two main ways:
 - **Clone Codebase**: Use this option when you want to start a new project in Dreamflow using an existing Git repository.
 
 - **Connect Project to Git**: Use this option when you already have a project built inside Dreamflow and want to link it to a Git repository.
+
+:::warning
+
+Currently, it does not support multi-user collaboration within the same repository. If multiple Dreamflow projects attempt to use the same repo, the system will detect and restrict it.
+
+For team collaboration, please contact the **Enterprise team**.
+
+:::
 
 ### Clone Codebase
 
