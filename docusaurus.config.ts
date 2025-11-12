@@ -72,6 +72,13 @@ const config: Config = {
     },
   ],
 
+  scripts: [
+    {
+      src: '/js/syft.js',
+      async: false,
+    },
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card-docs.png',
