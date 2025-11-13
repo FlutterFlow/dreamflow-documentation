@@ -268,3 +268,67 @@ To update your project with the latest code from the remote repository, click th
 
 ![pull-changes.avif](imgs/pull-changes.avif)
 
+### Resolve Conflicts
+
+When you have conflicts, files are marked with a red **!** icon in the **Changes** list. To resolve conflict:
+1. Open the file and review the differences.
+2. You’ll see both versions side by side:
+    - Incoming changes from remote (from the repository)
+    - Your existing changes (your local edits)
+3. Choose whether to **Accept Existing, Accept Incoming, Accept Both**, or resolve the conflict manually.
+4. Once resolved, save the file, commit and push again to sync your changes.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/jjWKhiY2J0OmYna7rX3G?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+### Disconnect Repository
+
+If you want to unlink your project from a connected Git repository:
+
+1. Open the **Source Control panel**.
+2. Click the **disconnect icon** on the right side.
+3. Confirm the action when prompted.
+
+Once disconnected, your project will no longer sync changes with the remote repository. You can reconnect later if needed.
+
+![disconnect-repo.avif](imgs/disconnect-repo.avif)
+
+## Known Limitations
+
+When importing a Git repository into Dreamflow, you may encounter certain limitations based on the current platform capabilities.
+
+- **Project May Be Too Large**: Very large repositories may timeout during import. If this happens, users are encouraged to contact the **Enterprise team** for support with large or complex projects.
+- **Repository Is Not a Flutter Project**: Dreamflow checks for a `pubspec.yaml` file. If not found, import fails because the repository is not recognized as a Flutter project.
+- **Monorepos Are Not Supported Yet**: If the repository root does not contain a Flutter project or contains multiple projects, Dreamflow will show an error.
+- **Multiple Flutter Projects Detected**: Dreamflow currently supports importing **only a single Flutter project**. Repositories containing multiple Flutter apps will not import.
+- **Unsupported Flutter Version**: If the project uses a Flutter version Dreamflow does not support, import will fail with an error. There are also cases where implicit version ranges cause analyzer issues due to breaking Flutter changes.
+- **Code Generation Tools** (build_runner, freezed, flutter_localizations): If the project depends on code generation but the generated files are not committed, import may fail or show errors.
+- **Theme Issues** (Theme v2): Certain theme configurations might not render properly in the editor, even though they are not blockers.
+- **Private / Non-Public Dependencies**: If the project depends on packages hosted in private servers that Dreamflow cannot access, import will fail.
+- **Web Support Required**: Dreamflow requires apps to run in the **web preview environment**. Repos using packages that break web may fail to load or run incorrectly.
+- **Local Servers / Background Processes**: Projects requiring local API servers or background processes during development will fail to run inside Dreamflow.
+- **`-dart-define` Required**: If the project requires dart-define flags and defaults are not supplied, Dreamflow may run the project with missing configurations.
+- **HTML Renderer Issues**: If the project depends on a specific HTML renderer setting, the preview may not load.
