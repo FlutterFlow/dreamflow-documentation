@@ -242,7 +242,7 @@ To push changes from your project to the remote repository:
 1. Make edits to your app.
 2. Check **Source Control > Changes**. The modified file will be tagged **M** and listed there.
 3. (Optional) Click **View Diff** to compare your edit with the previous version.
-4. Enter a short **commit message** (e.g., “Change welcome message”).
+4. Use AI to automatically generate a **Commit Message**, or enter your own message to describe what has changed. 
 5. Click the **Push** icon to commit and push the update to your connected repository.
 
 <div style={{
@@ -331,7 +331,9 @@ If you want to unlink your project from a connected Git repository:
 2. Click the **disconnect icon** on the right side.
 3. Confirm the action when prompted.
 
-Once disconnected, your project will no longer sync changes with the remote repository. You can reconnect later if needed.
+Once disconnected, your project will no longer sync changes with the remote repository. Since you cannot connect a non-blank Git repo to an existing Dreamflow project, you will need to [clone your repository](#clone-codebase) into a new project if you would like to reconnect it to Dreamflow. 
+
+
 
 ![disconnect-repo.avif](imgs/disconnect-repo.avif)
 
