@@ -20,15 +20,15 @@ Git integration is only available for users on the **Pro plan and above**.
 
 You can connect a repository in two main ways:
 
-- **Clone Codebase**: Use this option when you want to start a new project in Dreamflow using an existing Git repository.
+- **Clone Codebase**: Use this option when you want to start a new project from an existing Flutter app. 
 
-- **Connect Project to Git**: Use this option when you already have a project built inside Dreamflow and want to link it to a Git repository.
+- **Connect Project to Git**: Use this option when you already have a project in Dreamflow and want to link it to a Git repository.
 
 :::warning
 
-Currently, it does not support multi-user collaboration within the same repository. If multiple Dreamflow projects attempt to use the same repo, the system will detect and restrict it.
+Currently, Dreamflow does not support multi-user collaboration within the same repository. If multiple Dreamflow projects attempt to use the same repo, the system will detect and restrict it.
 
-For team collaboration, please contact the **Enterprise team**.
+For team collaboration, please reach out regarding the [**Enterprise Plan**](https://dreamflow.app#pricing).
 
 :::
 
@@ -80,6 +80,25 @@ Dreamflow currently supports **Flutter repositories only**. If your repository c
 Support for monorepos is planned for a future update.
 
 :::
+
+#### Project Import Requirements 
+
+When importing an existing repo into Dreamflow, Dreamflow expects:
+
+1. **Flutter app:** Dreamflow checks for a `pubspec.yaml` file. If not found, import fails because the repository is not recognized as a Flutter project.
+    - **Monorepos** - repositories containing multiple nested Flutter projects - aren’t supported yet, but support is on our roadmap.
+2. **Web Support**: Dreamflow requires apps to run in the **web preview environment**. Repos using packages that break web may fail to load or run incorrectly.
+    - The Dreamflow preview uses Flutter's canvaskit renderer. If the project specifically uses the HTML renderer setting, the preview may not load
+
+There are a few other things that might go wrong when importing an existing Flutter repo:
+
+- **Unsupported Flutter Version**: If the project uses a Flutter version Dreamflow does not support, import will fail with an error. There are also cases where implicit version ranges cause analyzer issues due to breaking Flutter changes.
+- **Theme Issues** : Certain theme configurations might not render properly in the Dreamflow editor - you may not see all of your colors or text styles in the Theme panel.
+- **Local Servers / Background Processes**: Projects requiring local API servers or background processes during development will fail to run inside Dreamflow.
+- **Private Dependencies**: If the project depends on packages hosted in private servers that Dreamflow cannot access, the import will fail.
+- **Code Generation Tools** (build_runner, freezed, flutter_localizations): You cannot currently execute scripts inside of the Dreamflow builder. If the imported project depends on code generation, you will need to generate Dart files outside of Dreamflow and commit them to the repo.
+- **`-dart-define` Requirements**: You must provide a default configuration so the app can run without requiring any --dart-define parameters.
+- **Project May Be Too Large**: Very large repositories may take a long time to start and you may see some performance degradation in the Dreamflow builder.
 
 ### Connect Project to Git
 
@@ -316,19 +335,3 @@ Once disconnected, your project will no longer sync changes with the remote repo
 
 ![disconnect-repo.avif](imgs/disconnect-repo.avif)
 
-## Known Limitations
-
-When importing a Git repository into Dreamflow, you may encounter certain limitations based on the current platform capabilities.
-
-- **Project May Be Too Large**: Very large repositories may timeout during import. If this happens, users are encouraged to contact the **Enterprise team** for support with large or complex projects.
-- **Repository Is Not a Flutter Project**: Dreamflow checks for a `pubspec.yaml` file. If not found, import fails because the repository is not recognized as a Flutter project.
-- **Monorepos Are Not Supported Yet**: If the repository root does not contain a Flutter project or contains multiple projects, Dreamflow will show an error.
-- **Multiple Flutter Projects Detected**: Dreamflow currently supports importing **only a single Flutter project**. Repositories containing multiple Flutter apps will not import.
-- **Unsupported Flutter Version**: If the project uses a Flutter version Dreamflow does not support, import will fail with an error. There are also cases where implicit version ranges cause analyzer issues due to breaking Flutter changes.
-- **Code Generation Tools** (build_runner, freezed, flutter_localizations): If the project depends on code generation but the generated files are not committed, import may fail or show errors.
-- **Theme Issues** (Theme v2): Certain theme configurations might not render properly in the editor, even though they are not blockers.
-- **Private / Non-Public Dependencies**: If the project depends on packages hosted in private servers that Dreamflow cannot access, import will fail.
-- **Web Support Required**: Dreamflow requires apps to run in the **web preview environment**. Repos using packages that break web may fail to load or run incorrectly.
-- **Local Servers / Background Processes**: Projects requiring local API servers or background processes during development will fail to run inside Dreamflow.
-- **`-dart-define` Required**: If the project requires dart-define flags and defaults are not supplied, Dreamflow may run the project with missing configurations.
-- **HTML Renderer Issues**: If the project depends on a specific HTML renderer setting, the preview may not load.
