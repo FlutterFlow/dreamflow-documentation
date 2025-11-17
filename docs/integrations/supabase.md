@@ -4,7 +4,7 @@ title: Supabase
 description: Learn how to connect your Dreamflow app with Supabase to enable powerful backend features such as authentication, databases, storage, and more.
 tags: [Supabase, Integration, Dreamflow, Backend]
 sidebar_position: 2
-toc_max_heading_level: 4
+toc_max_heading_level: 3
 keywords: [Supabase, Integration, Dreamflow, Backend]
 ---
 
@@ -162,6 +162,153 @@ To add sample data from Dreamflow, go to the **Supabase > Sample Data**, and fol
 :::warning
 
 You can only generate sample data **once** per project. If you need to modify or remove the sample data later, you can do so directly from the **Supabase** **Table Editor**.
+
+:::
+
+## Edge Functions
+
+[Supabase Edge Functions](https://supabase.com/docs/guides/functions) let you run secure, server-side code without needing your own backend. These functions are perfect for tasks that require backend logic, secret handling, or integrations with external APIs such as OpenAI. Because they run on Supabase’s global edge network, they are fast, scalable, and isolated from your client code.
+
+Edge Functions are ideal for:
+
+- **Calling external APIs securely** (e.g., Stripe, Twilio, OpenAI) without exposing keys in the client app
+- **Generating personalized AI content** such as product recommendations, support replies, onboarding guides, weekly usage summaries, or tailored learning suggestions
+- **Running scheduled or on-demand automations**
+- **Performing complex business logic** thatt is not suitable for client-side execution
+- **Enforcing secure access rules** using Supabase Auth (require logged-in user)
+
+:::info
+You can find [**more examples**](https://supabase.com/docs/guides/functions#examples) in the official documentation.
+:::
+
+### Create and Deploy
+
+Dreamflow provides a built-in workflow to generate, edit, configure, and deploy Supabase Edge Functions directly from your project — no command line needed.
+
+To create and deploy the Edge Function, follow these steps:
+
+#### 1. Create a New Edge Function
+
+1. Open the **Supabase module** from the left sidebar.
+2. Scroll to **Edge Functions** and click **+** to create a new one.
+3. This opens the **Agent Panel** on the right with a prefilled starter prompt. Simply continue describing what you want your function to do. For example:
+
+```jsx
+//Agent Prompt
+Create a Supabase Edge Function that uses OpenAI api to generate a motivational message based on the users habit progress.
+```
+
+![create-edge-functions.avif](imgs/create-edge-functions.avif)
+
+The agent will scaffold a complete Edge Function, including folders and `index.ts`. You will now see the function generated under the following structure:
+
+![edge-function-file.avif](imgs/edge-function-file.avif)
+
+:::info
+
+You can open and edit the function like any other file in Dreamflow.
+
+:::
+
+#### 2. Add Required Secrets
+
+If your Edge Functions require secrets like API keys, Dreamflow automatically detects them from your generated code and allows you to add the required values.
+
+To configure your function’s secrets, open the **Supabase > Secrets** section and add the following:
+
+- **YOUR_API_KEY**: Enter your own API key.
+- **SUPABASE_URL**: Copy the **API URL** from the **Project Details** section at the top.
+- **SUPABASE_ANON_KEY**: Copy the **Anon Key** from the same **Project Details** section.
+
+Once added, Dreamflow will rewrite the deployment environment so your function can access these secrets at runtime.
+
+![add-secrect.avif](imgs/add-secrect.avif)
+
+#### 3. Deploy the Function
+
+After reviewing your function and adding secrets:
+
+1. Return to **Supabase > Edge Functions** section.
+2. Click **Deploy Function**.
+3. A confirmation dialog appears; click **Deploy**.
+
+![deploy-edge-funciton.avif](imgs/deploy-edge-funciton.avif)
+
+
+#### 4. Verify Deployment
+
+After deployment, open the **Supabase Dashboard > Edge Functions** page. You should now see your function listed.
+
+![sb-edge-functions.avif](imgs/sb-edge-functions.avif)
+
+
+#### 5. Run or Test Your Edge Function
+
+Once your Edge Function is deployed, you can trigger it directly from your app.
+
+**Using Agent**
+
+You can simply ask the Agent to connect the function to the correct part of your UI. For example:
+
+```jsx
+Call the `generate-motivation` Supabase Edge Function on the home page and display the returned message in the motivational message widget.
+```
+
+The agent will automatically place the call in the appropriate widget, manage loading states, and update your UI.
+
+**Add Manually**
+
+If you prefer to call the function manually, here is the recommended method using the official [**supabase_flutter**](https://pub.dev/packages/supabase_flutter) package. Here’s an example code:
+
+```jsx
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:convert';
+
+Future<String> callGenerateMotivation() async {
+  final supabase = Supabase.instance.client;
+
+  final response = await supabase.functions.invoke(
+    'generate-motivation',
+    body: {
+      'progress': 0.6,
+      'completedHabits': 3,
+      'totalHabits': 5,
+      'userName': 'Mike',
+    },
+  );
+
+  if (response.data != null) {
+    return response.data['message'] ?? 'No message returned.';
+  } else {
+    throw Exception('Failed: ${response.error?.message}');
+  }
+}
+```
+
+Then, you can call `callGenerateMotivation()` from anywhere in your app, such as:
+
+```jsx
+ElevatedButton(
+  onPressed: () async {
+    final message = await callGenerateMotivation();
+    print(message);
+  },
+  child: Text(message),
+)
+```
+
+:::tip[Monitor Your Edge Function]
+
+After deploying your Edge Function, you can view detailed insights directly from the **Supabase Dashboard**. Open your project in Supabase > **Edge Functions** > select your function. From there, you can:
+
+- **View Invocations** (every time your app calls the function)
+- **Check Logs** for debugging and server output
+- **Function Code** to update and deploy code directly
+- **Deployment Details**
+
+![sb-edge-functions-logs](imgs/sb-edge-functions-logs.avif)
+
+This is extremely helpful for verifying that your function is running correctly and diagnosing any issues.
 
 :::
 
