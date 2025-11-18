@@ -169,6 +169,10 @@ You can only generate sample data **once** per project. If you need to modify or
 
 [Supabase Edge Functions](https://supabase.com/docs/guides/functions) let you run secure, server-side code without needing your own backend. These functions are perfect for tasks that require backend logic, secret handling, or integrations with external APIs such as OpenAI. Because they run on Supabase’s global edge network, they are fast, scalable, and isolated from your client code.
 
+:::info
+Unlike database functions or triggers, edge functions execute outside the database engine, giving you full flexibility to write custom logic without being tied to SQL or database-level events.
+:::
+
 Edge Functions are ideal for:
 
 - **Calling external APIs securely** (e.g., Stripe, Twilio, OpenAI) without exposing keys in the client app
@@ -312,6 +316,22 @@ This is extremely helpful for verifying that your function is running correctly 
 
 :::
 
+### Best Practices
+
+- **Each Function Lives in Its Own Folder**: Every edge function should have its own directory containing an `index.ts` entry file. For example:
+
+  ```jsx
+  supabase/
+    functions/
+      generate-summary/
+        index.ts
+      send-email/
+        index.ts
+  ```
+
+- **Use Shared Modules for Reusable Logic:** If multiple functions need the same utilities (like an OpenAI client, validators, or formatting helpers), place them inside `supabase/functions/_shared/`. This avoids code duplication and keeps each function focused only on its own task.
+- **Use `database.types.ts` for Strong Typing:** Generate and import `database.types.ts` to ensure all database queries inside edge functions match your actual schema. This provides autocomplete, prevents schema mismatches, and makes your functions safer and easier to maintain.
+
 ## FAQs
 
 <details>
@@ -349,5 +369,61 @@ If you generated sample data before adding authentication to your app, logging i
 When sample data is created, it inserts records directly into the Supabase database, including user details, but it doesn’t go through the actual authentication process. As a result, those users exist in the database but don’t have valid authentication credentials in Supabase Auth.
 
 To fix it, you can delete the dummy user record from the Auth table and then sign up again in your app with that email.
+</p> 
+</details>
+
+<details>
+<summary>
+Why do I get “ClientException: Failed to fetch” when calling an Edge Function? 
+</summary>
+
+<p>
+This error almost always happens because the **browser blocked the request due to CORS**, so your Supabase Edge Function never received it. The browser sends a **CORS preflight (OPTIONS)** request first. If your function doesn’t handle `OPTIONS` or doesn’t return valid `Access-Control-Allow-*` headers, the browser stops the request and it reports “Failed to fetch.”
+
+**Fix:** Add proper CORS handling inside your Edge Function. The example below includes the required CORS configuration—most importantly the *Access-Control-Allow-Origin* header—along with the other *Access-Control-Allow-** headers and correct handling of the OPTIONS preflight request.
+
+```jsx
+// CORS headers added to allow the browser request to pass
+// The key fix is "Access-Control-Allow-Origin": "*"
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*", // <-- required for web requests
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type", // required for Supabase auth + JSON
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS", // allow methods including OPTIONS
+};
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  const url = new URL(req.url);
+  const habit = url.searchParams.get("habit") ?? "daily";
+  const tone = url.searchParams.get("tone") ?? "encouraging";
+
+  return new Response(JSON.stringify({
+    message: `Tiny step, big impact. Your ${habit} practice is blooming — keep it ${tone}!`,
+  }), {
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+});
+
+```
+
+After updating, redeploy your edge function and test it. Then open **Supabase Dashboard → Edge Functions → Logs** to verify that the request is now reaching the server.
+</p> 
+</details>
+
+
+
+<details>
+<summary>
+Do I need to be logged in when calling my Supabase Edge Function? 
+</summary>
+
+<p>
+It depends on whether the function **requires JWT verification**. If the “Verify JWT with legacy secret” toggle is enabled in your Supabase Dashboard, the function expects an authenticated request with a valid JWT in the `Authorization` header. In that case, you must be logged in before calling the function; otherwise the server will reject the request with a **401 Unauthorized** (visible in function logs).
+
+![supabase-edge-function-logged-in](imgs/supabase-edge-function-logged-in.avif)
 </p> 
 </details>
