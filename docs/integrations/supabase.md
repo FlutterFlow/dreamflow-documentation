@@ -157,7 +157,7 @@ To add sample data from Dreamflow, go to the **Supabase > Sample Data**, and fol
 
 - **For Apps without Login Functionality:** You can skip the email step, as it’s optional. Simply click **Create Sample Data** to generate test records directly in your Supabase database.
 
-    ![add-sample-data-supabase-wihtout-login.avif](imgs/add-sample-data-supabase-wihtout-login.avif)
+    ![add-sample-data-supabase-without-login.avif](imgs/add-sample-data-supabase-without-login.avif)
 
 :::warning
 

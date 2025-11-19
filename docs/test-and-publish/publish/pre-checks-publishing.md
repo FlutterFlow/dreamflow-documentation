@@ -44,7 +44,7 @@ When you create a new app in Dreamflow, it sets a default Dreamflow logo as the 
       I uploaded app_icon.png to the Assets module. Please set it as the app launcher icon using flutter_launcher_icons.
     - Or do it manually by updating the `image_path` in your `pubspec.yaml` file to point to the newly uploaded app icon. Here is the example configuration in `pubspec.yaml` file:
 
-      ```jsx
+      ```yaml
       flutter_launcher_icons:
         android: true
         ios: true
@@ -84,8 +84,8 @@ When you create a new app in Dreamflow, it sets a default Dreamflow logo as the 
 - The app icon is generated during native builds (Android/iOS) before deployment. However, if you want to verify that it’s configured correctly, you can download and run the app locally on your machine. To do so:
     - Ensure your Flutter environment is properly set up by following the instructions for [**Android**](../test/test-on-mobile-device.md#android-setup) or [**iOS**](../test/test-on-mobile-device.md#ios-setup), depending on the platform you want to test.
     - [**Download the project**](../test/test-on-mobile-device.md#download-code-and-run), open it in your preferred IDE, and run:
-        
-        ```jsx
+
+        ```bash
         dart run flutter_launcher_icons
         ```
         
@@ -138,7 +138,7 @@ To setup adaptive icons, you can either use this [online tool](https://icon.kit
 
 - Or manually update your `pubspec.yaml` as shown below:
 
-  ```jsx
+  ```yaml
   flutter_launcher_icons:
     android: true
     ios: true

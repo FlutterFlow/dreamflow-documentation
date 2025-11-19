@@ -208,7 +208,7 @@ To deploy to Firebase:
 
 This step is critical for security, as without rules, your Firestore may be open to anyone.
 
-::::
+:::
 
 ![deploy-to-firebase.avif](imgs/deploy-to-firebase.avif)
 
@@ -349,7 +349,7 @@ To add sample data from Dreamflow, go to the **Firebase > Sample Data**, and fol
 
 - **For Apps without Login Functionality:** You can skip the email step, as it’s optional. Simply click **Generate Sample Data** to generate test documents directly in your Firestore Database.
 
-![add-sample-data-firebase-without-login.avif](imgs/add-sample-data-firebase-wihtout-login.avif)
+![add-sample-data-firebase-without-login.avif](imgs/add-sample-data-firebase-without-login.avif)
 
 :::warning
 

@@ -71,7 +71,7 @@ Jump between multiple development modes to build your app efficiently:
 - Leverage the **AI agent** to get a jump start on new features or for help debugging.
 - Add, remove or rearrange UI elements (Widgets) in the **visual Widget Tree**.
 - Configure arguments for widgets visually in the **Properties editor** with type-safe controls.
-- Use the **Code** editor to peak under-the-hood and see what's going on.
+- Use the **Code** editor to peek under-the-hood and see what's going on.
 
 
 Built-in Firebase and Supabase integrations provide authentication and database capabilities without complex setup. The integrated **Language Server Protocol (LSP)** delivers intelligent code completions, quick fixes, and real-time diagnostics as you type.
