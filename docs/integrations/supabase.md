@@ -316,6 +316,73 @@ This is extremely helpful for verifying that your function is running correctly 
 
 :::
 
+### Type Generation
+
+Dreamflow can generate fully typed TypeScript definitions based on your database schema. These types ensure your Edge Functions stay in sync with your tables, columns, and relationships, providing safer queries and better autocomplete during development.
+
+For example, without types you might accidentally write:
+
+```tsx
+await supabase.from("profiles").insert({ fullName: "Mike" });
+// ❌ Bug: "fullName" is not a column in the profiles table
+```
+
+This won’t fail until the app is actually running.
+
+With generated types, TypeScript immediately catches the mistake:
+
+```tsx
+// ❌ TypeScript error: "fullName" does not exist on type Insert<profiles>
+```
+
+Instead of guessing column names or discovering mistakes only at runtime, you get immediate feedback and accurate autocomplete based on your real schema.
+
+#### Generate Types from Database Schema
+
+You can easily generate the `database.types.ts` file by asking the Dreamflow agent.
+
+Use this Agent prompt:
+
+```jsx
+Generate a `database.types.ts` file for my connected Supabase project based on the current database schema.
+```
+
+:::warning
+Types do not update automatically. You must regenerate them whenever your database schema changes.
+:::
+
+#### Use Generated Types
+
+Inside any Edge Function, you can import the generated types:
+
+```tsx
+import { Database } from "../../database.types.ts";
+```
+
+Then you can use them like this:
+
+**Example: Type-safe Table Insert**
+
+```tsx
+type ProfileInsert = Database["public"]["Tables"]["profiles"]["Insert"];
+
+await supabase.from("profiles").insert<ProfileInsert>({
+  id: userId,
+  display_name: name,
+});
+```
+
+**Example: Strongly-typed Row**
+
+```tsx
+type ProfileRow = Database["public"]["Tables"]["profiles"]["Row"];
+
+const { data } = await supabase.from("profiles").select("*").eq("id", userId);
+
+const profile: ProfileRow = data[0]; // typed and validated
+```
+
+
 ### Best Practices
 
 - **Each Function Lives in Its Own Folder**: Every edge function should have its own directory containing an `index.ts` entry file. For example:
