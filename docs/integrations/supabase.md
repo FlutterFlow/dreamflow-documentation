@@ -185,6 +185,10 @@ Edge Functions are ideal for:
 You can find [**more examples**](https://supabase.com/docs/guides/functions#examples) in the official documentation.
 :::
 
+:::warning
+Dreamflow doesn’t support running Edge Functions locally yet because the editor has no built-in terminal or local [**Deno**](https://deno.com/) runtime.
+:::
+
 ### Create and Deploy
 
 Dreamflow provides a built-in workflow to generate, edit, configure, and deploy Supabase Edge Functions directly from your project — no command line needed.
@@ -398,6 +402,7 @@ const profile: ProfileRow = data[0]; // typed and validated
 
 - **Use Shared Modules for Reusable Logic:** If multiple functions need the same utilities (like an OpenAI client, validators, or formatting helpers), place them inside `supabase/functions/_shared/`. This avoids code duplication and keeps each function focused only on its own task.
 - **Use `database.types.ts` for Strong Typing:** Generate and import `database.types.ts` to ensure all database queries inside edge functions match your actual schema. This provides autocomplete, prevents schema mismatches, and makes your functions safer and easier to maintain.
+- **Use Consistent Error Handling Patterns:** Implement clear and predictable error handling inside each Edge Function. Wrap risky operations in `try/catch`, log errors using `console.error()` so they appear in the Supabase Dashboard logs, and always return structured JSON error responses.
 
 ## FAQs
 
@@ -493,4 +498,61 @@ It depends on whether the function **requires JWT verification**. If the “Veri
 
 ![supabase-edge-function-logged-in](imgs/supabase-edge-function-logged-in.avif)
 </p> 
+</details>
+
+<details>
+<summary>
+How do I access the logged-in user inside an Edge Function?
+</summary>
+
+<p>
+When your app makes a request and the user is logged in, the user’s JWT is automatically included in the `Authorization` header. Inside your Edge Function, you can read this header and fetch the authenticated user like this:
+
+```tsx
+const authHeader = req.headers.get("Authorization");
+const { data: user } = await supabase.auth.getUser(authHeader);
+```
+
+The `user` will contain the full Supabase Auth user object. If the request has no token or an invalid token, `user` will be `null`.
+</p>
+</details>
+
+<details>
+<summary>
+Why am I getting “Error: Function invocation timed out” and how do I fix it?
+</summary>
+
+<p>
+
+This error appears when your Edge Function takes too long to finish, often because it’s waiting on a slow external API call without a timeout. For example, a request like `await fetch("https://slow-api.example.com/report")` can hang indefinitely, causing the function to hit Supabase’s execution limit and fail.
+
+To fix this, add a timeout using `AbortController`:
+
+```tsx
+const controller = new AbortController();
+const timeout = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+const response = await fetch("https://slow-api.example.com/report", {
+  signal: controller.signal,
+}).finally(() => clearTimeout(timeout));
+```
+
+Then return a clear error when the timeout occurs:
+
+```tsx
+try {
+  // fetch with timeout
+} catch (err) {
+  if (err.name === "AbortError") {
+    return new Response(
+      JSON.stringify({ error: "Upstream service timed out" }),
+      { status: 504, headers: { "Content-Type": "application/json" } }
+    );
+  }
+}
+```
+
+This prevents your function from hanging, ensures it fails cleanly, and avoids timeout errors in production.
+
+</p>
 </details>
