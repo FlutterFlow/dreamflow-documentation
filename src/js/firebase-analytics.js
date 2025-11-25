@@ -11,7 +11,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase Analytics
-if (typeof window !== 'undefined') {
+  // Only run in the browser and in production
+  if (typeof window === 'undefined' || process.env.NODE_ENV !== 'production') {
+    // In dev / during SSR, do nothing
+    // (avoids breaking local Docusaurus)
+    // You don't need any exports here; it's just a side-effect module.
+    console.info('Firebase Analytics disabled in dev/SSR.');
+  } else{
   // Load Firebase SDKs dynamically using script tags (compatible with Docusaurus)
   const loadFirebaseScript = (src) => {
     return new Promise((resolve, reject) => {
