@@ -327,6 +327,37 @@ You can view or edit your rule file anytime from the Dreamflow File Editor. Once
 - Avoid overly long explanations — keep it concise and readable.
 - Update the file when your architecture or policies change.
 
+## Restore Checkpoint
+
+**Restore Checkpoint** lets you roll your project back to the exact state it was in *before* a specific agent prompt was executed. 
+
+This rollback includes:
+
+- All changes introduced by the Dreamflow agent
+- Any manual edits you made after that point
+
+:::warning[Project-Wide Revert]
+
+- Restore Checkpoint **rewinds the entire project**, not just the thread where you clicked the button.
+- Because it’s destructive, use it carefully—especially if you frequently switch between threads or mix agent edits with manual edits.
+
+:::
+
+To restore the project to a specific checkpoint:
+
+1. Open the agent thread.
+2. Use the thread navigation arrows to move to the exact message where you want to restore from.
+3. Click the **Undo** icon in the top-right corner of your message.
+4. A confirmation dialog will appear. Approve it to restore the checkpoint.
+
+![restore-checkpoint.avif](imgs/restore-checkpoint.avif)
+
+:::info
+The Restore Checkpoint button appears only when:
+
+- The agent is **not** currently generating
+- The project was successfully saved before that generation began
+:::
 
 ## OpenAI Integration
 Dreamflow Agent lets you add AI-powered features to your app without needing your own OpenAI API key. When you use the Agent to generate an AI feature, Dreamflow automatically connects to OpenAI through a secure proxy using Dreamflow’s internal API key.
