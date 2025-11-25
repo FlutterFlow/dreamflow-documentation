@@ -76,6 +76,7 @@ Here are some prompts that we've used recently while chatting with the agent.
     - Give the user reminders for their habits, even when the app is not running.
     - Allow the user to share their habit progress with others (through the share sheet of the mobile OS)
 
+![habit-tracking-app.avif](../imgs/habit-tracking-app.avif)
 
 #### Asteroids game
 
@@ -90,7 +91,7 @@ Replace the main screen with an implementation of the classic game of Asteroids.
     - Give the game an end screen (with a leaderboard)
     - Store a leaderboard of highscores on a server
 
-
+![asteroids.avif](../imgs/asteroids.avif)
 
 #### Chat app
 
@@ -105,6 +106,7 @@ Build a small chat app (store the data locally for now) where users can chat wit
     - Store the chat data in a cloud database
     - Show a notification when a message arrives when the app is not active
 
+![chat-app.avif](../imgs/chat-app.avif)
 
 ## Start from Scratch 
 
