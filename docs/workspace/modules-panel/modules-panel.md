@@ -12,7 +12,7 @@ The Modules Panel enabled from the left side of the builder interface, provides 
 
 ## Available Modules
 
-- **[Widget Tree Module](../modules-panel/widget-panel.md)**: The default module that provides navigation and management of your app's widget hierarchy, allowing you to browse, select, and organize UI components.
+- **[View Explorer Module](../modules-panel/widget-panel.md)**: Provides isolated previews of your full application, individual pages, and components, enabling you to test UI states with sample data, inspect variations quickly, and jump directly to any screen without navigating through the app flow.
 
 - **[Theme Module](../modules-panel/theme.md)**: Manages app theming and styling by providing tools to customize colors, fonts, typography, and design tokens that are accessible across your application.
 
@@ -22,3 +22,4 @@ The Modules Panel enabled from the left side of the builder interface, provides 
 
 - **[Supabase Module](../../integrations/supabase.md)**: Sets up Supabase backend integration for database management, authentication, and real-time subscriptions to power your app's backend functionality.
 
+- **[Git Module](../../integrations/git.md)**: Connects your Dreamflow project to a Git repository.
