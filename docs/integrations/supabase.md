@@ -178,7 +178,7 @@ Edge Functions are ideal for:
 - **Calling external APIs securely** (e.g., Stripe, Twilio, OpenAI) without exposing keys in the client app
 - **Generating personalized AI content** such as product recommendations, support replies, onboarding guides, weekly usage summaries, or tailored learning suggestions
 - **Running scheduled or on-demand automations**
-- **Performing complex business logic** thatt is not suitable for client-side execution
+- **Performing complex business logic** that is not suitable for client-side execution
 - **Enforcing secure access rules** using Supabase Auth (require logged-in user)
 
 :::info
@@ -199,6 +199,9 @@ To create and deploy the Edge Function, follow these steps:
 
 1. Open the **Supabase module** from the left sidebar.
 2. Scroll to **Edge Functions** and click **+** to create a new one.
+:::note
+The agent may also determine when parts of your feature implementation should live in the backend and proactively create Edge Function code on your behalf.
+:::
 3. This opens the **Agent Panel** on the right with a prefilled starter prompt. Simply continue describing what you want your function to do. For example:
 
 ```jsx
@@ -208,35 +211,29 @@ Create a Supabase Edge Function that uses OpenAI api to generate a motivational 
 
 ![create-edge-functions.avif](imgs/create-edge-functions.avif)
 
-The agent will scaffold a complete Edge Function, including folders and `index.ts`. You will now see the function generated under the following structure:
+The agent will create a complete Edge Function using Typescript, including folders and `index.ts`. You will now see the function generated under the following structure:
 
 ![edge-function-file.avif](imgs/edge-function-file.avif)
 
 :::info
-
 You can open and edit the function like any other file in Dreamflow.
-
 :::
 
 #### 2. Add Required Secrets
 
 If your Edge Functions require secrets like API keys, Dreamflow automatically detects them from your generated code and allows you to add the required values.
 
-To configure your function’s secrets, open the **Supabase > Secrets** section and add the following:
+To configure your function’s secrets, open the **Supabase > Secrets** section in Dreamflow and add the values specific to your edge function. 
 
-- **YOUR_API_KEY**: Enter your own API key.
-- **SUPABASE_URL**: Copy the **API URL** from the **Project Details** section at the top.
-- **SUPABASE_ANON_KEY**: Copy the **Anon Key** from the same **Project Details** section.
-
-Once added, Dreamflow will rewrite the deployment environment so your function can access these secrets at runtime.
+Saving these values in Dreamflow pushes them to your Supabase project.
 
 ![add-secrect.avif](imgs/add-secrect.avif)
 
 #### 3. Deploy the Function
 
-After reviewing your function and adding secrets:
+After reviewing your function and adding secrets you are ready to deploy your function.
 
-1. Return to **Supabase > Edge Functions** section.
+1. Open the **Supabase > Edge Functions** section.
 2. Click **Deploy Function**.
 3. A confirmation dialog appears; click **Deploy**.
 
@@ -245,7 +242,7 @@ After reviewing your function and adding secrets:
 
 #### 4. Verify Deployment
 
-After deployment, open the **Supabase Dashboard > Edge Functions** page. You should now see your function listed.
+After deployment, you can open the **Supabase Dashboard > Edge Functions** page to ensure your function has been properly deployed. 
 
 ![sb-edge-functions.avif](imgs/sb-edge-functions.avif)
 
@@ -256,11 +253,15 @@ Once your Edge Function is deployed, you can trigger it directly from your app.
 
 **Using Agent**
 
-You can simply ask the Agent to connect the function to the correct part of your UI. For example:
+You can ask the Agent to connect the function to the correct part of your UI. For example:
 
 ```jsx
 Call the `generate-motivation` Supabase Edge Function on the home page and display the returned message in the motivational message widget.
 ```
+
+:::note
+The agent should also automatially wire up the function to the correct parts of your app as you build.
+:::
 
 The agent will automatically place the call in the appropriate widget, manage loading states, and update your UI.
 
@@ -415,18 +416,6 @@ Why can’t I sign up with Supabase Authentication?
 If you are unable to sign up in the generated Supabase authentication code, it’s likely due to **Supabase authentication settings**. By default, Supabase requires **email confirmation** for new accounts. This means that sign-ups using invalid or dummy email addresses will fail.
 
 To fix this, use a valid email address during sign-up so you can receive and confirm the verification email.
-</p> 
-</details>
-
-
-
-<details>
-<summary>
-Are Supabase Edge Functions supported in Dreamflow? 
-</summary>
-
-<p>
-Currently, **Edge Functions are not supported in Dreamflow**. If you need to create or manage Edge Functions, you’ll have to do so directly from the **Supabase Console**.
 </p> 
 </details>
 
