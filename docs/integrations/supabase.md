@@ -4,7 +4,7 @@ title: Supabase
 description: Learn how to connect your Dreamflow app with Supabase to enable powerful backend features such as authentication, databases, storage, and more.
 tags: [Supabase, Integration, Dreamflow, Backend]
 sidebar_position: 2
-toc_max_heading_level: 4
+toc_max_heading_level: 3
 keywords: [Supabase, Integration, Dreamflow, Backend]
 ---
 
@@ -165,6 +165,246 @@ You can only generate sample data **once** per project. If you need to modify or
 
 :::
 
+## Edge Functions
+
+[Supabase Edge Functions](https://supabase.com/docs/guides/functions) let you run secure, server-side code without needing your own backend. These functions are perfect for tasks that require backend logic, secret handling, or integrations with external APIs such as OpenAI. Because they run on Supabase’s global edge network, they are fast, scalable, and isolated from your client code.
+
+:::info
+Unlike database functions or triggers, edge functions execute outside the database engine, giving you full flexibility to write custom logic without being tied to SQL or database-level events.
+:::
+
+Edge Functions are ideal for:
+
+- **Calling external APIs securely** (e.g., Stripe, Twilio, OpenAI) without exposing keys in the client app
+- **Generating personalized AI content** such as product recommendations, support replies, onboarding guides, weekly usage summaries, or tailored learning suggestions
+- **Running scheduled or on-demand automations**
+- **Performing complex business logic** that is not suitable for client-side execution
+- **Enforcing secure access rules** using Supabase Auth (require logged-in user)
+
+:::info
+You can find [**more examples**](https://supabase.com/docs/guides/functions#examples) in the official documentation.
+:::
+
+:::warning
+Dreamflow doesn’t support running Edge Functions locally yet because the editor has no built-in terminal or local [**Deno**](https://deno.com/) runtime.
+:::
+
+### Create and Deploy
+
+Dreamflow provides a built-in workflow to generate, edit, configure, and deploy Supabase Edge Functions directly from your project — no command line needed.
+
+To create and deploy the Edge Function, follow these steps:
+
+#### 1. Create a New Edge Function
+
+1. Open the **Supabase module** from the left sidebar.
+2. Scroll to **Edge Functions** and click **+** to create a new one.
+:::note
+The agent may also determine when parts of your feature implementation should live in the backend and proactively create Edge Function code on your behalf.
+:::
+3. This opens the **Agent Panel** on the right with a prefilled starter prompt. Simply continue describing what you want your function to do. For example:
+
+```jsx
+//Agent Prompt
+Create a Supabase Edge Function that uses OpenAI api to generate a motivational message based on the users habit progress.
+```
+
+![create-edge-functions.avif](imgs/create-edge-functions.avif)
+
+The agent will create a complete Edge Function using Typescript, including folders and `index.ts`. You will now see the function generated under the following structure:
+
+![edge-function-file.avif](imgs/edge-function-file.avif)
+
+:::info
+You can open and edit the function like any other file in Dreamflow.
+:::
+
+#### 2. Add Required Secrets
+
+If your Edge Functions require secrets like API keys, Dreamflow automatically detects them from your generated code and allows you to add the required values.
+
+To configure your function’s secrets, open the **Supabase > Secrets** section in Dreamflow and add the values specific to your edge function. 
+
+Saving these values in Dreamflow pushes them to your Supabase project.
+
+![add-secrect.avif](imgs/add-secrect.avif)
+
+#### 3. Deploy the Function
+
+After reviewing your function and adding secrets you are ready to deploy your function.
+
+1. Open the **Supabase > Edge Functions** section.
+2. Click **Deploy Function**.
+3. A confirmation dialog appears; click **Deploy**.
+
+![deploy-edge-funciton.avif](imgs/deploy-edge-funciton.avif)
+
+
+#### 4. Verify Deployment
+
+After deployment, you can open the **Supabase Dashboard > Edge Functions** page to ensure your function has been properly deployed. 
+
+![sb-edge-functions.avif](imgs/sb-edge-functions.avif)
+
+
+#### 5. Run or Test Your Edge Function
+
+Once your Edge Function is deployed, you can trigger it directly from your app.
+
+**Using Agent**
+
+You can ask the Agent to connect the function to the correct part of your UI. For example:
+
+```jsx
+Call the `generate-motivation` Supabase Edge Function on the home page and display the returned message in the motivational message widget.
+```
+
+:::note
+The agent should also automatially wire up the function to the correct parts of your app as you build.
+:::
+
+The agent will automatically place the call in the appropriate widget, manage loading states, and update your UI.
+
+**Add Manually**
+
+If you prefer to call the function manually, here is the recommended method using the official [**supabase_flutter**](https://pub.dev/packages/supabase_flutter) package. Here’s an example code:
+
+```jsx
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:convert';
+
+Future<String> callGenerateMotivation() async {
+  final supabase = Supabase.instance.client;
+
+  final response = await supabase.functions.invoke(
+    'generate-motivation',
+    body: {
+      'progress': 0.6,
+      'completedHabits': 3,
+      'totalHabits': 5,
+      'userName': 'Mike',
+    },
+  );
+
+  if (response.data != null) {
+    return response.data['message'] ?? 'No message returned.';
+  } else {
+    throw Exception('Failed: ${response.error?.message}');
+  }
+}
+```
+
+Then, you can call `callGenerateMotivation()` from anywhere in your app, such as:
+
+```jsx
+ElevatedButton(
+  onPressed: () async {
+    final message = await callGenerateMotivation();
+    print(message);
+  },
+  child: Text(message),
+)
+```
+
+:::tip[Monitor Your Edge Function]
+
+After deploying your Edge Function, you can view detailed insights directly from the **Supabase Dashboard**. Open your project in Supabase > **Edge Functions** > select your function. From there, you can:
+
+- **View Invocations** (every time your app calls the function)
+- **Check Logs** for debugging and server output
+- **Function Code** to update and deploy code directly
+- **Deployment Details**
+
+![sb-edge-functions-logs](imgs/sb-edge-functions-logs.avif)
+
+This is extremely helpful for verifying that your function is running correctly and diagnosing any issues.
+
+:::
+
+### Type Generation
+
+Dreamflow can generate fully typed TypeScript definitions based on your database schema. These types ensure your Edge Functions stay in sync with your tables, columns, and relationships, providing safer queries and better autocomplete during development.
+
+For example, without types you might accidentally write:
+
+```tsx
+await supabase.from("profiles").insert({ fullName: "Mike" });
+// ❌ Bug: "fullName" is not a column in the profiles table
+```
+
+This won’t fail until the app is actually running.
+
+With generated types, TypeScript immediately catches the mistake:
+
+```tsx
+// ❌ TypeScript error: "fullName" does not exist on type Insert<profiles>
+```
+
+Instead of guessing column names or discovering mistakes only at runtime, you get immediate feedback and accurate autocomplete based on your real schema.
+
+#### Generate Types from Database Schema
+
+You can easily generate the `database.types.ts` file by asking the Dreamflow agent.
+
+Use this Agent prompt:
+
+```jsx
+Generate a `database.types.ts` file for my connected Supabase project based on the current database schema.
+```
+
+:::warning
+Types do not update automatically. You must regenerate them whenever your database schema changes.
+:::
+
+#### Use Generated Types
+
+Inside any Edge Function, you can import the generated types:
+
+```tsx
+import { Database } from "../../database.types.ts";
+```
+
+Then you can use them like this:
+
+**Example: Type-safe Table Insert**
+
+```tsx
+type ProfileInsert = Database["public"]["Tables"]["profiles"]["Insert"];
+
+await supabase.from("profiles").insert<ProfileInsert>({
+  id: userId,
+  display_name: name,
+});
+```
+
+**Example: Strongly-typed Row**
+
+```tsx
+type ProfileRow = Database["public"]["Tables"]["profiles"]["Row"];
+
+const { data } = await supabase.from("profiles").select("*").eq("id", userId);
+
+const profile: ProfileRow = data[0]; // typed and validated
+```
+
+
+### Best Practices
+
+- **Each Function Lives in Its Own Folder**: Every edge function should have its own directory containing an `index.ts` entry file. For example:
+
+  ```jsx
+  supabase/
+    functions/
+      generate-summary/
+        index.ts
+      send-email/
+        index.ts
+  ```
+
+- **Use Shared Modules for Reusable Logic:** If multiple functions need the same utilities (like an OpenAI client, validators, or formatting helpers), place them inside `supabase/functions/_shared/`. This avoids code duplication and keeps each function focused only on its own task.
+- **Use `database.types.ts` for Strong Typing:** Generate and import `database.types.ts` to ensure all database queries inside edge functions match your actual schema. This provides autocomplete, prevents schema mismatches, and makes your functions safer and easier to maintain.
+- **Use Consistent Error Handling Patterns:** Implement clear and predictable error handling inside each Edge Function. Wrap risky operations in `try/catch`, log errors using `console.error()` so they appear in the Supabase Dashboard logs, and always return structured JSON error responses.
+
 ## FAQs
 
 <details>
@@ -176,18 +416,6 @@ Why can’t I sign up with Supabase Authentication?
 If you are unable to sign up in the generated Supabase authentication code, it’s likely due to **Supabase authentication settings**. By default, Supabase requires **email confirmation** for new accounts. This means that sign-ups using invalid or dummy email addresses will fail.
 
 To fix this, use a valid email address during sign-up so you can receive and confirm the verification email.
-</p> 
-</details>
-
-
-
-<details>
-<summary>
-Are Supabase Edge Functions supported in Dreamflow? 
-</summary>
-
-<p>
-Currently, **Edge Functions are not supported in Dreamflow**. If you need to create or manage Edge Functions, you’ll have to do so directly from the **Supabase Console**.
 </p> 
 </details>
 
@@ -203,4 +431,117 @@ When sample data is created, it inserts records directly into the Supabase datab
 
 To fix it, you can delete the dummy user record from the Auth table and then sign up again in your app with that email.
 </p> 
+</details>
+
+<details>
+<summary>
+Why do I get “ClientException: Failed to fetch” when calling an Edge Function? 
+</summary>
+
+<p>
+This error almost always happens because the **browser blocked the request due to CORS**, so your Supabase Edge Function never received it. The browser sends a **CORS preflight (OPTIONS)** request first. If your function doesn’t handle `OPTIONS` or doesn’t return valid `Access-Control-Allow-*` headers, the browser stops the request and it reports “Failed to fetch.”
+
+**Fix:** Add proper CORS handling inside your Edge Function. The example below includes the required CORS configuration—most importantly the *Access-Control-Allow-Origin* header—along with the other *Access-Control-Allow-** headers and correct handling of the OPTIONS preflight request.
+
+```jsx
+// CORS headers added to allow the browser request to pass
+// The key fix is "Access-Control-Allow-Origin": "*"
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*", // <-- required for web requests
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type", // required for Supabase auth + JSON
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS", // allow methods including OPTIONS
+};
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  const url = new URL(req.url);
+  const habit = url.searchParams.get("habit") ?? "daily";
+  const tone = url.searchParams.get("tone") ?? "encouraging";
+
+  return new Response(JSON.stringify({
+    message: `Tiny step, big impact. Your ${habit} practice is blooming — keep it ${tone}!`,
+  }), {
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+});
+
+```
+
+After updating, redeploy your edge function and test it. Then open **Supabase Dashboard → Edge Functions → Logs** to verify that the request is now reaching the server.
+</p> 
+</details>
+
+
+
+<details>
+<summary>
+Do I need to be logged in when calling my Supabase Edge Function? 
+</summary>
+
+<p>
+It depends on whether the function **requires JWT verification**. If the “Verify JWT with legacy secret” toggle is enabled in your Supabase Dashboard, the function expects an authenticated request with a valid JWT in the `Authorization` header. In that case, you must be logged in before calling the function; otherwise the server will reject the request with a **401 Unauthorized** (visible in function logs).
+
+![supabase-edge-function-logged-in](imgs/supabase-edge-function-logged-in.avif)
+</p> 
+</details>
+
+<details>
+<summary>
+How do I access the logged-in user inside an Edge Function?
+</summary>
+
+<p>
+When your app makes a request and the user is logged in, the user’s JWT is automatically included in the `Authorization` header. Inside your Edge Function, you can read this header and fetch the authenticated user like this:
+
+```tsx
+const authHeader = req.headers.get("Authorization");
+const { data: user } = await supabase.auth.getUser(authHeader);
+```
+
+The `user` will contain the full Supabase Auth user object. If the request has no token or an invalid token, `user` will be `null`.
+</p>
+</details>
+
+<details>
+<summary>
+Why am I getting “Error: Function invocation timed out” and how do I fix it?
+</summary>
+
+<p>
+
+This error appears when your Edge Function takes too long to finish, often because it’s waiting on a slow external API call without a timeout. For example, a request like `await fetch("https://slow-api.example.com/report")` can hang indefinitely, causing the function to hit Supabase’s execution limit and fail.
+
+To fix this, add a timeout using `AbortController`:
+
+```tsx
+const controller = new AbortController();
+const timeout = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+const response = await fetch("https://slow-api.example.com/report", {
+  signal: controller.signal,
+}).finally(() => clearTimeout(timeout));
+```
+
+Then return a clear error when the timeout occurs:
+
+```tsx
+try {
+  // fetch with timeout
+} catch (err) {
+  if (err.name === "AbortError") {
+    return new Response(
+      JSON.stringify({ error: "Upstream service timed out" }),
+      { status: 504, headers: { "Content-Type": "application/json" } }
+    );
+  }
+}
+```
+
+This prevents your function from hanging, ensures it fails cleanly, and avoids timeout errors in production.
+
+</p>
 </details>
