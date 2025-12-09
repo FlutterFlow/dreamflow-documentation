@@ -18,6 +18,7 @@ Right now you can only upload assets through the Asset Module. You cannot upload
 :::
 
 
+
 ## Uploading Assets
 
 To upload an asset, click **Upload Assets** and choose a file from your computer, or simply drag and drop it into the panel. Dreamflow will automatically organize the file into the right category (for example, a `.png` will appear under **Images**). Additionally, Dreamflow will automatically add the asset to the `pubspec.yaml` file within your project, so it's accessible throughout your application.
@@ -26,6 +27,7 @@ To upload an asset, click **Upload Assets** and choose a file from your computer
 
 - You can use the search bar at the top of the Assets Panel to quickly locate files by name.
 - Assets are bundled into your project when you publish or export the code.
+- To delete an asset, please right click on the asset and click the Delete button
 
 :::
 
