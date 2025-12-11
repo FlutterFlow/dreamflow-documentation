@@ -43,11 +43,14 @@ def get_file_hash(file_path: str) -> Optional[str]:
 def get_git_changed_files() -> Tuple[List[str], List[str], bool]:
     """Get changed files using Git diff. Returns (changed_files, new_files, git_success)."""
     try:
-        print("🔍 Comparing against base branch: origin/main")
+        # When running in CI, use the GITHUB_BASE_SHA if available (set by workflow)
+        # Otherwise, compare with origin/main for local development
+        base_ref = os.getenv('GITHUB_BASE_SHA', 'origin/main')
+        print(f"🔍 Comparing against: {base_ref}")
         
-        # Get all files changed since origin/main
+        # Get all files changed since base_ref
         result = subprocess.run(
-            ['git', 'diff', '--name-only', 'origin/main', 'HEAD'],
+            ['git', 'diff', '--name-only', base_ref, 'HEAD'],
             capture_output=True,
             text=True,
             cwd=os.getcwd()
