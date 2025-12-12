@@ -38,6 +38,10 @@ If you make changes to your project, click **Update Deployment** to publish the 
 
 :::
 
+:::warning
+1-click web deployment doesn’t allow customizing `index.html`. For example, you can’t add a custom favicon. If you need a full control, you can use your own hosting solution.
+:::
+
 ## Custom Deployment
 
 (Coming soon)
