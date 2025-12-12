@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Fetch all history so we can compare commits
+        fetch-depth: 2  # Fetch current commit and previous commit for comparison
       
     - name: Set up Python
       uses: actions/setup-python@v4

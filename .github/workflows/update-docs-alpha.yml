@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 2  # Fetch current commit and previous commit for comparison
       
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -27,6 +29,7 @@ jobs:
         FIRESTORE_PROJECT_ID: ${{ secrets.ALPHA_FIRESTORE_PROJECT_ID }}
         FIRESTORE_CREDENTIALS_JSON: ${{ secrets.ALPHA_FIRESTORE_CREDENTIALS_JSON }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        GITHUB_BASE_SHA: ${{ github.event.before }}
       run: |
         python update_docs.py --mode incremental
       
