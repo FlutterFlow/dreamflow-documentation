@@ -239,7 +239,7 @@ Add a login screen.
 
 #### Supported Rule Files
 
-Dreamflow looks for one of the following files in your project root:
+Dreamflow scans for the following rule files in your project, in this priority order:
 
 | Priority | Filename | Typical Purpose |
 | --- | --- | --- |
@@ -249,9 +249,7 @@ Dreamflow looks for one of the following files in your project root:
 | 4️⃣ | [**ARCHITECTURE.md**](https://architecture.md/) | Documents your project’s structure, data flow, and design philosophy for better context. |
 
 :::info
-
-Only the **first file found** in this order is loaded. If multiple exist, Dreamflow stops scanning after the first match. For example, if .cursorrules exists, it will be used even if `AGENTS.md` is also present.
-
+Dreamflow loads only the first matching file based on priority. For example, if `.cursorrules` exists, Dreamflow will ignore `CLAUDE.md`, `AGENTS.md`, and `ARCHITECTURE.md`.
 :::
 
 When any of the supported rule files is loaded into the Agent’s context:
@@ -310,18 +308,46 @@ features/[feature]/presentation/
 - Sanitize UI error messages.
 ```
 
-**Step 2: Place File in Project Root**
+**Step 2: Place File in Your Project**
 
-Upload the rule file at the **same level as `pubspec.yaml`**. Dreamflow **does not** scan subfolders. It should look like this:
+You can add project rules at **two levels**:
+
+**1. Root-level Rule File:** Place a global rule file (e.g., `AGENTS.md`, `.cursorrules`, `CLAUDE.md`, or `ARCHITECTURE.md`) in the **project root**, beside `pubspec.yaml`.
+
+- This file has **global scope**.
+- It is **always loaded** before every Agent action, no matter which part of the project you're working in.
+- Use it only for your **most important, universal rules**, such as:
+    - Architecture pattern (BLoC, Riverpod, MVVM…)
+    - Folder structure
+    - Naming conventions
+    - Coding style
+    - Security guidelines
 
 ![project-rule-file.avif](imgs/project-rule-file.avif)
+
+**2. Nested Rule File (Feature-Specific Rules)**: You may also create **`AGENTS.md` files inside subfolders**, such as:
+
+```
+/features/auth/AGENTS.md
+/features/chat/AGENTS.md
+/lib/widgets/common/AGENTS.md
+```
+
+Dreamflow will load these **only when the Agent is generating or editing code inside that folder**. Use nested rule files for:
+
+- Feature-specific architecture
+- Module boundaries
+- API constraints
+- UI or widget conventions
+- Domain-level rules
 
 **Step 3: Run Agent Action**
 
 You can view or edit your rule file anytime from the Dreamflow File Editor. Once it’s saved, run any Agent command (for example, “Add a login screen”). Dreamflow will automatically load your rules and apply them to every generation.
 
 #### Best Practices
-
+- Keep the root-level `AGENTS.md` small and focused.
+- Use nested `AGENTS.md` files for detailed, module-specific rules to avoid bloating the Agent’s context.
 - Keep the rule file specific, short, and imperative.
 - Keep must-follow standards at the top of the file.
 - Avoid overly long explanations — keep it concise and readable.
