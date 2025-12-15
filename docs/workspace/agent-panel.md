@@ -56,7 +56,7 @@ The AI automatically has access to:
 - The widget you currently have selected
 - Recent changes you've made
 - Your project's dependencies and configuration
-- Your project-level guideline files (.cursorrules, CLAUDE.md, AGENTS.md, or ARCHITECTURE.md) to keep generated code consistent.
+- Your project-level guideline files to keep generated code consistent.
 
 
 ### Image Attachments
@@ -231,28 +231,18 @@ Without project rules, you repeat long instructions in every prompt, for example
 Add a login screen and use the BLoC pattern for state management, follow Clean Architecture, and place new features under /features/...
 ```
 
-With project rules, you can define these standards once in a file such as [`AGENTS.md`](http://AGENTS.md) and then simply ask:
+With project rules, you can define these standards once and then simply ask:
 
 ```
 Add a login screen.
 ```
 
-#### Supported Rule Files
-
-Dreamflow scans for the following rule files in your project, in this priority order:
-
-| Priority | Filename | Typical Purpose |
-| --- | --- | --- |
-| 1️⃣ | **.cursorrules** | Originally designed for the Cursor IDE but supported in Dreamflow for compatibility with existing codebases. |
-| 2️⃣ | [**CLAUDE.md**](https://code.claude.com/docs/en/overview) | Anthropic-style AI instruction file that can include guidelines for tone, safety, or project-specific context. |
-| 3️⃣ | [**AGENTS.md**](https://agents.md/) | Defines how AI agents should behave in your project, including coding standards, architecture patterns, and testing rules. |
-| 4️⃣ | [**ARCHITECTURE.md**](https://architecture.md/) | Documents your project’s structure, data flow, and design philosophy for better context. |
 
 :::info
-Dreamflow loads only the first matching file based on priority. For example, if `.cursorrules` exists, Dreamflow will ignore `CLAUDE.md`, `AGENTS.md`, and `ARCHITECTURE.md`.
+Dreamflow supports common rule file formats such as [**`CLAUDE.md`**](https://code.claude.com/docs/en/overview), **`.cursorrules`**, and [**`ARCHITECTURE.md`**](https://architecture.md/), but it is **recommended to use the [`AGENTS.md`](https://agents.md/) file**.
 :::
 
-When any of the supported rule files is loaded into the Agent’s context:
+When the rule file is loaded into the Agent’s context:
 
 - The file’s contents are **appended to the system prompt** and used to fine-tune how the Agent generates, edits, and structures code.
 - These rules are applied to **every Agent action**, ensuring consistent behavior across your entire project.
@@ -264,7 +254,7 @@ Follow these steps to add project rules:
 
 **Step 1: Create Rule File**
 
-Create one of the supported rule files with the help of ChatGPT or Claude. While creating the file, include your project’s coding standards, architecture pattern, folder structure, testing requirements, and security guidelines.
+Create rule files with the help of ChatGPT or Claude. While creating the file, include your project’s coding standards, architecture pattern, folder structure, testing requirements, and security guidelines.
 
 Here’s a sample prompt you can use to generate your `AGENTS.md` file:
 
@@ -312,7 +302,7 @@ features/[feature]/presentation/
 
 You can add project rules at **two levels**:
 
-**1. Root-level Rule File:** Place a global rule file (e.g., `AGENTS.md`, `.cursorrules`, `CLAUDE.md`, or `ARCHITECTURE.md`) in the **project root**, beside `pubspec.yaml`.
+**1. Root-level Rule File:** Place a rule file in the **project root**, beside `pubspec.yaml`.
 
 - This file has **global scope**.
 - It is **always loaded** before every Agent action, no matter which part of the project you're working in.
