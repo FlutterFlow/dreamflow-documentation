@@ -176,6 +176,12 @@ You can generate a Personal Access Token directly from your GitLab account by fo
 
 Once your token is created, copy it and paste it into the **Access Token** field when connecting your repository in Dreamflow.
 
+:::info
+In Dreamflow, you can update the access token later at any time by clicking the **key icon** in the **Source Control panel** and entering a new Personal Access Token.
+
+![update-access-token](imgs/update-access-token.avif)
+:::
+
 ## Git Operations
 
 This section walks you through how to perform common Git operations like branching, committing, and syncing your code.
