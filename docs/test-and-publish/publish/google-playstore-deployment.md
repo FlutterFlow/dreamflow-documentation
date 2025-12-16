@@ -177,9 +177,7 @@ In Dreamflow, set the **Google Play Track** to **Internal**, enter the **Bundle 
 Once the build is complete, click **Download AAB File** button (in the **App Bundle** section). If the button is still disabled, wait a bit longer and try again.
 
 :::info
-
-Even if the build status appears as FAILURE, you can still download the AAB file.
-
+Sometimes the **Download AAB File** button is disabled because the build has failed. Review and fix the build errors (you can use **Fix with AI**), then resubmit the build. The AAB download will be available once the build succeeds.
 :::
 
 <div style={{
