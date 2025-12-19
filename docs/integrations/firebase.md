@@ -326,12 +326,9 @@ If you’re building for the web and want to test authentication while running y
 
 To add authorized domain:
 
-1. Open **Developer Tools** in your browser; press **`Ctrl + Shift + J`** (Windows/Linux) or **`Cmd + Option + J`** (Mac) to open it directly in **Google Chrome**.
-2. In the **Console** tab, press **Ctrl + F** (or **Cmd + F** on Mac) and search for `dreamflow.cloud`.
-Locate the log entry that contains a URL like: `wss://summer-firefly-vuh34ynj.mum0.dreamflow.cloud`
-3. Copy the domain part — for example: `summer-firefly-vuh34ynj.mum0.dreamflow.cloud`
-4. Go to the **Firebase Console** → **Authentication** → **Settings** → **Authorized Domains**. Click **Add Domain**, paste the copied Dreamflow domain, and click **Save**.
-5. Reload and test your app.
+1. Copy the **Preview Domain** from the **Project Details** panel.
+2. Go to the **Firebase Console** → **Authentication** → **Settings** → **Authorized Domains**. Click **Add Domain**, paste the copied Dreamflow domain, and click **Save**.
+3. Reload and test your app.
 
 ![add-authorized-domain](imgs/add-authorized-domain.avif)
 
