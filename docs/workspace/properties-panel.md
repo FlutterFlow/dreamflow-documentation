@@ -17,7 +17,7 @@ The Properties Panel allows you to edit widget properties in real-time, providin
     height: 0,
     width: '100%'}}>
     <iframe 
-        src="https://demo.arcade.software/6AJA10eoZEfsJPrjKyrp?embed&show_copy_link=true"
+        src="https://demo.arcade.software/ylwlUjH3jbhrogoB0riK?embed&show_copy_link=true"
         title=""
         style={{
             position: 'absolute',
@@ -44,6 +44,33 @@ The Properties Panel can be quickly accessed by double  clicking any widget in t
 
 :::note[Switching to Code]
 To switch from the visual property editor to a code-based property editor, hover near the property and click the "Switch to Code View" button. You can also cmd+click this button to jump to the specific line in the code editor where the property is defined.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/3VzSt8gjrJw5tGwlIZFX?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameBorder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
 :::
 
 
@@ -51,6 +78,31 @@ To switch from the visual property editor to a code-based property editor, hover
 Some properties for widgets are hidden by default. However, any property that's accessible in the underlying widget can be set from the property panel. 
 If you are looking for a hidden property, you can search for it or add it using the "+ Add Property" button at the top of the Property panel. 
 
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(50.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/teMRY5B8qPfkeYrHwYRd?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameBorder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
 
 ## Modifiers
 
@@ -91,7 +143,7 @@ Modifier widgets are hidden from the "Simplified View" in the [**widget tree**](
     height: 0,
     width: '100%'}}>
     <iframe 
-        src="https://demo.arcade.software/JPPGJVEhgwSBhviyKmUs?embed&show_copy_link=true"
+        src="https://demo.arcade.software/NTeLIjTN1QAfLyyx4BVB?embed&show_copy_link=true"
         title=""
         style={{
             position: 'absolute',
