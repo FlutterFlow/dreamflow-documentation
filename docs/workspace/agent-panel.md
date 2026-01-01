@@ -56,7 +56,7 @@ The AI automatically has access to:
 - The widget you currently have selected
 - Recent changes you've made
 - Your project's dependencies and configuration
-- Your project-level guideline files (.cursorrules, CLAUDE.md, AGENTS.md, or ARCHITECTURE.md) to keep generated code consistent.
+- Your project-level guideline files to keep generated code consistent.
 
 
 ### Image Attachments
@@ -231,30 +231,18 @@ Without project rules, you repeat long instructions in every prompt, for example
 Add a login screen and use the BLoC pattern for state management, follow Clean Architecture, and place new features under /features/...
 ```
 
-With project rules, you can define these standards once in a file such as [`AGENTS.md`](http://AGENTS.md) and then simply ask:
+With project rules, you can define these standards once and then simply ask:
 
 ```
 Add a login screen.
 ```
 
-#### Supported Rule Files
-
-Dreamflow looks for one of the following files in your project root:
-
-| Priority | Filename | Typical Purpose |
-| --- | --- | --- |
-| 1️⃣ | **.cursorrules** | Originally designed for the Cursor IDE but supported in Dreamflow for compatibility with existing codebases. |
-| 2️⃣ | [**CLAUDE.md**](https://code.claude.com/docs/en/overview) | Anthropic-style AI instruction file that can include guidelines for tone, safety, or project-specific context. |
-| 3️⃣ | [**AGENTS.md**](https://agents.md/) | Defines how AI agents should behave in your project, including coding standards, architecture patterns, and testing rules. |
-| 4️⃣ | [**ARCHITECTURE.md**](https://architecture.md/) | Documents your project’s structure, data flow, and design philosophy for better context. |
 
 :::info
-
-Only the **first file found** in this order is loaded. If multiple exist, Dreamflow stops scanning after the first match. For example, if .cursorrules exists, it will be used even if `AGENTS.md` is also present.
-
+Dreamflow supports common rule file formats such as [**`CLAUDE.md`**](https://code.claude.com/docs/en/overview), **`.cursorrules`**, and [**`ARCHITECTURE.md`**](https://architecture.md/), but it is **recommended to use the [`AGENTS.md`](https://agents.md/) file**.
 :::
 
-When any of the supported rule files is loaded into the Agent’s context:
+When the rule file is loaded into the Agent’s context:
 
 - The file’s contents are **appended to the system prompt** and used to fine-tune how the Agent generates, edits, and structures code.
 - These rules are applied to **every Agent action**, ensuring consistent behavior across your entire project.
@@ -266,7 +254,35 @@ Follow these steps to add project rules:
 
 **Step 1: Create Rule File**
 
-Create one of the supported rule files with the help of ChatGPT or Claude. While creating the file, include your project’s coding standards, architecture pattern, folder structure, testing requirements, and security guidelines.
+To create a rule, open the **Agent** panel, select the **Rules** button, and click **Generate AGENTS.md**. Once the file is created, it will appear in the project root.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/VOm5GiXp1QVuKRxO0q8X?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+You can also manually create rule files with the help of ChatGPT or Claude. While creating the file, include your project’s coding standards, architecture pattern, folder structure, testing requirements, and security guidelines.
 
 Here’s a sample prompt you can use to generate your `AGENTS.md` file:
 
@@ -310,18 +326,46 @@ features/[feature]/presentation/
 - Sanitize UI error messages.
 ```
 
-**Step 2: Place File in Project Root**
+**Step 2: Place Rule File**
 
-Upload the rule file at the **same level as `pubspec.yaml`**. Dreamflow **does not** scan subfolders. It should look like this:
+You can add project rules at **two levels**:
+
+**1. Root-level Rule File:** Place a rule file in the **project root**, beside `pubspec.yaml`.
+
+- This file has **global scope**.
+- It is **always loaded** before every Agent action, no matter which part of the project you're working in.
+- Use it only for your **most important, universal rules**, such as:
+    - Architecture pattern (BLoC, Riverpod, MVVM…)
+    - Folder structure
+    - Naming conventions
+    - Coding style
+    - Security guidelines
 
 ![project-rule-file.avif](imgs/project-rule-file.avif)
+
+**2. Nested Rule File (Feature-Specific Rules)**: You may also create **`AGENTS.md` files inside subfolders**, such as:
+
+```
+/features/auth/AGENTS.md
+/features/chat/AGENTS.md
+/lib/widgets/common/AGENTS.md
+```
+
+Dreamflow will load these **only when the Agent is generating or editing code inside that folder**. Use nested rule files for:
+
+- Feature-specific architecture
+- Module boundaries
+- API constraints
+- UI or widget conventions
+- Domain-level rules
 
 **Step 3: Run Agent Action**
 
 You can view or edit your rule file anytime from the Dreamflow File Editor. Once it’s saved, run any Agent command (for example, “Add a login screen”). Dreamflow will automatically load your rules and apply them to every generation.
 
 #### Best Practices
-
+- Keep the root-level `AGENTS.md` small and focused.
+- Use nested `AGENTS.md` files for detailed, module-specific rules to avoid bloating the Agent’s context.
 - Keep the rule file specific, short, and imperative.
 - Keep must-follow standards at the top of the file.
 - Avoid overly long explanations — keep it concise and readable.
