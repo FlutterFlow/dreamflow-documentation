@@ -164,7 +164,7 @@ Follow these official GitHub guides to create a Personal Access Token:
 - For **Classic tokens:** Enable **repo** and **workflow** permissions.
 
 :::info
-When creating a fine-grained Personal Access Token for an organization-owned repository, the token may require admin approval before it becomes active. Until the token is approved, Dreamflow may return a 403 error. Once an organization admin approves the token, you can retry the connection and it should succeed.
+When creating a fine-grained Personal Access Token for an organization-owned repository, the token may require admin approval before it becomes active. Until the token is approved, Dreamflow may return a 403 error. After the approval, you can retry the connection and it should succeed.
 :::
 
 #### For GitLab
