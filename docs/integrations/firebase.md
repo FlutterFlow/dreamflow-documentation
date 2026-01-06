@@ -320,6 +320,189 @@ Once the authentication code is added, you’ll need to configure your project f
 
 If you’re building for the web and want to test authentication while running your app in Dreamflow, follow the steps in the [Add Authorized Domain](#add-authorized-domain) section to add your Dreamflow preview domain to the **Authorized Domains** list in the Firebase Console.
 
+
+
+### Apple Authentication
+
+To configure Apple Sign-In for your app, follow these steps:
+
+#### 1. Firebase Console Setup
+
+Open **Firebase Console** > **Authentication** > **Sign-in method**. Enable **Apple** as a sign-in provider. Keep this page open, you’ll return here after configuring Apple in the Developer portal.
+
+#### 2 Apple Developer Setup
+
+Go to the **Apple Developer** portal > [Identifiers list](https://developer.apple.com/account/resources/identifiers/list) and follow the steps below:
+
+##### 2.1 Create an App ID (for iOS app)
+
+Follow Apple’s official instructions to [create an App ID](https://developer.apple.com/help/account/identifiers/register-an-app-id/). During the setup process, make sure you enable the **Sign In with Apple** capability, then finish by selecting **Continue** and **Register** to create the App ID.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/ghjEj6tOvVJYPO2wykDX?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+##### 2.2 Create Service ID (Required for Web & Android)
+
+1. Click **+** to add new identifier.
+2. Select **Services IDs > Continue**.
+3. Enter the **Identifier** and **Description**. For Identifier, you can set it by appending **“.signin”** to your bundle ID (e.g., `com.awesomeorg.uplift.signin`), or use any unique identifier.
+4. Check **Sign In with Apple** and then click **Configure**.
+5. Select your App ID as the **Primary App ID**.
+6. Under **Website URLs**:
+    - **Domains**: Add your Firebase domain (e.g., `yourproject.firebaseapp.com`). Do NOT include "https://" - just the domain.
+    - **Return URLs**: Add `https://yourproject.firebaseapp.com/__/auth/handler`
+    (Replace "yourproject" with your actual Firebase project ID).
+7. Click **Next** > **Done** > **Continue** > **Register**.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/SmSQJnSumnscPt9uOd6Q?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+##### 2.3 Create a Key (required for Firebase)
+
+1. Go to [Keys section](https://developer.apple.com/account/resources/authkeys/list).
+2. Click **+** to add new key.
+3. Enter the **Key Name**, e.g., "Apple Sign In Key for Firebase".
+4. Check **Sign In with Apple.**
+5. Click **Configure** and select your App ID.
+6. Click **Save > Continue > Register.**
+7. Click **Download** to get the `.p8` key file. Save this file securely - you can only download it once!
+8. Note down the Key ID (shown on the page, e.g., ABC123XYZ) you’ll need this in Firebase Setup.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/AbKA1APHoqkIJ07apBqj?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+##### 2.4 Connect Apple to Firebase
+
+1. Go back to **Firebase Console** > **Authentication** > **Sign-in method** > **Apple**.
+2. Under **OAuth code flow configuration**, fill in the following:
+    - **Service ID**: The Service ID you created in Step 2.2 (e.g., `com.awesomeorg.uplift.signin`).
+    - **Apple Team ID**: Found in your [Apple Developer account](https://developer.apple.com/account) under **Membership Details**.
+    - **Key ID**: The Key ID from Step 2.3.
+    - **Private key**: Paste the content of `.p8` file downloaded in Step 2.3.
+3. Click **Save** to complete the configuration.
+
+![connect-apple-to-firebase.avif](imgs/connect-apple-to-firebase.avif)
+
+#### 3. Add Apple Authentication Code
+
+You can add the Apple sign-in code manually or let the Dreamflow Agent generate it for you. Here’s the **sample agent prompt** you can try:
+
+```jsx
+Generate Apple Sign-In authentication code for both mobile and web using the latest versions of firebase_auth package.
+```
+
+#### 4. iOS Setup
+
+1. Download your project and open ios/Runner.xcworkspace in Xcode
+2. Select the **Runner** project in the navigator
+3. Select the **Runner** target
+4. Go to **Signing & Capabilities** tab
+5. Click **+ Capability** and add **Sign In with Apple**
+6. Make sure your **Bundle Identifier** matches exactly what you set in the Dreamflow.
+7. Select your development team
+8. Run the app to test Apple sign in.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/S27VBj3c61edsUuK45Of?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+:::info
+- **For Android** and **Web**: Make sure you have completed the [**OAuth code flow configuration**](#24-connect-apple-to-firebase) in the Firebase console.
+- **User Info Only on First Sign-In**: Apple only returns the user’s **name** and **email** on the **first** successful sign-in. You should **store this data** (e.g., in Firestore or your backend) the first time you receive it. On subsequent sign-ins, these fields will be `null` / omitted.
+- **“Hide My Email” (Private Relay)**: Some users choose **“Hide My Email”** when signing in. Apple then provides a **proxy email**, e.g., `abc123@privaterelay.appleid.com`. To send emails through the proxy email to the users’ personal inboxes, you'll need to [**configure private email relay service**](https://developer.apple.com/help/account/capabilities/configure-private-email-relay-service/).
+:::
+
 ### Add Authorized Domain
 
 If you’re building for the web and want to test authentication while running your app in Dreamflow, you must add your Dreamflow preview domain to the **Authorized Domains** list in the Firebase Console.
@@ -331,8 +514,6 @@ To add authorized domain:
 3. Reload and test your app.
 
 ![add-authorized-domain](imgs/add-authorized-domain.avif)
-
-
 
 ## Add Sample Data to Firebase
 
