@@ -11,6 +11,13 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "redirects": [
+      {
+        "source": "/workspace/widget-tree",
+        "destination": "/workspace/view-explorer",
+        "type": 301
+      }
     ]
   }
 }

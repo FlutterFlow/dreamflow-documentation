@@ -1,14 +1,111 @@
 ---
-slug: /workspace/widget-tree
-title: Widget Tree 
-description: Learn about the Widget Tree panel in Dreamflow, a powerful hierarchical view that displays and helps you manage your Flutter app's widget structure
-tags: [widgets, ui, widget-tree, flutter, dreamflow, components]
-keywords: [widget tree, flutter widgets, ui components, widget hierarchy, widget management, widget structure, dreamflow interface, widget navigation, widget properties, widget selection]
+slug: /workspace/view-explorer
+title: View Explorer 
+description: Learn about Dreamflow’s View Explorer and Widget Tree panels — powerful tools for previewing your full app, inspecting individual pages and components, and managing your app widget hierarchy.
+tags: [view-explorer, widget-tree, previews, components]
+keywords: [view explorer, widget tree, ui previews, flutter pages, component previews,
+  isolated ui testing, widget hierarchy, dreamflow interface, preview app,
+  page preview, component preview, ui states, widget structure, widget navigation]
 sidebar_position: 1
-
 ---
 
-# Widget Tree
+# View Explorer
+
+The **View Explorer** lets you run your **full application** or preview individual **pages/components** with sample data. It helps you understand your project structure, test pages, and components under different conditions, and quickly jump around your app without navigating through full application flows.
+
+![explorer.avif](../imgs/explorer.avif)
+
+## Preview App
+
+When you select **Full Application** (under the **App** view), Dreamflow will run your entire app. This allows you to explore it exactly as a user would. You can navigate through screens, interact with buttons and inputs, and test end-to-end behavior in real time.
+
+Running the full app is useful for testing flows that span multiple pages (like a multi-step onboarding or navigation sequence) or any functionality that requires the complete app context (such as user login flows or global state management). If you encounter an issue while testing, you can edit the app on the fly and continue interacting, which greatly speeds up development time.
+
+![full-app.avif](../imgs/full-app.avif)
+
+## Preview Pages and Components
+
+You can preview individual **pages** or **components** in complete isolation. The Explore panel lists all your app’s pages and UI components, and you can select any one of them to render it. This means you **do not need to navigate through the app** or fulfill any prerequisites to view a particular screen or widget; it opens instantly, showing a realistic preview of that UI.
+
+Isolated previews let you focus on a specific screen or widget and test it with **custom static data**. This makes it easier to simulate different UI states without modifying your live database or app logic. 
+
+Each page or component that accepts input parameters can have one or more [Views](#views), each configured with sample values (like text strings, toggled states, or image URLs) to visualize how the UI responds in various scenarios.
+
+![component.avif](../imgs/component.avif)
+
+Here are some examples of how previewing pages and components independently can help:
+
+**Example 1: Skip Multi-Step Navigation Flows**
+
+If you’re designing an onboarding screen that normally appears only for new users, you can preview that page directly in the Explore tab, no need to register a new user or log out/in every time just to view the screen. 
+
+**Example 2: Test UI Under Different Conditions**
+
+You might have a profile page or card component that needs to display user-provided text. You can create a special preview where a **very long name or string** is pre-filled, allowing you to observe how the layout responds (whether the text wraps, overflows, or requires design tweaks). 
+
+:::warning
+
+Navigation actions are not supported inside an isolated page or component preview. If your page’s buttons attempt to navigate to another screen, nothing will happen. The preview is confined to the selected view. To test navigation between pages, use the [**Full Application**](#preview-app) preview mode. 
+
+:::
+
+:::info[**Pricing and Availability**]
+Users on the **Free** and **Hobby** plans can only preview **1 page and 1 component**. To unlock **unlimited page/component** previews, you’ll need to be on the **Pro** plan.
+:::
+
+### Views
+
+A **View** is a particular configuration of a page or component for preview purposes. In the Explore panel, each listed item may have one or multiple Views. Each view is defined with a set of static input parameters that feed into the page or component, so you can test the UI under different conditions (e.g., different text content lengths, empty vs. filled states, various image URLs, etc.). 
+
+For instance, a component might have a default view and another view with specific inputs adjusted to simulate a loading state or an error message.
+
+Behind the scenes, **views are defined in code.** Dreamflow uses a `@preview` annotation in the generated Flutter code to mark preview configurations. These preview definitions live in a special **`previews/` folder** in your project’s codebase. When you export the Flutter project, you will find the preview classes/files in the `previews` directory (one for each view). This structure is purely for development convenience and **does not interfere with your app’s runtime behavior**. 
+
+The preview code is isolated from your production code logic; it won’t run in your published app and doesn’t increase your app’s bundle size in any significant way. Its purpose is only to provide data and state for the Dreamflow editor’s preview mode.
+
+
+To create a View:
+
+1. In the **Explore** panel, select the page or component, then click the **(+)** button next to it.
+2. Choose whether to create the View **manually** or generate with AI.
+3. Give your new View a **name** to help identify it later.
+4. Double-click the newly created View to open its **details panel**.
+5. Under **View Configuration**, provide test data for the page or component’s input parameters—this allows you to simulate different UI states (e.g., long names, empty lists, different toggle values) and instantly preview the result.
+6. Use the **Views** dropdown to switch between different configurations and quickly compare how the UI behaves under various conditions.
+
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/RDN88Ab7g79PNqPgz4hF?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+:::info
+- The AI agent **cannot** modify or troubleshoot view configurations.
+- Under the hood, Dreamflow actually runs two Flutter app instances – one for the Full Application view and one for isolated page/component views – to make switching previews instantaneous.
+:::
+
+## Widget Tree
 
 The Widget Tree panel is a hierarchical view that displays the structure of your app's interface. It's located in the left hand side panel, and can be opened by clicking the "Widget Tree" button from the left side rail.  
 
@@ -30,7 +127,7 @@ The widget tree in Dreamflow allows you to view the widgets that are currently r
 **Real-Time Synchronization**: The tree automatically updates in real-time as you make changes to your code, reflecting the current state of your running Flutter app.
 
 
-## Nodes (Widgets)
+### Nodes (Widgets)
 
 ![Widget Tree Panel](../imgs/widget-tree.avif)
 
@@ -62,7 +159,7 @@ You can change the *view* of the Widget Tree to be either Consolidated or Detail
 :::
 
 
-## Widget Management
+### Widget Management
 
 Right-click on any widget to access a comprehensive context menu with options for:
 - [Adding new widgets] (to widgets that take other widgets as children or have properties that take a widget)
@@ -79,7 +176,7 @@ Right-click on any widget to access a comprehensive context menu with options fo
 Sometimes you need to quickly take stock of the different pages and components in your application. You can use the Expand / Collapse button at the top of the Widget Tree panel to quickly expand or collapse all widgets within the tree.
 :::
 
-### Add Widget
+#### Add Widget
 Insert new widgets into your tree by selecting a parent widget, clicking the plus (add) button, and choosing from a categorized catalog of available widgets (Framework, Project, Dependencies). For structural widgets like Scaffold, you will see a list of property-specific widgets that can be added as children.
 
 - **Framework widgets** are widgets imported directly from the Flutter framework, or the Material and Cupertino Flutter Libraries
@@ -148,12 +245,12 @@ Here’s a quick demo showing how you can add a widget to a Column:
 For quick access to widget options, right-click on any existing widget to open the context menu. This provides an alternative way to add new widgets to your layout.
 :::
 
-### Dragging and Dropping Widgets 
+#### Dragging and Dropping Widgets 
 You can drag and drop widgets within the Widget Tree to change the order of widgets in the tree and within your screen. Simply select a widget and drag it into a new place in the Widget Tree. 
 
 <!-- TO DO: add arcade -->
 
-### Wrap Widget
+#### Wrap Widget
 Wrap existing widgets with containers, padding, or other layout widgets to modify their behavior without changing their core functionality.
 
 To wrap a widget, right click and select "Wrap Widget." Then select a widget to wrap with. 
@@ -184,7 +281,7 @@ To wrap a widget, right click and select "Wrap Widget." Then select a widget to 
 </div>
 <p></p>
 
-### Jumping to Component Definitions and References
+#### Jumping to Component Definitions and References
 When building your application, you may want to see where custom components are defined or referenced. For example, you can right click instances of components (denoted using the component icon) and click "See Definition" to jump to the definition of that component in the Widget Tree. 
 
 To see references, or usages, of a component, right click on the component and select "See References." This allows you to step through each of the references within the Widget Tree.
@@ -192,7 +289,7 @@ To see references, or usages, of a component, right click on the component and s
 <!-- TO DO: add arcade -->
 
 
-### Clipboard Operations
+#### Clipboard Operations
 Right clicking on a widget in the Widget Tree also provides standard clipboard operations (cut, copy, paste) that allow you to move and duplicate widgets across your layout tree. You can use either the context menu options or familiar keyboard shortcuts:
 
 - **Cut**: Ctrl/Cmd + X
@@ -201,7 +298,7 @@ Right clicking on a widget in the Widget Tree also provides standard clipboard o
 
 These operations enable efficient widget reuse and layout restructuring without having to recreate widgets from scratch.
 
-### Go to Code
+#### Go to Code
 The "Go to Code" features provide quick navigation from the Widget Tree to the underlying [code implementation](../content-panel.md#code-editor). You can access these features by hovering over a widget in the tree and right-clicking on the widget and selecting "Go to Code".
 
  
