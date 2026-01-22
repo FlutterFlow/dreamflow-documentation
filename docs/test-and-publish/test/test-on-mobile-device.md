@@ -117,6 +117,118 @@ For more detailed guidance, refer to the [**iOS Flutter documentation**](https:
 
 :::
 
+### Local Run
+
+You can also Local Run your app on a real device using the Dreamflow Desktop App. Local Run automatically tracks changes in your project, downloads the code locally, and gives you the option to use Flutter's Hot Reload or Hot Restart to see your changes instantly on a device.
+
+#### Using Local Run
+
+Follow the steps below to run and test your app locally on a physical device or simulator:
+
+1. From the bottom bar in the Dreamflow, click **Download Local Run**.
+2. A dialog appears prompting you to download the app. Click **Download for macOS** to begin downloading.
+3. After the download completes, open the downloaded file.
+4. In the installer window, drag **Dreamflow Local Run** into the **Applications** folder.
+5. Open the Applications folder and launch **Dreamflow Local Run**. The app runs as a menu bar application.
+6. Return to the Dreamflow web app and click **Connect to Local Run**. When prompted, allow Dreamflow to open the Local Run app.
+7. When the Local Run app launches, it automatically checks all required prerequisites, downloads the correct Flutter SDK, and fetches your project files, so no manual configuration is required.
+8. Once setup is complete, a list of available devices and simulators appears, including the iOS Simulator, Android Emulator, and any connected physical devices. To begin, click the play (**▶**) button next to the simulator to start it. After the simulator is running, select it again and click the play button at the bottom to launch your app.
+9. After the app starts on the selected device or simulator, the Local Run panel shows a running status. Any changes you make in Dreamflow are automatically hot reloaded on the connected device. Updates appear instantly without restarting the app, allowing you to iterate quickly and continuously refine your app in real time.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/wn51rJVwq9IZ6ZrHp50L?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+:::info
+
+If you want the Local Run pop-up to stay visible, select **Keep Open** from the app menu. This keeps the Local Run window pinned so it doesn’t auto-dismiss when you click outside it.
+
+![keep-local-run-open.avif](imgs/keep-local-run-open.avif)
+
+:::
+
+#### App Running Controls
+
+- Run (▶): Builds and launches your app on the selected device or simulator.
+- Hot Reload (⚡): Applies most code and UI changes without restarting the app, preserving current state whenever possible.
+- Hot Restart (↻): Restarts the Dart isolate and rebuilds the app more fully than Hot Reload. App state is reset, but it is faster than a full stop and run.
+- Stop (■): Stops the currently running app on the selected device or simulator.
+
+![app-running-controls.avif](imgs/app-running-controls.avif)
+
+#### Open Flutter DevTools
+
+To open Flutter DevTools, click the magnifying glass icon in the bottom bar of the Local Run app. This launches Flutter DevTools in your browser for the currently running session. You can inspect widget tree, view performance timelines, debug layout, track memory, and review network activity. If DevTools does not open, start the app first (▶), then try again. DevTools typically requires an active run session.
+
+![dev-tools.avif](imgs/dev-tools.avif)
+
+#### View Logs
+
+Opens the Local Run logs so you can troubleshoot issues such as setup failures, build errors, device connection problems, and run-time crashes.
+
+![view-logs.avif](imgs/view-logs.avif)
+
+#### More Settings
+
+- **Show Flutter Doctor**: Opens Flutter Doctor output so you can see whether your local Flutter tooling is healthy (for example, Flutter SDK, Xcode tooling, Android tooling, and any missing dependencies). If there are any issues, you can directly resolve them from the app itsleft.
+
+<div style={{
+    position: 'relative',
+    paddingBottom: 'calc(52.67989417989418% + 41px)', // Keeps the aspect ratio and additional padding
+    height: 0,
+    width: '100%'}}>
+    <iframe 
+        src="https://demo.arcade.software/fW0LglEgNkhoEJCVHJnW?embed&show_copy_link=true"
+        title=""
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            colorScheme: 'light'
+        }}
+        frameborder="0"
+        loading="lazy"
+        webkitAllowFullScreen
+        mozAllowFullScreen
+        allowFullScreen
+        allow="clipboard-write">
+    </iframe>
+</div>
+<p></p>
+
+- **Start/Close iOS Simulator**: Launch and close the currently running iOS Simulator instance.
+- **Start/Close Android Emulator**: Launch and close the Android Emulator.
+- **Open Project in Xcode**: Opens the iOS workspace for your project in Xcode so you can manage iOS-specific settings, signing, capabilities, and native configuration.
+- **Check iOS Config**: Runs an iOS-specific configuration check to help identify common setup issues (for example, Xcode command line tools, CocoaPods, signing, and simulator readiness).
+- **Check Android Config**: Runs an Android-specific configuration check to help identify common setup issues (for example, Android SDK setup, emulator readiness, and required tooling).
+- **Clean Local Storage**: Clears Local Run’s cached local data (such as Dreamflow project files) to resolve issues caused by stale or corrupted cache.
+- **Check for Updates**: Checks whether a newer version of the Local Run app is available and prompts you to update if needed.
+- **Quit**: Exits the Local Run app.
+
 ### Download Code and Run
 
 To download your app code, click on your project name and select the **Download Code** option.
