@@ -1,10 +1,10 @@
 ---
 slug: /prompting-effectively
 title: Prompting Effectively
-description: Practical guidance for debugging layour errors in Dreamflow project.
-tags: [debugging]
+description: Best practices for writing clear, structured prompts in Dreamflow to get accurate, efficient, and maintainable code from the Agent.
+tags: [ai]
 sidebar_position: 1
-keywords: [dreamflow debugging, layout error, agent prompt]
+keywords: [dreamflow prompting, ai prompting best practices, coding agent prompts, dreamflow agent, prompting, architectural prompting, ai-assisted development]
 ---
 
 # Prompting Effectively
