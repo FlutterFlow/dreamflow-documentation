@@ -186,7 +186,7 @@ To open Flutter DevTools, click the magnifying glass icon in the bottom bar of t
 
 #### View Logs
 
-Opens the Local Run logs so you can troubleshoot issues such as setup failures, build errors, device connection problems, and run-time crashes.
+Opens the Flutter logs so you can troubleshoot issues such as build errors and run-time crashes.
 
 ![view-logs.png](imgs/view-logs.png)
 
