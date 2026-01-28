@@ -165,7 +165,7 @@ Follow the steps below to run and test your app locally on a physical device or 
 
 If you want the Local Run pop-up to stay visible, select **Keep Open** from the app menu. This keeps the Local Run window pinned so it doesn’t auto-dismiss when you click outside it.
 
-![keep-local-run-open.avif](imgs/keep-local-run-open.avif)
+![keep-local-run-open.png](imgs/keep-local-run-open.png)
 
 :::
 
@@ -176,7 +176,7 @@ If you want the Local Run pop-up to stay visible, select **Keep Open** from the 
 - Hot Restart (↻): Restarts the Dart isolate and rebuilds the app more fully than Hot Reload. App state is reset, but it is faster than a full stop and run.
 - Stop (■): Stops the currently running app on the selected device or simulator.
 
-![app-running-controls.avif](imgs/app-running-controls.avif)
+![app-running-controls.png](imgs/app-running-controls.png)
 
 #### Open Flutter DevTools
 
@@ -188,7 +188,7 @@ To open Flutter DevTools, click the magnifying glass icon in the bottom bar of t
 
 Opens the Local Run logs so you can troubleshoot issues such as setup failures, build errors, device connection problems, and run-time crashes.
 
-![view-logs.avif](imgs/view-logs.avif)
+![view-logs.png](imgs/view-logs.png)
 
 #### More Settings
 
