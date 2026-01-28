@@ -119,7 +119,7 @@ For more detailed guidance, refer to the [**iOS Flutter documentation**](https:
 
 ### Local Run
 
-You can also Local Run your app on a real device using the Dreamflow Desktop App. Local Run automatically tracks changes in your project, downloads the code locally, and gives you the option to use Flutter's Hot Reload or Hot Restart to see your changes instantly on a device.
+You can also locally run your app on a real device using the Dreamflow Desktop App. Local Run automatically tracks changes in your project, downloads the code locally, and gives you the option to use Flutter's Hot Reload or Hot Restart to see your changes instantly on a device.
 
 #### Using Local Run
 
