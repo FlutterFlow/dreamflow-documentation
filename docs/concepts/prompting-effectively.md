@@ -9,11 +9,11 @@ keywords: [dreamflow prompting, ai prompting best practices, coding agent prompt
 
 # Prompting Effectively
 
-Dreamflow’s Agent is most effective when you treat it like a **collaborative developer**, not a one-shot code generator. Clear prompts, resolved ambiguity, and small scopes lead to better code, lower credit usage, and more predictable results.
+Dreamflow’s agent is most effective when you treat it like a **collaborative developer**, not a one-shot code generator. Clear prompts, resolved ambiguity, and small scopes lead to better code, lower credit usage, and more predictable results.
 
 Many coding prompts requests contain hidden ambiguity. A prompt like “Create this UI” or “Add favorites feature” can imply different data sources, navigation patterns, persistence, UX behavior, and architecture. If you do not specify these, the Agent has to guess, which can lead to extra code, mismatched behavior, and more iterations.
 
-This guide explains **how to prompt effectively**, based on real research and practical experimentation with coding agents.
+This guide explains how to prompt effectively, based on real research and practical experimentation with coding agents.
 
 ### Ask Clarifying Questions
 
@@ -35,7 +35,7 @@ Clarifying questions can reduce credit usage because the Agent spends less effor
 
 ### Keep Tasks Small and Focused
 
-Dreamflow's AI Agent is strongest when you break work into small, reviewable steps.
+Dreamflow's AI Agent is strongest when you break the task into small, reviewable steps.
 
 Prefer prompts like:
 
@@ -67,7 +67,7 @@ If you do not specify architecture, the Agent will infer one. Inference is where
 
 Include specifics such as:
 
-- Architecture pattern (layered, feature-based, clean architecture)
+- Architectural pattern (layered, feature-based, clean architecture)
 - State management (Provider, Riverpod, BLoC)
 - Routing (GoRouter, Navigator 2.0)
 - Networking (Dio, http)
@@ -118,7 +118,7 @@ Project rules aren’t being applied. Why?
 </summary>
 
 <p>
-Your rule file might not be in the right location. Make sure it’s placed in the project root, at the same level as <code>pubspec.yaml</code>.
+Your project rules file might not be in the right location. Make sure it’s placed in the project root, at the same level as <code>pubspec.yaml</code>.
 </p>
 </details>
 
