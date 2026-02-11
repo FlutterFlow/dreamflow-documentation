@@ -180,7 +180,7 @@ You can also edit widgets directly from the Preview app using Prompt Edit:
 
 This provides a quick way to make targeted widget changes without leaving the Preview view.
 
-![Prompt Edit](imgs/prompt-edit-inspect.png)
+![Prompt Edit](imgs/prompt-edit-inspect.avif)
 
 ### App Logs
 
