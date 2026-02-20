@@ -49,6 +49,8 @@ In Dreamflow, the code is always the single source of truth. Whether you build w
 
 - **[AI Agent](workspace/agent-panel.md)**: Start a new app, get a jump start on new features for your existing project, or get help fixing issues using natural language commands. The AI agent can scaffold entire screens, implement complex flows, and help add debug outputs - making development faster and easier to understand.
 
+- **[Screen Planner](workspace/screen-planner.md)**: Plan and refine your app screens before generation begins. This intermediate step helps ensure the generated app aligns with your product vision and reduces rework later.
+
 - **[Realtime Preview](workspace/content-panel.md#app-preview)**: See your changes instantly with a live run session that compiles and previews your app in real-time. Inspect logs, monitor state changes, and debug issues as they happen, providing immediate feedback for faster iteration and development.
 
 - **[Visual Widget Tree](workspace/modules-panel/widget-panel.md)**: Add, remove, move, wrap, collapse, and expand UI components with intuitive visual controls. Restructure your entire widget hierarchy instantly through drag-and-drop interactions, making UI development more visual and accessible.
